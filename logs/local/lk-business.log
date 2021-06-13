@@ -1,0 +1,302 @@
+2021-06-11 20:07:08.164 - [ INFO  ] [ c.a.n.client.config.impl.LocalConfigInfoProcessor : 212 ] - LOCAL_SNAPSHOT_PATH:/Users/elliot/nacos/config
+2021-06-11 20:07:08.212 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.Limiter : 54 ] - limitTime:5.0
+2021-06-11 20:07:08.271 - [ WARN  ] [ c.a.cloud.nacos.client.NacosPropertySourceBuilder : 87 ] - Ignore the empty nacos configuration and get it based on dataId[lk-business] & group[DEFAULT_GROUP]
+2021-06-11 20:07:08.290 - [ WARN  ] [ c.a.cloud.nacos.client.NacosPropertySourceBuilder : 87 ] - Ignore the empty nacos configuration and get it based on dataId[lk-business.properties] & group[DEFAULT_GROUP]
+2021-06-11 20:07:08.302 - [ WARN  ] [ c.a.cloud.nacos.client.NacosPropertySourceBuilder : 87 ] - Ignore the empty nacos configuration and get it based on dataId[lk-business-local.properties] & group[DEFAULT_GROUP]
+2021-06-11 20:07:08.339 - [ INFO  ] [ com.lucky.kali.business.BusinessApplication : 667 ] - The following profiles are active: local
+2021-06-11 20:07:09.310 - [ WARN  ] [ org.mybatis.spring.mapper.ClassPathMapperScanner : 44 ] - No MyBatis mapper was found in '[com/lucky/kali/business/mapper]' package. Please check your configuration.
+2021-06-11 20:07:09.834 - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-7001"]
+2021-06-11 20:07:09.835 - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2021-06-11 20:07:09.835 - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/9.0.46]
+2021-06-11 20:07:09.970 - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2021-06-11 20:07:10.236 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerAdapter : 625 ] - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-06-11 20:07:10.302 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 361 ] - 4 mappings in 'requestMappingHandlerMapping'
+2021-06-11 20:07:10.337 - [ DEBUG ] [ o.s.web.servlet.handler.SimpleUrlHandlerMapping : 188 ] - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-06-11 20:07:10.349 - [ DEBUG ] [ o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver : 307 ] - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-06-11 20:07:10.515 - [ INFO  ] [ c.a.d.s.b.a.DruidDataSourceAutoConfigure : 56 ] - Init DruidDataSource
+2021-06-11 20:07:10.886 - [ INFO  ] [ com.alibaba.druid.pool.DruidDataSource : 990 ] - {dataSource-1} inited
+2021-06-11 20:07:11.201 - [ INFO  ] [ com.alibaba.nacos.client.naming : 65 ] - initializer namespace from System Property :null
+2021-06-11 20:07:11.201 - [ INFO  ] [ com.alibaba.nacos.client.naming : 74 ] - initializer namespace from System Environment :null
+2021-06-11 20:07:11.202 - [ INFO  ] [ com.alibaba.nacos.client.naming : 84 ] - initializer namespace from System Property :null
+2021-06-11 20:07:11.333 - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Starting ProtocolHandler ["http-nio-7001"]
+2021-06-11 20:07:11.378 - [ INFO  ] [ com.alibaba.nacos.client.naming : 81 ] - [BEAT] adding beat: BeatInfo{port=7001, ip='192.168.1.47', weight=1.0, serviceName='kali-group@@lk-business', cluster='kali', metadata={preserved.register.source=SPRING_CLOUD}, scheduled=false, period=5000, stopped=false} to beat map.
+2021-06-11 20:07:11.379 - [ INFO  ] [ com.alibaba.nacos.client.naming : 230 ] - [REGISTER-SERVICE] public registering service kali-group@@lk-business with instance: Instance{instanceId='null', ip='192.168.1.47', port=7001, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='kali', serviceName='null', metadata={preserved.register.source=SPRING_CLOUD}}
+2021-06-11 20:07:11.384 - [ INFO  ] [ c.a.cloud.nacos.registry.NacosServiceRegistry : 75 ] - nacos registry, kali-group lk-business 192.168.1.47:7001 register finished
+2021-06-11 20:07:11.395 - [ INFO  ] [ com.lucky.kali.business.BusinessApplication : 61 ] - Started BusinessApplication in 4.738 seconds (JVM running for 5.991)
+2021-06-11 20:07:11.399 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.ClientWorker : 239 ] - [fixed-localhost_8848] [subscribe] lk-business-local.properties+DEFAULT_GROUP
+2021-06-11 20:07:11.401 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.CacheData : 93 ] - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=lk-business-local.properties, group=DEFAULT_GROUP, cnt=1
+2021-06-11 20:07:11.401 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.ClientWorker : 239 ] - [fixed-localhost_8848] [subscribe] lk-business.properties+DEFAULT_GROUP
+2021-06-11 20:07:11.401 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.CacheData : 93 ] - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=lk-business.properties, group=DEFAULT_GROUP, cnt=1
+2021-06-11 20:07:11.402 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.ClientWorker : 239 ] - [fixed-localhost_8848] [subscribe] lk-business+DEFAULT_GROUP
+2021-06-11 20:07:11.402 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.CacheData : 93 ] - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=lk-business, group=DEFAULT_GROUP, cnt=1
+2021-06-11 20:07:11.838 - [ INFO  ] [ com.alibaba.nacos.client.naming : 86 ] - received push data: {"type":"dom","data":"{\"name\":\"kali-group@@lk-business\",\"clusters\":\"kali\",\"cacheMillis\":10000,\"hosts\":[{\"instanceId\":\"192.168.1.47#7001#kali#kali-group@@lk-business\",\"ip\":\"192.168.1.47\",\"port\":7001,\"weight\":1.0,\"healthy\":true,\"enabled\":true,\"ephemeral\":true,\"clusterName\":\"kali\",\"serviceName\":\"kali-group@@lk-business\",\"metadata\":{\"preserved.register.source\":\"SPRING_CLOUD\"},\"instanceHeartBeatInterval\":5000,\"ipDeleteTimeout\":30000,\"instanceHeartBeatTimeOut\":15000}],\"lastRefTime\":1623413231836,\"checksum\":\"\",\"allIPs\":false,\"reachProtectionThreshold\":false,\"valid\":true}","lastRefTime":13010781016075} from /127.0.0.1
+2021-06-11 20:07:11.859 - [ INFO  ] [ com.alibaba.nacos.client.naming : 228 ] - new ips(1) service: kali-group@@lk-business@@kali -> [{"instanceId":"192.168.1.47#7001#kali#kali-group@@lk-business","ip":"192.168.1.47","port":7001,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"kali","serviceName":"kali-group@@lk-business","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+2021-06-11 20:07:11.886 - [ INFO  ] [ com.alibaba.nacos.client.naming : 267 ] - current ips:(1) service: kali-group@@lk-business@@kali -> [{"instanceId":"192.168.1.47#7001#kali#kali-group@@lk-business","ip":"192.168.1.47","port":7001,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"kali","serviceName":"kali-group@@lk-business","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+2021-06-11 20:07:45.459 - [ INFO  ] [ c.a.n.client.config.impl.LocalConfigInfoProcessor : 212 ] - LOCAL_SNAPSHOT_PATH:/Users/elliot/nacos/config
+2021-06-11 20:07:45.554 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.Limiter : 54 ] - limitTime:5.0
+2021-06-11 20:07:45.632 - [ WARN  ] [ c.a.cloud.nacos.client.NacosPropertySourceBuilder : 87 ] - Ignore the empty nacos configuration and get it based on dataId[lk-business] & group[DEFAULT_GROUP]
+2021-06-11 20:07:45.641 - [ WARN  ] [ c.a.cloud.nacos.client.NacosPropertySourceBuilder : 87 ] - Ignore the empty nacos configuration and get it based on dataId[lk-business.properties] & group[DEFAULT_GROUP]
+2021-06-11 20:07:45.651 - [ WARN  ] [ c.a.cloud.nacos.client.NacosPropertySourceBuilder : 87 ] - Ignore the empty nacos configuration and get it based on dataId[lk-business-local.properties] & group[DEFAULT_GROUP]
+2021-06-11 20:07:45.706 - [ INFO  ] [ com.lucky.kali.business.BusinessApplication : 667 ] - The following profiles are active: local
+2021-06-11 20:07:47.435 - [ WARN  ] [ org.mybatis.spring.mapper.ClassPathMapperScanner : 44 ] - No MyBatis mapper was found in '[com/lucky/kali/business/mapper]' package. Please check your configuration.
+2021-06-11 20:07:48.939 - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-7001"]
+2021-06-11 20:07:48.941 - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2021-06-11 20:07:48.941 - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/9.0.46]
+2021-06-11 20:07:49.189 - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2021-06-11 20:07:49.875 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerAdapter : 625 ] - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-06-11 20:07:50.065 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 361 ] - 4 mappings in 'requestMappingHandlerMapping'
+2021-06-11 20:07:50.144 - [ DEBUG ] [ o.s.web.servlet.handler.SimpleUrlHandlerMapping : 188 ] - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-06-11 20:07:50.162 - [ DEBUG ] [ o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver : 307 ] - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-06-11 20:07:50.314 - [ INFO  ] [ c.a.d.s.b.a.DruidDataSourceAutoConfigure : 56 ] - Init DruidDataSource
+2021-06-11 20:07:51.041 - [ INFO  ] [ com.alibaba.druid.pool.DruidDataSource : 990 ] - {dataSource-1} inited
+2021-06-11 20:07:51.665 - [ INFO  ] [ com.alibaba.nacos.client.naming : 65 ] - initializer namespace from System Property :null
+2021-06-11 20:07:51.667 - [ INFO  ] [ com.alibaba.nacos.client.naming : 74 ] - initializer namespace from System Environment :null
+2021-06-11 20:07:51.669 - [ INFO  ] [ com.alibaba.nacos.client.naming : 84 ] - initializer namespace from System Property :null
+2021-06-11 20:07:52.100 - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Starting ProtocolHandler ["http-nio-7001"]
+2021-06-11 20:07:52.171 - [ INFO  ] [ com.alibaba.nacos.client.naming : 81 ] - [BEAT] adding beat: BeatInfo{port=7001, ip='192.168.1.47', weight=1.0, serviceName='kali-group@@lk-business', cluster='kali', metadata={preserved.register.source=SPRING_CLOUD}, scheduled=false, period=5000, stopped=false} to beat map.
+2021-06-11 20:07:52.172 - [ INFO  ] [ com.alibaba.nacos.client.naming : 230 ] - [REGISTER-SERVICE] public registering service kali-group@@lk-business with instance: Instance{instanceId='null', ip='192.168.1.47', port=7001, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='kali', serviceName='null', metadata={preserved.register.source=SPRING_CLOUD}}
+2021-06-11 20:07:52.180 - [ INFO  ] [ c.a.cloud.nacos.registry.NacosServiceRegistry : 75 ] - nacos registry, kali-group lk-business 192.168.1.47:7001 register finished
+2021-06-11 20:07:52.196 - [ INFO  ] [ com.lucky.kali.business.BusinessApplication : 61 ] - Started BusinessApplication in 10.543 seconds (JVM running for 22.971)
+2021-06-11 20:07:52.206 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.ClientWorker : 239 ] - [fixed-localhost_8848] [subscribe] lk-business-local.properties+DEFAULT_GROUP
+2021-06-11 20:07:52.209 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.CacheData : 93 ] - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=lk-business-local.properties, group=DEFAULT_GROUP, cnt=1
+2021-06-11 20:07:52.209 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.ClientWorker : 239 ] - [fixed-localhost_8848] [subscribe] lk-business.properties+DEFAULT_GROUP
+2021-06-11 20:07:52.210 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.CacheData : 93 ] - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=lk-business.properties, group=DEFAULT_GROUP, cnt=1
+2021-06-11 20:07:52.211 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.ClientWorker : 239 ] - [fixed-localhost_8848] [subscribe] lk-business+DEFAULT_GROUP
+2021-06-11 20:07:52.211 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.CacheData : 93 ] - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=lk-business, group=DEFAULT_GROUP, cnt=1
+2021-06-11 20:07:52.527 - [ INFO  ] [ com.alibaba.nacos.client.naming : 86 ] - received push data: {"type":"dom","data":"{\"name\":\"kali-group@@lk-business\",\"clusters\":\"kali\",\"cacheMillis\":10000,\"hosts\":[{\"instanceId\":\"192.168.1.47#7001#kali#kali-group@@lk-business\",\"ip\":\"192.168.1.47\",\"port\":7001,\"weight\":1.0,\"healthy\":true,\"enabled\":true,\"ephemeral\":true,\"clusterName\":\"kali\",\"serviceName\":\"kali-group@@lk-business\",\"metadata\":{\"preserved.register.source\":\"SPRING_CLOUD\"},\"instanceHeartBeatInterval\":5000,\"ipDeleteTimeout\":30000,\"instanceHeartBeatTimeOut\":15000}],\"lastRefTime\":1623413272524,\"checksum\":\"\",\"allIPs\":false,\"reachProtectionThreshold\":false,\"valid\":true}","lastRefTime":13051468488709} from /127.0.0.1
+2021-06-11 20:07:52.574 - [ INFO  ] [ com.alibaba.nacos.client.naming : 228 ] - new ips(1) service: kali-group@@lk-business@@kali -> [{"instanceId":"192.168.1.47#7001#kali#kali-group@@lk-business","ip":"192.168.1.47","port":7001,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"kali","serviceName":"kali-group@@lk-business","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+2021-06-11 20:07:52.582 - [ INFO  ] [ com.alibaba.nacos.client.naming : 267 ] - current ips:(1) service: kali-group@@lk-business@@kali -> [{"instanceId":"192.168.1.47#7001#kali#kali-group@@lk-business","ip":"192.168.1.47","port":7001,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"kali","serviceName":"kali-group@@lk-business","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+2021-06-11 20:08:05.616 - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-06-11 20:08:05.617 - [ INFO  ] [ org.springframework.web.servlet.DispatcherServlet : 525 ] - Initializing Servlet 'dispatcherServlet'
+2021-06-11 20:08:05.618 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 520 ] - Detected StandardServletMultipartResolver
+2021-06-11 20:08:05.620 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 544 ] - Detected AcceptHeaderLocaleResolver
+2021-06-11 20:08:05.621 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 569 ] - Detected FixedThemeResolver
+2021-06-11 20:08:05.623 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 719 ] - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7f95db91
+2021-06-11 20:08:05.624 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 783 ] - Detected org.springframework.web.servlet.support.SessionFlashMapManager@3ba863f0
+2021-06-11 20:08:05.625 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 542 ] - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2021-06-11 20:08:05.625 - [ INFO  ] [ org.springframework.web.servlet.DispatcherServlet : 547 ] - Completed initialization in 7 ms
+2021-06-11 20:08:05.658 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/", parameters={}
+2021-06-11 20:08:05.671 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.IndexController#index()
+2021-06-11 20:08:05.743 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:08:05.745 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=[Welcome To The Business ~, Priority of services : 0 (truncated)...]
+2021-06-11 20:08:05.778 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:08:05.853 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/favicon.ico", parameters={}
+2021-06-11 20:08:05.871 - [ DEBUG ] [ o.s.web.servlet.handler.SimpleUrlHandlerMapping : 522 ] - Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/], Classpath [resources/], Classpath [static/], Classpath [public/], ServletContext [/]]
+2021-06-11 20:08:05.883 - [ DEBUG ] [ o.s.w.servlet.resource.ResourceHttpRequestHandler : 525 ] - Resource not found
+2021-06-11 20:08:05.884 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 404 NOT_FOUND
+2021-06-11 20:08:05.908 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - "ERROR" dispatch for GET "/error", parameters={}
+2021-06-11 20:08:05.916 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2021-06-11 20:08:05.966 - [ DEBUG ] [ o.s.w.s.m.m.annotation.HttpEntityMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:08:05.967 - [ DEBUG ] [ o.s.w.s.m.m.annotation.HttpEntityMethodProcessor : 91 ] - Writing [{timestamp=Fri Jun 11 20:08:05 CST 2021, status=404, error=Not Found, path=/favicon.ico}]
+2021-06-11 20:08:06.004 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1127 ] - Exiting from "ERROR" dispatch, status 404
+2021-06-11 20:09:28.406 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/info/getInstances", parameters={}
+2021-06-11 20:09:28.408 - [ DEBUG ] [ o.s.web.servlet.handler.SimpleUrlHandlerMapping : 522 ] - Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/], Classpath [resources/], Classpath [static/], Classpath [public/], ServletContext [/]]
+2021-06-11 20:09:28.410 - [ DEBUG ] [ o.s.w.servlet.resource.ResourceHttpRequestHandler : 525 ] - Resource not found
+2021-06-11 20:09:28.411 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 404 NOT_FOUND
+2021-06-11 20:09:28.412 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - "ERROR" dispatch for GET "/error", parameters={}
+2021-06-11 20:09:28.413 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2021-06-11 20:09:28.443 - [ DEBUG ] [ o.s.w.servlet.view.ContentNegotiatingViewResolver : 349 ] - Selected 'text/html' given [text/html, text/html;q=0.8]
+2021-06-11 20:09:28.454 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1127 ] - Exiting from "ERROR" dispatch, status 404
+2021-06-11 20:12:17.953 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:12:17.953 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:12:17.957 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:12:17.958 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:12:17.959 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:13:05.220 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:13:05.221 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:13:05.223 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:13:05.223 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:13:05.225 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:13:05.863 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:13:05.865 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:13:05.866 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:13:05.867 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:13:05.868 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:13:11.657 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:13:11.658 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:13:11.660 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:13:11.661 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:13:11.663 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:13:44.813 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:13:44.814 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:13:44.816 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:13:44.817 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:13:44.818 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:25:22.573 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:25:22.574 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:25:22.575 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:25:22.576 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:25:22.578 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:37:40.424 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:37:40.425 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:37:40.426 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:37:40.426 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:37:40.427 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:37:41.480 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:37:41.480 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:37:41.482 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:37:41.482 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:37:41.483 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:37:42.030 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:37:42.030 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:37:42.032 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:37:42.033 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:37:42.034 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:37:42.404 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:37:42.404 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:37:42.406 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:37:42.406 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:37:42.407 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:37:42.772 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:37:42.773 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:37:42.774 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:37:42.774 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:37:42.775 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:37:43.131 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:37:43.132 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:37:43.133 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:37:43.134 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:37:43.136 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:37:43.486 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:37:43.487 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:37:43.488 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:37:43.488 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:37:43.489 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:37:43.894 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:37:43.895 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:37:43.896 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:37:43.897 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:37:43.898 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:37:44.430 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:37:44.431 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:37:44.432 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:37:44.433 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:37:44.434 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:44:49.985 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:44:49.986 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:44:49.987 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:44:49.988 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:44:49.989 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:44:50.763 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:44:50.764 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:44:50.764 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:44:50.764 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:44:50.765 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:44:51.519 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:44:51.520 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:44:51.521 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:44:51.522 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:44:51.523 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:44:51.880 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:44:51.880 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:44:51.881 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:44:51.881 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:44:51.882 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:44:52.220 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:44:52.221 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:44:52.222 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:44:52.223 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:44:52.224 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:46:36.549 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:46:36.550 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:46:36.551 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:46:36.551 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:46:36.552 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:46:38.379 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:46:38.379 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:46:38.380 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:46:38.380 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:46:38.381 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:46:38.941 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:46:38.942 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:46:38.943 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:46:38.943 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:46:38.943 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:51:05.989 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:51:05.989 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:51:05.990 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:51:05.991 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:51:05.992 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:51:07.823 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:51:07.823 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:51:07.824 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:51:07.825 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:51:07.826 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:51:18.874 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:51:18.874 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:51:18.875 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:51:18.876 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:51:18.877 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 20:55:20.633 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 20:55:20.633 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 20:55:20.634 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 20:55:20.635 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 20:55:20.637 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 21:11:17.196 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 21:11:17.196 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 21:11:17.197 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 21:11:17.197 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 21:11:17.198 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 21:11:41.478 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 21:11:41.479 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 21:11:41.480 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 21:11:41.480 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 21:11:41.481 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 21:21:48.408 - [ INFO  ] [ c.a.n.client.config.impl.LocalConfigInfoProcessor : 212 ] - LOCAL_SNAPSHOT_PATH:/Users/elliot/nacos/config
+2021-06-11 21:21:48.487 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.Limiter : 54 ] - limitTime:5.0
+2021-06-11 21:21:48.549 - [ WARN  ] [ c.a.cloud.nacos.client.NacosPropertySourceBuilder : 87 ] - Ignore the empty nacos configuration and get it based on dataId[lk-business] & group[DEFAULT_GROUP]
+2021-06-11 21:21:48.555 - [ WARN  ] [ c.a.cloud.nacos.client.NacosPropertySourceBuilder : 87 ] - Ignore the empty nacos configuration and get it based on dataId[lk-business.properties] & group[DEFAULT_GROUP]
+2021-06-11 21:21:48.560 - [ WARN  ] [ c.a.cloud.nacos.client.NacosPropertySourceBuilder : 87 ] - Ignore the empty nacos configuration and get it based on dataId[lk-business-local.properties] & group[DEFAULT_GROUP]
+2021-06-11 21:21:48.597 - [ INFO  ] [ com.lucky.kali.business.BusinessApplication : 667 ] - The following profiles are active: local
+2021-06-11 21:21:49.743 - [ WARN  ] [ org.mybatis.spring.mapper.ClassPathMapperScanner : 44 ] - No MyBatis mapper was found in '[com/lucky/kali/business/mapper]' package. Please check your configuration.
+2021-06-11 21:21:50.596 - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-7002"]
+2021-06-11 21:21:50.597 - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2021-06-11 21:21:50.597 - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/9.0.46]
+2021-06-11 21:21:50.719 - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2021-06-11 21:21:51.084 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerAdapter : 625 ] - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-06-11 21:21:51.211 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 361 ] - 4 mappings in 'requestMappingHandlerMapping'
+2021-06-11 21:21:51.269 - [ DEBUG ] [ o.s.web.servlet.handler.SimpleUrlHandlerMapping : 188 ] - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-06-11 21:21:51.286 - [ DEBUG ] [ o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver : 307 ] - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-06-11 21:21:51.399 - [ INFO  ] [ c.a.d.s.b.a.DruidDataSourceAutoConfigure : 56 ] - Init DruidDataSource
+2021-06-11 21:21:51.804 - [ INFO  ] [ com.alibaba.druid.pool.DruidDataSource : 990 ] - {dataSource-1} inited
+2021-06-11 21:21:52.224 - [ INFO  ] [ com.alibaba.nacos.client.naming : 65 ] - initializer namespace from System Property :null
+2021-06-11 21:21:52.225 - [ INFO  ] [ com.alibaba.nacos.client.naming : 74 ] - initializer namespace from System Environment :null
+2021-06-11 21:21:52.225 - [ INFO  ] [ com.alibaba.nacos.client.naming : 84 ] - initializer namespace from System Property :null
+2021-06-11 21:21:52.424 - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Starting ProtocolHandler ["http-nio-7002"]
+2021-06-11 21:21:52.469 - [ INFO  ] [ com.alibaba.nacos.client.naming : 81 ] - [BEAT] adding beat: BeatInfo{port=7002, ip='192.168.1.47', weight=1.0, serviceName='kali-group@@lk-business', cluster='kali', metadata={preserved.register.source=SPRING_CLOUD}, scheduled=false, period=5000, stopped=false} to beat map.
+2021-06-11 21:21:52.471 - [ INFO  ] [ com.alibaba.nacos.client.naming : 230 ] - [REGISTER-SERVICE] public registering service kali-group@@lk-business with instance: Instance{instanceId='null', ip='192.168.1.47', port=7002, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='kali', serviceName='null', metadata={preserved.register.source=SPRING_CLOUD}}
+2021-06-11 21:21:52.477 - [ INFO  ] [ c.a.cloud.nacos.registry.NacosServiceRegistry : 75 ] - nacos registry, kali-group lk-business 192.168.1.47:7002 register finished
+2021-06-11 21:21:52.491 - [ INFO  ] [ com.lucky.kali.business.BusinessApplication : 61 ] - Started BusinessApplication in 6.031 seconds (JVM running for 11.65)
+2021-06-11 21:21:52.496 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.ClientWorker : 239 ] - [fixed-localhost_8848] [subscribe] lk-business-local.properties+DEFAULT_GROUP
+2021-06-11 21:21:52.498 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.CacheData : 93 ] - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=lk-business-local.properties, group=DEFAULT_GROUP, cnt=1
+2021-06-11 21:21:52.498 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.ClientWorker : 239 ] - [fixed-localhost_8848] [subscribe] lk-business.properties+DEFAULT_GROUP
+2021-06-11 21:21:52.498 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.CacheData : 93 ] - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=lk-business.properties, group=DEFAULT_GROUP, cnt=1
+2021-06-11 21:21:52.498 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.ClientWorker : 239 ] - [fixed-localhost_8848] [subscribe] lk-business+DEFAULT_GROUP
+2021-06-11 21:21:52.499 - [ INFO  ] [ com.alibaba.nacos.client.config.impl.CacheData : 93 ] - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=lk-business, group=DEFAULT_GROUP, cnt=1
+2021-06-11 21:21:52.929 - [ INFO  ] [ com.alibaba.nacos.client.naming : 86 ] - received push data: {"type":"dom","data":"{\"name\":\"kali-group@@lk-business\",\"clusters\":\"kali\",\"cacheMillis\":10000,\"hosts\":[{\"instanceId\":\"192.168.1.47#7002#kali#kali-group@@lk-business\",\"ip\":\"192.168.1.47\",\"port\":7002,\"weight\":1.0,\"healthy\":true,\"enabled\":true,\"ephemeral\":true,\"clusterName\":\"kali\",\"serviceName\":\"kali-group@@lk-business\",\"metadata\":{\"preserved.register.source\":\"SPRING_CLOUD\"},\"instanceHeartBeatInterval\":5000,\"ipDeleteTimeout\":30000,\"instanceHeartBeatTimeOut\":15000}],\"lastRefTime\":1623417712926,\"checksum\":\"\",\"allIPs\":false,\"reachProtectionThreshold\":false,\"valid\":true}","lastRefTime":17491725047528} from /127.0.0.1
+2021-06-11 21:21:52.957 - [ INFO  ] [ com.alibaba.nacos.client.naming : 228 ] - new ips(1) service: kali-group@@lk-business@@kali -> [{"instanceId":"192.168.1.47#7002#kali#kali-group@@lk-business","ip":"192.168.1.47","port":7002,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"kali","serviceName":"kali-group@@lk-business","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+2021-06-11 21:21:52.962 - [ INFO  ] [ com.alibaba.nacos.client.naming : 267 ] - current ips:(1) service: kali-group@@lk-business@@kali -> [{"instanceId":"192.168.1.47#7002#kali#kali-group@@lk-business","ip":"192.168.1.47","port":7002,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"kali","serviceName":"kali-group@@lk-business","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+2021-06-11 21:21:55.265 - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-06-11 21:21:55.265 - [ INFO  ] [ org.springframework.web.servlet.DispatcherServlet : 525 ] - Initializing Servlet 'dispatcherServlet'
+2021-06-11 21:21:55.266 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 520 ] - Detected StandardServletMultipartResolver
+2021-06-11 21:21:55.266 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 544 ] - Detected AcceptHeaderLocaleResolver
+2021-06-11 21:21:55.266 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 569 ] - Detected FixedThemeResolver
+2021-06-11 21:21:55.268 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 719 ] - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@ac1318a
+2021-06-11 21:21:55.269 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 783 ] - Detected org.springframework.web.servlet.support.SessionFlashMapManager@ee98f92
+2021-06-11 21:21:55.270 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 542 ] - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2021-06-11 21:21:55.270 - [ INFO  ] [ org.springframework.web.servlet.DispatcherServlet : 547 ] - Completed initialization in 4 ms
+2021-06-11 21:21:55.289 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 21:21:55.294 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 21:21:55.333 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 21:21:55.334 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 21:21:55.350 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 21:22:02.956 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 21:22:02.957 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 21:22:02.959 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 21:22:02.960 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 21:22:02.961 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
+2021-06-11 21:42:07.214 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 91 ] - GET "/business/info/getDescription", parameters={}
+2021-06-11 21:42:07.215 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestMappingHandlerMapping : 522 ] - Mapped to com.lucky.kali.business.controller.InfoController#description()
+2021-06-11 21:42:07.216 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 268 ] - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-06-11 21:42:07.217 - [ DEBUG ] [ o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor : 91 ] - Writing [ResponseInfo(statusCode=200, message=请求成功, data=null)]
+2021-06-11 21:42:07.218 - [ DEBUG ] [ org.springframework.web.servlet.DispatcherServlet : 1131 ] - Completed 200 OK
