@@ -7,10 +7,12 @@
 Spring:
 
 * [Spring官方项目生成地址](https://start.spring.io/)
+* [仓库包索引地址1(mvnrepository)](https://mvnrepository.com/)
+* [仓库包索引地址2(阿里)](https://maven.aliyun.com/mvn/guide)
 
 ### 1.Nacos介绍
 
-Nacos版本号:
+Nacos版本号 2.0.1:
 
 * [nacos-server-2.0.1下载地址](https://github.com/alibaba/nacos/releases/tag/2.0.1)
 * [官方示例](http://console.nacos.io/nacos/index.html#/login)
