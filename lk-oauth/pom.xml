@@ -21,11 +21,10 @@
 
   <dependencies>
 
-    <!-- spring oauth2.0 (包含了spring security无需单独引入) 相关 -->
+    <!-- spring cloud starter oauth2(包含了spring security无需单独引入)相关 -->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-oauth2</artifactId>
-      <version>2.2.5.RELEASE</version>
     </dependency>
 
     <!-- common包 -->

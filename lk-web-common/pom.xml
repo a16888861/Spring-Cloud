@@ -28,6 +28,11 @@
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-bootstrap</artifactId>
     </dependency>
+    <!-- spring cloud starter oauth2(包含了spring security无需单独引入)相关 -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-oauth2</artifactId>
+    </dependency>
     <!-- spring boot starter web -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -40,6 +45,11 @@
     </dependency>
 
     <!-- 数据库相关 -->
+    <!-- spring boot starter data redis -->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-data-redis</artifactId>-->
+<!--    </dependency>-->
     <!-- MySql驱动 -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -85,6 +95,11 @@
     <dependency>
       <groupId>com.baomidou</groupId>
       <artifactId>mybatis-plus-core</artifactId>
+    </dependency>
+    <!-- swagger -->
+    <dependency>
+      <groupId>com.github.xiaoymin</groupId>
+      <artifactId>knife4j-spring-boot-starter</artifactId>
     </dependency>
 
   </dependencies>
