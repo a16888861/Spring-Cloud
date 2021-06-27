@@ -36,7 +36,7 @@ public class Swagger2Config {
                 .title("swagger-bootstrap-ui RESTful APIs")
                 .description("swagger-bootstrap-ui")
                 .version("1.0")
-                .termsOfServiceUrl("http://www.xx.com/")
+                .termsOfServiceUrl("https://xstrojan.top/")
                 .build();
     }
 }
