@@ -26,13 +26,6 @@
       <groupId>com.lucky.kali</groupId>
       <artifactId>lk-web-common</artifactId>
       <version>${project.version}</version>
-
-      <exclusions>
-        <exclusion>
-          <groupId>org.springframework.cloud</groupId>
-          <artifactId>spring-cloud-starter-oauth2</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
 
     <!-- nacos注册中心 -->
