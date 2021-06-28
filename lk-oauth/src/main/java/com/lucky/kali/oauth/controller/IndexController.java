@@ -3,6 +3,7 @@ package com.lucky.kali.oauth.controller;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.lucky.kali.common.response.Response;
+import com.lucky.kali.common.response.ResponseEnum;
 import com.lucky.kali.common.response.ResponseInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -51,7 +52,7 @@ public class IndexController {
         result.add("Welcome To The " + appName +" ~");
         result.add("Priority of services : " + discoveryClient.getOrder());
         result.add("Service Id : " + applicationId);
-        return Response.success("common.response.success",result);
+        return Response.success(ResponseEnum.SUCCESS.getMessage(),result);
     }
 
 }

@@ -3,6 +3,7 @@ package com.lucky.kali.business.controller;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.lucky.kali.common.response.Response;
+import com.lucky.kali.common.response.ResponseEnum;
 import com.lucky.kali.common.response.ResponseInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -36,6 +37,6 @@ public class InfoController {
     @ApiOperation(value = "获取description", produces = "application/json")
     @ApiOperationSupport(author = "Elliot")
     public ResponseInfo<String> description(){
-        return Response.success("common.response.success",discoveryClient.description());
+        return Response.success(ResponseEnum.SUCCESS.getMessage(),discoveryClient.description());
     }
 }
