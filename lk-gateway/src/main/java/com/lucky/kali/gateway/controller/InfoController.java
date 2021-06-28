@@ -26,7 +26,7 @@ public class InfoController {
 
     /**
      * 获取所有实例Info
-     * @return 获取所有实例Info
+     * @return 所有实例Info
      */
     @GetMapping("getInstances")
     public ResponseInfo<List<DiscoveryVO>> getInstances(){
@@ -45,7 +45,7 @@ public class InfoController {
     }
 
     /**
-     * 获取所有服务名称
+     * 获取所有注册的服务名称
      * @return  所有注册的服务
      */
     @GetMapping("getServices")
