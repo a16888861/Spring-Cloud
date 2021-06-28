@@ -21,17 +21,18 @@
 
   <dependencies>
 
-    <!-- spring cloud starter oauth2(包含了spring security无需单独引入)相关 -->
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-oauth2</artifactId>
-    </dependency>
-
     <!-- common包 -->
     <dependency>
       <groupId>com.lucky.kali</groupId>
       <artifactId>lk-web-common</artifactId>
       <version>${project.version}</version>
+
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-oauth2</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <!-- nacos注册中心 -->
@@ -48,7 +49,7 @@
   </dependencies>
 
   <build>
-    <finalName>lk-business</finalName>
+    <finalName>lk-oauth</finalName>
 
     <plugins>
       <plugin>

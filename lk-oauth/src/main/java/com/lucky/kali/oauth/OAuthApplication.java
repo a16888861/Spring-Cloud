@@ -1,4 +1,4 @@
-package com.lucaky.kali.oauth;
+package com.lucky.kali.oauth;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

@@ -1,4 +1,4 @@
-package com.lucaky.kali.oauth.controller;
+package com.lucky.kali.oauth.controller;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
