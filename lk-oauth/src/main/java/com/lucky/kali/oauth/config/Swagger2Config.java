@@ -21,12 +21,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 @EnableSwagger2WebMvc
 public class Swagger2Config {
 
-    @Bean(value = "基本信息模块")
+    @Bean(value = "基本信息(鉴权)")
     public Docket api1() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 //分组名称
-                .groupName("基本信息模块")
+                .groupName("基本信息(鉴权)")
                 .select()
                 //采用包扫描的方式来确定要显示的接口
 //                .apis(RequestHandlerSelectors.basePackage("com.lucky.kali.oauth.controller"))
