@@ -1,6 +1,6 @@
 # 自建Spring-cloud框架
 
-## 方便开发使用的Spring-cloud框架，目前缺少鉴权模块待添加
+## 方便开发使用的Spring-cloud框架，目前各个模块的鉴权采用简单的明文验证
 
 ### Spring Project生成地址
 
