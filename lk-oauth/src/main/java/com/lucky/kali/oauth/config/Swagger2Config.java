@@ -1,5 +1,6 @@
 package com.lucky.kali.oauth.config;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -20,18 +21,43 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 @EnableSwagger2WebMvc
 public class Swagger2Config {
 
-    @Bean(value = "OAuthAndAPI")
-    public Docket createBusinessAndApi() {
+    @Bean(value = "基本信息模块")
+    public Docket api1() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 //分组名称
-                .groupName("鉴权模块")
+                .groupName("基本信息模块")
                 .select()
-                //这里指定Controller扫描包路径
-                .apis(RequestHandlerSelectors.basePackage("com.lucky.kali.oauth.controller"))
-                .paths(PathSelectors.any())
+                //采用包扫描的方式来确定要显示的接口
+//                .apis(RequestHandlerSelectors.basePackage("com.lucky.kali.oauth.controller"))
+                //采用包含注解的方式来确定要显示的接口(两种方式：根据类注释和根据方法注释，看情况选择)
+//                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
+                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+                //扫描全部
+//                .paths(PathSelectors.any())
+                //扫描指定
+                .paths(PathSelectors.regex("/index/*"))
                 .build();
     }
+    @Bean(value = "xx模块")
+    public Docket api2() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                //分组名称
+                .groupName("xx模块")
+                .select()
+                //采用包扫描的方式来确定要显示的接口
+//                .apis(RequestHandlerSelectors.basePackage("com.lucky.kali.oauth.controller"))
+                //采用包含注解的方式来确定要显示的接口(两种方式：根据类注释和根据方法注释，看情况选择)
+//                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
+                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+                //扫描全部
+//                .paths(PathSelectors.any())
+                //扫描指定
+                .paths(PathSelectors.regex("/*"))
+                .build();
+    }
+
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Business RESTFUL APIs(Swagger-2.0.8)")
