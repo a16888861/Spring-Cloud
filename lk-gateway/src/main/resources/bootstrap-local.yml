@@ -58,6 +58,20 @@ spring:
 #                  filters:
 #                    - StripPrefix=1
 #                    - PreserveHostHeader
+                - id: lk-consumer
+                  # lb代表从注册中心获取服务(负载均衡)
+                  uri: lb://lk-consumer
+                  # 数字越小，优先级越高
+                  order: 1
+                  #断言,路径相匹配的进行路由。注意是Path的P是大写
+                  predicates:
+                    - Path=/consumer/**
+                    # Method 方法谓词，这里是匹配 GET 和 POST 请求
+                    - Method=GET,POST,PUT,DELETE
+                  # 过滤器，请求在传递过程中可以通过过滤器对其进行一定的修改(转发之前去掉1层路径)
+#                  filters:
+#                    - StripPrefix=1
+#                    - PreserveHostHeader
             # httpClient 连接超时控制
             httpclient:
                 connect-timeout: 6000
