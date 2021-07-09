@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 </#if>
 <#if entityLombokModel>
 import lombok.Data;
+import lombok.ToString;
 import lombok.EqualsAndHashCode;
     <#if chainModel>
 import lombok.experimental.Accessors;
@@ -19,15 +20,16 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 </#if>
 /**
- * <p>
+<#-- * <p>-->
  * ${table.comment!}
- * </p>
+<#-- * </p>-->
  *
  * @author ${author}
- * @since ${date}
+<#-- * @since ${date}-->
  */
 <#if entityLombokModel>
 @Data
+@ToString
     <#if superEntityClass??>
 @EqualsAndHashCode(callSuper = true)
     <#else>
@@ -163,9 +165,9 @@ public class ${entity} implements Serializable {
         "}";
     }
 </#if>
-<#if cfg.pase4DTO>
+<#if cfg.transDTO>
     @Override
-    public ${entity}DTO pase4DTO(){
+    public ${entity}DTO transDTO(){
 
     return ${entity}DTO.builder().id(id)
     <#list table.fields as field>
@@ -174,9 +176,9 @@ public class ${entity} implements Serializable {
     .build();
     }
 </#if>
-<#if cfg.fromDTO>
+<#if cfg.recDTO>
     @Override
-    public ${entity} fromDTO(${entity}DTO dto) {
+    public ${entity} recDTO(${entity}DTO dto) {
 
     return ${entity}.builder().id(dto.getId())
     <#list table.fields as field>

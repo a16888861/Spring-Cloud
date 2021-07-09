@@ -54,8 +54,8 @@ public class MysqlGenerator {
 
         // 全局配置
 //        String projectPath = System.getProperty("user.dir");
-//        String projectPath = "G:\\java\\js";
-        String projectPath = "/Volumes/Application/test ";
+        String projectPath = "D:\\Java\\IdeaProjects\\kali";
+//        String projectPath = "/Volumes/Application/test ";
         GlobalConfig gc = new GlobalConfig()
                 .setOutputDir(projectPath + "/mybatis-plus-sample-generator/src/main/java")
                 .setAuthor(scanner("作者"))
@@ -91,7 +91,7 @@ public class MysqlGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(scanner("模块名"));
-        pc.setParent("com.robust.sport.si");
+        pc.setParent("com.lucky.kali");
         mpg.setPackageInfo(pc);
         // 自定义配置
         InjectionConfig cfg = new InjectionConfig() {
@@ -102,12 +102,12 @@ public class MysqlGenerator {
                 //自定义配置，在模版中cfg.superColums 获取
                 // TODO 这里解决子类会生成父类属性的问题，在模版里会用到该配置
                 map.put("superColums", this.getConfig().getStrategyConfig().getSuperEntityColumns());
-//                生成实体中的 pase4DTO
-                map.put("pase4DTO", true);
+//                生成实体中的 transDTO
+                map.put("transDTO", true);
 
                 map.put("superBuilder",true);
-//                生成实体中的 fromDTO
-                map.put("fromDTO", true);
+//                生成实体中的 recDTO
+                map.put("recDTO", true);
                 this.setMap(map);
             }
         };
@@ -145,11 +145,11 @@ public class MysqlGenerator {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        strategy.setSuperEntityClass("com.robust.sport.si.web.common.base.BaseEntity");
+        strategy.setSuperEntityClass("com.lucky.kali.common.base.BaseEntity");
         strategy.setEntityLombokModel(true);
-        strategy.setSuperControllerClass("com.robust.sport.si.web.common.base.BaseController");
-        strategy.setSuperServiceClass("com.robust.sport.si.web.common.base.BaseService");
-        strategy.setSuperServiceImplClass("com.robust.sport.si.web.common.base.BaseServiceImpl");
+        strategy.setSuperControllerClass("com.lucky.kali.common.base.BaseController");
+        strategy.setSuperServiceClass("com.lucky.kali.common.base.BaseService");
+        strategy.setSuperServiceImplClass("com.lucky.kali.common.base.BaseServiceImpl");
         strategy.setInclude(scanner("表名"));
         strategy.setControllerMappingHyphenStyle(false);
         strategy.setEntityTableFieldAnnotationEnable(false);
@@ -160,7 +160,7 @@ public class MysqlGenerator {
         // 公共父类
         strategy.setSuperMapperClass("com.baomidou.mybatisplus.core.mapper.BaseMapper");
         //去掉表的前缀
-        strategy.setTablePrefix("ss_");
+        strategy.setTablePrefix("kali_");
         mpg.setStrategy(strategy);
         // 选择 freemarker 引擎需要指定如下加，注意 pom 依赖必须有！
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());

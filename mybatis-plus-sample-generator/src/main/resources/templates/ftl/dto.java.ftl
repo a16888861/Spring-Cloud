@@ -19,12 +19,12 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 </#if>
 /**
- * <p>
+<#-- * <p>-->
  * ${table.comment!}
- * </p>
+<#-- * </p>-->
  *
  * @author ${author}
- * @since ${date}
+<#-- * @since ${date}-->
  */
 <#if entityLombokModel>
 @Data
