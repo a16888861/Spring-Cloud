@@ -28,15 +28,29 @@ public class Swagger2Config {
                 //分组名称
                 .groupName("基本信息(服务消费者)")
                 .select()
+                //扫描全部
+//                .apis(RequestHandlerSelectors.any())
                 //采用包扫描的方式来确定要显示的接口
 //                .apis(RequestHandlerSelectors.basePackage("com.lucky.kali.consumer.controller"))
                 //采用包含注解的方式来确定要显示的接口(两种方式：根据类注释和根据方法注释，看情况选择)
 //                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 //扫描全部
-//                .paths(PathSelectors.any())
+                .paths(PathSelectors.any())
                 //扫描指定
-                .paths(PathSelectors.regex("/*"))
+//                .paths(PathSelectors.regex("/*"))
+                .build();
+    }
+    @Bean(value = "用户信息")
+    public Docket api2() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                //分组名称
+                .groupName("用户信息")
+                .select()
+                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+                //扫描全部
+                .paths(PathSelectors.regex("/consumer/user/*"))
                 .build();
     }
 

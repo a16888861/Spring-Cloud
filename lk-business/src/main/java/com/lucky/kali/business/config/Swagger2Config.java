@@ -34,9 +34,9 @@ public class Swagger2Config {
 //                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 //扫描全部
-//                .paths(PathSelectors.any())
+                .paths(PathSelectors.any())
                 //扫描指定
-                .paths(PathSelectors.regex("/index/*"))
+//                .paths(PathSelectors.regex("/index/*"))
                 .build();
     }
 

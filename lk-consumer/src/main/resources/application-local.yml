@@ -16,7 +16,7 @@ spring:
                 # 是否开启
                 enabled: true
                 # 是否开启自动刷新
-                refresh-enabled: true
+                refresh-enabled: false
                 # config地址
                 server-addr: 127.0.0.1:8848
                 # nacos命名空间

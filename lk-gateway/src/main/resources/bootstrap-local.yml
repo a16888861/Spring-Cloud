@@ -15,7 +15,7 @@ spring:
                 prefix: ${spring.application.name}
                 name: ${spring.application.name}
                 # 是否开启
-                enabled: true
+                enabled: false
                 # 是否开启自动刷新
                 refresh-enabled: true
                 # config地址
