@@ -21,12 +21,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 @EnableSwagger2WebMvc
 public class Swagger2Config {
 
-    @Bean(value = "基本信息(服务消费者)")
+    @Bean(value = "服务消费者模块")
     public Docket api1() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 //分组名称
-                .groupName("基本信息(服务消费者)")
+                .groupName("服务消费者模块")
                 .select()
                 //扫描全部
 //                .apis(RequestHandlerSelectors.any())
@@ -41,18 +41,18 @@ public class Swagger2Config {
 //                .paths(PathSelectors.regex("/*"))
                 .build();
     }
-    @Bean(value = "用户信息")
-    public Docket api2() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                //分组名称
-                .groupName("用户信息")
-                .select()
-                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
-                //扫描全部
-                .paths(PathSelectors.regex("/consumer/user/*"))
-                .build();
-    }
+//    @Bean(value = "用户信息")
+//    public Docket api2() {
+//        return new Docket(DocumentationType.SWAGGER_2)
+//                .apiInfo(apiInfo())
+//                //分组名称
+//                .groupName("用户信息")
+//                .select()
+//                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+//                //扫描全部
+//                .paths(PathSelectors.regex("/consumer/user/*"))
+//                .build();
+//    }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()

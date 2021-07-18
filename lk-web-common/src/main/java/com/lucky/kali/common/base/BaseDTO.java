@@ -30,6 +30,9 @@ public class BaseDTO implements Serializable {
     public static final String DEL_FLAG_DELETE = "1";
     public static final String DEL_FLAG_AUDIT = "2";
 
+    /**
+     * 标识符
+     */
     protected String id;
 
     /**
