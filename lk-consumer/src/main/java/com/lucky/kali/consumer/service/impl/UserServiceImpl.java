@@ -3,6 +3,7 @@ package com.lucky.kali.consumer.service.impl;
 import com.alibaba.nacos.common.utils.UuidUtils;
 import com.lucky.kali.common.base.BaseDTO;
 import com.lucky.kali.common.base.BaseServiceImpl;
+import com.lucky.kali.common.enums.GroupEnums;
 import com.lucky.kali.consumer.dto.UserDTO;
 import com.lucky.kali.consumer.entity.User;
 import com.lucky.kali.consumer.mapper.UserMapper;
@@ -31,8 +32,13 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User, UserDTO> 
      */
     @Override
     public int createUser(UserDTO userDTO) {
+        userDTO.setId(UuidUtils.generateUuid())
+                //TODO 创建者待添加 -> 完了写一个 上下文类 从服务上下文中获取创建者ID
+                .setCreateBy("")
+                .setCreateDate(new Date())
+                .setDelFlag(BaseDTO.DEL_FLAG_NORMAL);
+        userDTO.setGroup(GroupEnums.getGroupCode(userDTO.getGroup()));
         userDTO.setYear(String.valueOf(LocalDateTime.now().getYear()));
-        userDTO.setId(UuidUtils.generateUuid()).setCreateDate(new Date()).setDelFlag(BaseDTO.DEL_FLAG_NORMAL);
         int insert = userService.insert(userDTO);
         if (insert > 0){
             return insert;

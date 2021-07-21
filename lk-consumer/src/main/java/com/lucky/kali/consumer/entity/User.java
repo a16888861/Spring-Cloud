@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 /**
- * 用户表
+ * 用户表Entity
  *
  * @author Elliot
  */

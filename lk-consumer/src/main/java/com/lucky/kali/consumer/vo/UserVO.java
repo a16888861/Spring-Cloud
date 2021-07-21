@@ -8,6 +8,11 @@ import lombok.experimental.SuperBuilder;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
+/**
+ * 用户表VO
+ *
+ * @author elliot
+ */
 @Data
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor

@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 /**
- * 用户表
+ * 用户表DTO
  *
  * @author Elliot
  */
