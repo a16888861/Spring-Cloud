@@ -30,3 +30,10 @@ Swagger版本号 2.0.8:
 
 * [官方地址](https://xiaoym.gitee.io/knife4j/)
 * [官方Github](https://github.com/xiaoymin/swagger-bootstrap-ui)
+
+### 4.sentinel-dashboard介绍
+
+sentinel-dashboard版本号 1.8.2:
+
+* [官方地址](https://www.gitmemory.com/alibaba/Sentinel)
+* [官方Github](https://github.com/alibaba/Sentinel)

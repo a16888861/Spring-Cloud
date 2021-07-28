@@ -43,6 +43,11 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-logging</artifactId>
     </dependency>
+    <!-- spring-cloud-starter-alibaba-sentinel -->
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+    </dependency>
 
     <!-- 数据库相关 -->
     <!-- spring boot starter data redis -->

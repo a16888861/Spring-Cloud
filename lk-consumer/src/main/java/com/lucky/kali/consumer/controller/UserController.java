@@ -37,6 +37,8 @@ public class UserController {
      * @param userVO    用户信息
      * @return          创建结果
      */
+    //TODO Sentinel待配置
+//    @SentinelResource(value = "createUser", blockHandler = "blockHandlerCommon")
     @PostMapping("createUser")
     @ApiOperation(value = "创建用户信息", produces = "application/json", notes = "管理员创建用户信息用的接口")
     @ApiOperationSupport(author = "Elliot")
