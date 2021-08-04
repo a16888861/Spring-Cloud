@@ -21,6 +21,12 @@ spring:
                 server-addr: 127.0.0.1:8848
                 # nacos命名空间
 #                namespace: 2826f609-db65-46e5-b14b-41cbfc3201b3
+        sentinel:
+            transport:
+                #配置Sentin dashboard地址
+                dashboard: localhost:8849
+                # 默认8719端口，假如被占用了会自动从8719端口+1进行扫描，直到找到未被占用的端口
+                port: 8719
     datasource:
         druid:
             driver-class-name: com.mysql.cj.jdbc.Driver
