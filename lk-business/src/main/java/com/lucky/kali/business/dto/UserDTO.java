@@ -1,10 +1,11 @@
-package com.lucky.kali.consumer.dto;
+package com.lucky.kali.business.dto;
 
 import com.lucky.kali.common.base.BaseDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+
 /**
  * 用户表DTO
  *

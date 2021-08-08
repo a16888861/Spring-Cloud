@@ -1,8 +1,8 @@
-package com.lucky.kali.consumer.service;
+package com.lucky.kali.business.service;
 
+import com.lucky.kali.business.dto.UserDTO;
+import com.lucky.kali.business.entity.User;
 import com.lucky.kali.common.base.BaseService;
-import com.lucky.kali.consumer.dto.UserDTO;
-import com.lucky.kali.consumer.entity.User;
 
 /**
  * 用户表 服务类

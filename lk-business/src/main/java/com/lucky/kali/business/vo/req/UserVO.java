@@ -1,4 +1,4 @@
-package com.lucky.kali.consumer.vo;
+package com.lucky.kali.business.vo.req;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
