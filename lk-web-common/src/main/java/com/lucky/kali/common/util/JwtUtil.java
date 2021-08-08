@@ -19,7 +19,7 @@ public class JwtUtil {
     private static final String SECRET = "U0JBUDud82frFt8YHk9uZz0yNjQ1NA==";
     private static final String ISSUER = "Elliot";
     private static final String PARAM_KEY = "springCloudJwt";
-    private static final String PARAM_DATE = "springCloudJwtDate";
+    private static final String PARAM_DATE = DateUtil.getNow();
 
     public static void init() {
         alg = Algorithm.HMAC384(SECRET);
