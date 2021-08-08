@@ -1,38 +1,38 @@
 spring:
-    cloud:
-        nacos:
-            discovery:
-                server-addr: 127.0.0.1:8848
-                enabled: true
-                # 分组名称
-                group: kali-group
-                # 集群名称
-                cluster-name: kali
-                # nacos命名空间
-            #                namespace: 2826f609-db65-46e5-b14b-41cbfc3201b3
-            config:
-                prefix: ${spring.application.name}
-                name: ${spring.application.name}
-                # 是否开启
-                enabled: false
-                # 是否开启自动刷新
-                refresh-enabled: true
-                # config地址
-                server-addr: 127.0.0.1:8848
-                # nacos命名空间
-    #                namespace: 2826f609-db65-46e5-b14b-41cbfc3201b3
-    datasource:
-        druid:
-            driver-class-name: com.mysql.cj.jdbc.Driver
-            password: 123456
-            url: jdbc:mysql://localhost:3306/kali?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
-            username: root
-            initial-size: 20
-            max-active: 200
-            min-idle: 8
-            max-wait: 60000
-    messages:
-        encoding: UTF-8
-        basename: i18n.message
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        enabled: true
+        # 分组名称
+        group: kali-group
+        # 集群名称
+        cluster-name: kali
+        # nacos命名空间
+      #                namespace: 2826f609-db65-46e5-b14b-41cbfc3201b3
+      config:
+        prefix: ${spring.application.name}
+        name: ${spring.application.name}
+        # 是否开启
+        enabled: false
+        # 是否开启自动刷新
+        refresh-enabled: true
+        # config地址
+        server-addr: 127.0.0.1:8848
+        # nacos命名空间
+  #                namespace: 2826f609-db65-46e5-b14b-41cbfc3201b3
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      password: 123456
+      url: jdbc:mysql://localhost:3306/kali?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+      username: root
+      initial-size: 20
+      max-active: 200
+      min-idle: 8
+      max-wait: 60000
+  messages:
+    encoding: UTF-8
+    basename: i18n.message
 server:
-    port: 7001
+  port: 7001

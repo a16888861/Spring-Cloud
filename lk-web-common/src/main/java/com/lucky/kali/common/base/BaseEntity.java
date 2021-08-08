@@ -7,7 +7,7 @@ import lombok.experimental.Accessors;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * BaseEntity类
@@ -32,6 +32,9 @@ public abstract class BaseEntity<E,D extends BaseDTO> implements Serializable {
 
     public static final String DEL_FLAG_AUDIT = "2";
 
+    /**
+     * 标识符
+     */
     protected String id;
 
     /**
@@ -42,7 +45,7 @@ public abstract class BaseEntity<E,D extends BaseDTO> implements Serializable {
     /**
      * 创建日期
      */
-    protected Date createDate;
+    protected LocalDateTime createDate;
 
     /**
      * 更新者
@@ -52,7 +55,7 @@ public abstract class BaseEntity<E,D extends BaseDTO> implements Serializable {
     /**
      * 更新日期
      */
-    protected Date updateDate;
+    protected LocalDateTime updateDate;
 
     /**
      * 删除标记

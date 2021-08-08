@@ -84,6 +84,8 @@
         <swagger.version>2.0.8</swagger.version>
         <oauth2.version>2.2.5.RELEASE</oauth2.version>
         <poi.version>3.17</poi.version>
+        <redis.version>2.5.0</redis.version>
+        <jwt.version>3.10.3</jwt.version>
     </properties>
 
     <!-- 依赖管理 -->

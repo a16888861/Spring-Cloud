@@ -1,7 +1,5 @@
 package com.lucky.kali.consumer.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.lucky.kali.common.base.BaseEntity;
 import com.lucky.kali.consumer.dto.UserDTO;
@@ -24,12 +22,6 @@ import lombok.experimental.SuperBuilder;
 public class User extends BaseEntity<User, UserDTO> {
 
     private static final long serialVersionUID = 1L;
-
-    /**
-     * 标识符
-     */
-    @TableId(value = "uid", type = IdType.AUTO)
-    private String uid;
 
     /**
      * 用户名
@@ -59,7 +51,7 @@ public class User extends BaseEntity<User, UserDTO> {
     /**
      * 用户组别
      */
-    private String group;
+    private String userGroup;
 
     /**
      * 年份
@@ -77,7 +69,7 @@ public class User extends BaseEntity<User, UserDTO> {
         .mail(mail)
         .phone(phone)
         .screenName(screenName)
-        .group(group)
+        .userGroup(userGroup)
         .year(year)
         .createBy(createBy)
         .createDate(createDate)
@@ -95,7 +87,7 @@ public class User extends BaseEntity<User, UserDTO> {
         .mail(dto.getMail())
         .phone(dto.getPhone())
         .screenName(dto.getScreenName())
-        .group(dto.getGroup())
+        .userGroup(dto.getUserGroup())
         .year(dto.getYear())
         .createBy(dto.getCreateBy())
         .createDate(dto.getCreateDate())

@@ -54,6 +54,7 @@
 <!--    <dependency>-->
 <!--      <groupId>org.springframework.boot</groupId>-->
 <!--      <artifactId>spring-boot-starter-data-redis</artifactId>-->
+<!--      <version>${redis.version}</version>-->
 <!--    </dependency>-->
     <!-- MySql驱动 -->
     <dependency>
@@ -91,6 +92,11 @@
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
     </dependency>
+    <!-- jakarta validator校验依赖 -->
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+    </dependency>
     <!-- hibernate validator校验依赖 -->
     <dependency>
       <groupId>org.hibernate.validator</groupId>
@@ -125,6 +131,12 @@
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi</artifactId>
+    </dependency>
+    <!--JWT依赖-->
+    <dependency>
+      <groupId>com.auth0</groupId>
+      <artifactId>java-jwt</artifactId>
+      <version>${jwt.version}</version>
     </dependency>
   </dependencies>
 

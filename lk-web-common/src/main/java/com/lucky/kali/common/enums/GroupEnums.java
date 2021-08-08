@@ -10,7 +10,7 @@ public enum GroupEnums {
     /**
      * xx组别
      */
-    GROUP_("groupCode", "groupName");
+    GROUP_ADMIN("9999", "admin");
 
     /**
      * 组别Code

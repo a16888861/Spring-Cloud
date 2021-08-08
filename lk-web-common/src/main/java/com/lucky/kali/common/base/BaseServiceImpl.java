@@ -22,8 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -60,7 +60,7 @@ public class BaseServiceImpl<M extends BaseMapper<E>, E extends BaseEntity, D ex
     @Override
     public int insert(D dto) {
         dto.setDelFlag(BaseEntity.DEL_FLAG_NORMAL);
-        dto.setCreateDate(new Date());
+        dto.setCreateDate(LocalDateTime.now());
         E entity = transFromD(dto);
         entity.setId(UUIDUtils.getInstance().generateShortUuid());
         dto.setId(entity.getId());

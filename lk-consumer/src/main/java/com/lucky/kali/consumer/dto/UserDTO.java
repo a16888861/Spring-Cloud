@@ -46,13 +46,11 @@ public class UserDTO extends BaseDTO {
     /**
      * 用户组别
      */
-    private String group;
+    private String userGroup;
 
     /**
      * 年份
      */
     private String year;
-
-
 
 }
