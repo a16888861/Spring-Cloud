@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configuration scan="false" scanPeriod="60 seconds" debug="false">
+    <springProperty name="LOG_HOME" source="logging.file.path" defaultValue="./logs/default" />
     <property name="appName" value="lk-oauth"/>
-    <springProfile name="dev">
-        <property name="LOG_HOME" value="./logs/dev"/>
-    </springProfile>
-    <springProfile name="prd">
-        <property name="LOG_HOME" value="./logs/prd"/>
-    </springProfile>
-    <springProfile name="local">
-        <property name="LOG_HOME" value="./logs/local"/>
-    </springProfile>
 
     <!-- 彩色日志 -->
     <!-- 彩色日志依赖的渲染类 -->
@@ -46,7 +38,7 @@
         </layout>
     </appender>
 
-    <logger name="com.lucky.kali.business" level="debug" additivity="true"/>
+    <logger name="com.lucky.kali.oauth" level="debug" additivity="true"/>
     <logger name="org.springframework" level="error" additivity="true"/>
     <logger name="java.sql.Connection" level="info"/>
     <logger name="java.sql.Statement" level="info"/>

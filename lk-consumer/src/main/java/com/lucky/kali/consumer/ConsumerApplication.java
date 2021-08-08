@@ -11,7 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "com.lucky.kali")
-@MapperScan(basePackages = {"com/lucky/kali/consumer/mapper"})
+@MapperScan(basePackages = {"com.lucky.kali.consumer.mapper"})
 public class ConsumerApplication {
     public static void main(String[] args) {
         SpringApplication.run(ConsumerApplication.class, args);

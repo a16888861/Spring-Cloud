@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configuration scan="false" scanPeriod="60 seconds" debug="false">
+    <springProperty name="LOG_HOME" source="logging.file.path" defaultValue="./logs/default" />
     <property name="appName" value="lk-consumer"/>
-    <springProfile name="dev">
-        <property name="LOG_HOME" value="./logs/dev"/>
-    </springProfile>
-    <springProfile name="prd">
-        <property name="LOG_HOME" value="./logs/prd"/>
-    </springProfile>
-    <springProfile name="local">
-        <property name="LOG_HOME" value="./logs/local"/>
-    </springProfile>
 
     <!-- 彩色日志 -->
     <!-- 彩色日志依赖的渲染类 -->
