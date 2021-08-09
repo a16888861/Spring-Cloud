@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configuration scan="false" scanPeriod="60 seconds" debug="false">
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <springProperty name="LOG_HOME" source="logging.file.path" defaultValue="./.logs/default" />
     <property name="appName" value="lk-gateway"/>
     <springProfile name="dev">
-        <property name="LOG_HOME" value="./logs/dev"/>
+        <property name="LOG_HOME" value="./.logs/dev"/>
     </springProfile>
     <springProfile name="prd">
-        <property name="LOG_HOME" value="./logs/prd"/>
+        <property name="LOG_HOME" value="./.logs/prd"/>
     </springProfile>
     <springProfile name="local">
-        <property name="LOG_HOME" value="./logs/local"/>
+        <property name="LOG_HOME" value="./.logs/local"/>
     </springProfile>
 
     <!-- 彩色日志 -->
@@ -34,9 +36,9 @@
     </appender>
 
     <appender name="appLogAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_HOME}/${appName}.log</file>
+        <file>${LOG_HOME}/${appName}/${appName}.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_HOME}/${appName}.%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/${appName}/${appName}.%d{yyyy-MM-dd}-%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>500MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
