@@ -29,9 +29,12 @@
         <module>lk-web-common</module>
         <!-- 网关 -->
         <module>lk-gateway</module>
+        <!-- 鉴权 -->
+        <module>lk-oauth</module>
         <!-- 服务者 -->
         <module>lk-business</module>
-        <module>lk-oauth</module>
+        <!-- 消费者 -->
+        <module>lk-consumer</module>
     </modules>
 
     <!-- 环境变量 -->

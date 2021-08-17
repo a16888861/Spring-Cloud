@@ -26,8 +26,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 配置拦截保护请求,什么请求放行,什么请求需要验证
-     * @param http          Http安全类
-     * @throws Exception    异常
+     *
+     * @param http Http安全类
+     * @throws Exception 异常
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -35,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().csrf().disable()
                 .authorizeRequests()
                 //放行请求
-                .antMatchers("/login","/doc.html").permitAll()
+                .antMatchers("/", "/login", "/doc.html").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -55,8 +56,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      * 放行静态资源
      */
     @Override
-    public void configure(WebSecurity web){
+    public void configure(WebSecurity web) {
         //设置静态资源不要拦截
-        web.ignoring().antMatchers("/js/**","/cs/**","/images/**");
+        web.ignoring().antMatchers("/js/**", "/cs/**", "/images/**");
     }
 }

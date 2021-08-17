@@ -22,7 +22,11 @@
   </properties>
 
   <dependencies>
-
+    <!-- spring cloud starter -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter</artifactId>
+    </dependency>
     <!-- spring cloud starter bootstrap -->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
@@ -43,6 +47,12 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <!-- spring 配置文件处理器 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
     </dependency>
     <!-- spring boot starter logging(日志) -->
     <dependency>

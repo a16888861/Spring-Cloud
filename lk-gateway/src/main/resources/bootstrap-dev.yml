@@ -22,6 +22,12 @@ spring:
         server-addr: 127.0.0.1:8848
         # nacos命名空间
     #                namespace: 2826f609-db65-46e5-b14b-41cbfc3201b3
+    sentinel:
+      transport:
+        #配置Sentin dashboard地址
+        dashboard: localhost:8849
+        # 默认8719端口，假如被占用了会自动从8719端口+1进行扫描，直到找到未被占用的端口
+        port: 8719
     gateway:
       discovery:
         locator:
@@ -40,10 +46,10 @@ spring:
             - Path=/**
             # Method 方法谓词，这里是匹配 GET 和 POST 请求
             - Method=GET,POST,PUT,DELETE
-          # 过滤器，请求在传递过程中可以通过过滤器对其进行一定的修改(转发之前去掉1层路径)
-        #                  filters:
-        #                    - StripPrefix=1
-        #                    - PreserveHostHeader
+        #          # 过滤器，请求在传递过程中可以通过过滤器对其进行一定的修改(转发之前去掉1层路径)
+        #          filters:
+        #            - StripPrefix=1
+        #            - PreserveHostHeader
         - id: lk-business
           # lb代表从注册中心获取服务(负载均衡)
           uri: lb://lk-business
