@@ -1,6 +1,12 @@
 # 自建Spring-cloud框架
 
-## 方便开发使用的Spring-cloud框架，目前各个模块的鉴权采用简单的明文验证
+## 方便开发使用的Spring-cloud框架
+
+需要的环境都运行在docker容器当中
+
+也根据项目说明自行添加环境(shell脚本目前只有mac环境)
+
+各个模块的鉴权采用简单的明文验证
 
 ### Spring Project生成地址
 
@@ -37,3 +43,15 @@ sentinel-dashboard版本号 1.8.2:
 
 * [官方地址](https://www.gitmemory.com/alibaba/Sentinel)
 * [官方Github](https://github.com/alibaba/Sentinel)
+
+### 5.MySQL介绍
+
+MySQL版本号 5.7.5:
+
+* [官方地址](https://www.mysql.com)
+
+### 5.Redis介绍
+
+Redis版本号 6.2.5:
+
+* [官方地址](https://redis.io)
