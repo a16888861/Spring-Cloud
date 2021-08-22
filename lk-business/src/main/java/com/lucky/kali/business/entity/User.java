@@ -55,6 +55,11 @@ public class User extends BaseEntity<User, UserDTO> {
     private String userGroup;
 
     /**
+     * 角色ID
+     */
+    private String roleId;
+
+    /**
      * 年份
      */
     private String year;
@@ -68,6 +73,7 @@ public class User extends BaseEntity<User, UserDTO> {
                 .phone(phone)
                 .screenName(screenName)
                 .userGroup(userGroup)
+                .roleId(roleId)
                 .year(year)
                 .createBy(createBy)
                 .createDate(createDate)
@@ -86,6 +92,7 @@ public class User extends BaseEntity<User, UserDTO> {
                 .phone(dto.getPhone())
                 .screenName(dto.getScreenName())
                 .userGroup(dto.getUserGroup())
+                .roleId(dto.getRoleId())
                 .year(dto.getYear())
                 .createBy(dto.getCreateBy())
                 .createDate(dto.getCreateDate())

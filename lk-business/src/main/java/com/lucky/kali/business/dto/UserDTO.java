@@ -50,6 +50,11 @@ public class UserDTO extends BaseDTO {
     private String userGroup;
 
     /**
+     * 角色ID
+     */
+    private String roleId;
+
+    /**
      * 年份
      */
     private String year;

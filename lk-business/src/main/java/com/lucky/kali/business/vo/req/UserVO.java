@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
  * 用户表VO
  *
- * @author elliot
+ * @author Elliot
  */
 @Data
 @SuperBuilder(toBuilder = true)

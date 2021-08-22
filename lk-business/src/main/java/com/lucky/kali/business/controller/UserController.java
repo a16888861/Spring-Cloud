@@ -30,14 +30,15 @@ import javax.validation.Valid;
 @ApiSupport(order = 101, author = "Elliot")
 @RequestMapping("/business/user")
 public class UserController {
+
     @Resource
     private UserService userService;
 
     /**
      * 管理员创建用户
      *
-     * @param userVO    用户信息
-     * @return          创建结果
+     * @param userVO 用户信息
+     * @return 创建结果
      */
     //TODO Sentinel待配置
 //    @SentinelResource(value = "createUser", blockHandler = "blockHandlerCommon")

@@ -36,7 +36,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User, UserDTO> 
         //TODO 创建者待添加 -> 完了写一个 上下文类 从服务上下文中获取创建者ID
         userDTO.setCreateBy("admin");
         if (StringUtil.isBlank(userDTO.getPassword())) {
-            //如果没有填写密码，则设置初始密码为111111
+            /*如果没有填写密码，则设置初始密码为111111*/
             userDTO.setPassword(Md5Utils.md5Hex("111111"));
         } else {
             userDTO.setPassword(Md5Utils.md5Hex(userDTO.getPassword()));
