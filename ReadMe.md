@@ -50,7 +50,7 @@ MySQL版本号 5.7.5:
 
 * [官方地址](https://www.mysql.com)
 
-### 5.Redis介绍
+### 6.Redis介绍
 
 Redis版本号 6.2.5:
 
