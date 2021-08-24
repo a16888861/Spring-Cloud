@@ -123,7 +123,7 @@ public interface BaseService<E extends BaseEntity, D extends BaseDTO> {
      *
      * @param queryWrapper 实体对象封装操作类（可以为 null）
      */
-    Integer selectCount(@Param(Constants.WRAPPER) Wrapper<E> queryWrapper);
+    Long selectCount(@Param(Constants.WRAPPER) Wrapper<E> queryWrapper);
 
     /**
      * 根据 entity 条件，查询全部记录

@@ -25,7 +25,7 @@ import javax.validation.Valid;
  * @author Elliot
  * @date 2021-06-02 22:18
  */
-@RestController
+@RestController("userController")
 @Api(value = "用户信息", tags = "用户信息接口")
 @ApiSupport(order = 101, author = "Elliot")
 @RequestMapping("/business/user")

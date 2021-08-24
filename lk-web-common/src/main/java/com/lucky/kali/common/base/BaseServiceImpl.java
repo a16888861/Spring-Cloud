@@ -16,10 +16,9 @@ import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.poi.ss.formula.functions.T;
-import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.time.LocalDateTime;
@@ -39,31 +38,30 @@ public class BaseServiceImpl<M extends BaseMapper<E>, E extends BaseEntity, D ex
 
     protected Log log = LogFactory.getLog(getClass());
 
-    @Resource
+    @Autowired
     protected M mapper;
 
-    @Resource
-    private SqlSessionTemplate sqlSessionTemplate;
+//    @Resource
+//    private SqlSessionTemplate sqlSessionTemplate;
 
     protected Class<T> mapperClass = currentMapperClass();
 
     protected Class<T> entityClass = currentModelClass();
 
     protected Class<T> currentMapperClass() {
-        return (Class<T>) ReflectionKit.getSuperClassGenericType(getClass(), 0);
+        return (Class<T>) ReflectionKit.getSuperClassGenericType(getClass(),getClass(), 0);
     }
 
     protected Class<T> currentModelClass() {
-        return (Class<T>) ReflectionKit.getSuperClassGenericType(getClass(), 1);
+        return (Class<T>) ReflectionKit.getSuperClassGenericType(getClass(),getClass(), 1);
     }
 
     @Override
     public int insert(D dto) {
-        dto.setDelFlag(BaseEntity.DEL_FLAG_NORMAL);
+        dto.setDelFlag(BaseDTO.DEL_FLAG_NORMAL);
         dto.setCreateDate(LocalDateTime.now());
+        dto.setId(UUIDUtils.getInstance().generateShortUuid());
         E entity = transFromD(dto);
-        entity.setId(UUIDUtils.getInstance().generateShortUuid());
-        dto.setId(entity.getId());
         return mapper.insert(entity);
     }
 
@@ -160,7 +158,7 @@ public class BaseServiceImpl<M extends BaseMapper<E>, E extends BaseEntity, D ex
     }
 
     @Override
-    public Integer selectCount(Wrapper<E> queryWrapper) {
+    public Long selectCount(Wrapper<E> queryWrapper) {
         return mapper.selectCount(queryWrapper);
     }
 

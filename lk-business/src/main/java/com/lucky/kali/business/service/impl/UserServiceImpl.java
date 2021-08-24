@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.time.LocalDateTime;
 
 /**
@@ -21,11 +20,9 @@ import java.time.LocalDateTime;
  * @author Elliot
  */
 @Slf4j
-@Service
+@Service("userService")
 @Transactional(rollbackFor = Exception.class)
 public class UserServiceImpl extends BaseServiceImpl<UserMapper, User, UserDTO> implements UserService {
-    @Resource
-    private UserService userService;
 
     /**
      * 创建用户
@@ -36,7 +33,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User, UserDTO> 
     @Override
     public int createUser(UserDTO userDTO) {
         //TODO 创建者待添加 -> 完了写一个 上下文类 从服务上下文中获取创建者ID
-        userDTO.setCreateBy("admin");
+        userDTO.setCreateBy("superAdmin");
         if (StringUtil.isBlank(userDTO.getPassword())) {
             /*如果没有填写密码，则设置初始密码为111111*/
             userDTO.setPassword(Md5Utils.md5Hex("111111"));
@@ -45,7 +42,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User, UserDTO> 
         }
         userDTO.setUserGroup(GroupEnums.getGroupCode(userDTO.getUserGroup()));
         userDTO.setYear(String.valueOf(LocalDateTime.now().getYear()));
-        int insert = userService.insert(userDTO);
+        int insert = insert(userDTO);
         if (insert > 0) {
             return insert;
         }

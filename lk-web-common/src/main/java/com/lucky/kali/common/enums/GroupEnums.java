@@ -8,9 +8,17 @@ package com.lucky.kali.common.enums;
 public enum GroupEnums {
 
     /**
-     * xx组别
+     * 超级管理员组
      */
-    GROUP_ADMIN("9999", "admin");
+    GROUP_SUPER_ADMIN("9999", "superAdmin"),
+    /**
+     * 管理员组
+     */
+    GROUP_ADMIN("9998", "admin"),
+    /**
+     * 普通用户组
+     */
+    GROUP_USER("1000", "user");
 
     /**
      * 组别Code
