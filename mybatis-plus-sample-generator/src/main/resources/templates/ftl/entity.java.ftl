@@ -168,23 +168,21 @@ public class ${entity} implements Serializable {
 <#if cfg.transDTO>
     @Override
     public ${entity}DTO transDTO(){
-
-    return ${entity}DTO.builder().id(id)
-    <#list table.fields as field>
-        .${field.propertyName}(${field.propertyName})
-    </#list>
-    .build();
+        return ${entity}DTO.builder().id(id)
+        <#list table.fields as field>
+            .${field.propertyName}(${field.propertyName})
+        </#list>
+        .build();
     }
 </#if>
 <#if cfg.recDTO>
     @Override
     public ${entity} recDTO(${entity}DTO dto) {
-
-    return ${entity}.builder().id(dto.getId())
-    <#list table.fields as field>
-        .${field.propertyName}(dto.get${field.capitalName}())
-    </#list>
-    .build();
+        return ${entity}.builder().id(dto.getId())
+            <#list table.fields as field>
+                .${field.propertyName}(dto.get${field.capitalName}())
+            </#list>
+        .build();
     }
 </#if>
 }

@@ -24,7 +24,7 @@ import lombok.experimental.SuperBuilder;
 <#-- * </p>-->
  *
  * @author ${author}
-<#-- * @since ${date}-->
+ * @since ${date}
  */
 <#if entityLombokModel>
 @Data
