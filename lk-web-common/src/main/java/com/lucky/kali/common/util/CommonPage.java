@@ -5,9 +5,9 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 分页
+ * 分页类
  *
- * @param <T>
+ * @author Elliot
  */
 public class CommonPage<T extends Serializable> implements Serializable {
 

@@ -9,6 +9,7 @@ import com.lucky.kali.business.service.GroupService;
 import com.lucky.kali.business.vo.req.GroupVO;
 import com.lucky.kali.common.base.BaseEntity;
 import com.lucky.kali.common.base.BaseServiceImpl;
+import com.lucky.kali.common.util.CommonPage;
 import com.lucky.kali.common.util.PageUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -50,15 +51,12 @@ public class GroupServiceImpl extends BaseServiceImpl<GroupMapper, Group, GroupD
      * @return 查询结果
      */
     @Override
-    public Page<GroupVO> selectGroupPageList(int pageCurrent, int pageSize) {
-        Page<Group> page1 = new Page<>();
-        Page<GroupVO> voPage = new Page<>();
+    public CommonPage<GroupVO> selectGroupPageList(int pageCurrent, int pageSize) {
         Page<GroupDTO> page = new Page<>();
         page.setCurrent(pageCurrent).setSize(pageSize);
-        Page<GroupDTO> groupDtoPage = selectPage(page, new LambdaQueryWrapper<Group>().eq(BaseEntity::getDelFlag, BaseEntity.DEL_FLAG_NORMAL));
-        voPage.setRecords(PageUtil.copyList(groupDtoPage.getRecords(),GroupVO.class))
-                .setSize(groupDtoPage.getSize()).setCurrent(groupDtoPage.getCurrent())
-                .setPages(groupDtoPage.getPages()).setTotal(groupDtoPage.getTotal());
-        return voPage;
+        Page<GroupDTO> groupDtoPage = selectPage(page, new LambdaQueryWrapper<Group>()
+                .eq(BaseEntity::getDelFlag, BaseEntity.DEL_FLAG_NORMAL)
+        );
+        return PageUtil.transform(groupDtoPage, GroupVO.class);
     }
 }
