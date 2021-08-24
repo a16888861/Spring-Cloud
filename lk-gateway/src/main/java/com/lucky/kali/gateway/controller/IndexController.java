@@ -16,15 +16,14 @@ import java.util.List;
 
 @RestController
 public class IndexController {
-
     @Resource
     private DiscoveryClient discoveryClient;
 
     /**
-     * 获取appName
+     * buildName
      */
-    @Value("${appName}")
-    private String appName;
+    @Value("${info.build.name}")
+    private String buildName;
     /**
      * 获取Id
      */
@@ -33,23 +32,25 @@ public class IndexController {
 
     /**
      * Index信息
-     * @return  Index信息
+     *
+     * @return Index信息
      */
     @GetMapping("/")
-    public ResponseInfo<List<String>> index(){
+    public ResponseInfo<List<String>> index() {
         List<String> result = new ArrayList<>();
-        result.add("Welcome To The " + appName +" ~");
+        result.add("Welcome To The " + buildName + " ~");
         result.add("Priority of services : " + discoveryClient.getOrder());
         result.add("Service Id : " + applicationId);
-        return Response.success(ResponseEnum.SUCCESS.getMessage(),result);
+        return Response.success(ResponseEnum.SUCCESS.getMessage(), result);
     }
 
     /**
      * 获取所有实例Info
+     *
      * @return 所有实例Info
      */
     @GetMapping("getInstances")
-    public ResponseInfo<List<DiscoveryVO>> getInstances(){
+    public ResponseInfo<List<DiscoveryVO>> getInstances() {
         List<DiscoveryVO> voList = new ArrayList<>();
         //获取所有服务Id
         List<String> serviceIdList = discoveryClient.getServices();
@@ -61,24 +62,26 @@ public class IndexController {
                     .instances(instances).build();
             voList.add(vo);
         });
-        return Response.success("common.response.success",voList);
+        return Response.success("common.response.success", voList);
     }
 
     /**
      * 获取description
-     * @return  description
+     *
+     * @return description
      */
     @GetMapping("getDescription")
-    public ResponseInfo<String> description(){
-        return Response.success(ResponseEnum.SUCCESS.getMessage(),discoveryClient.description());
+    public ResponseInfo<String> description() {
+        return Response.success(ResponseEnum.SUCCESS.getMessage(), discoveryClient.description());
     }
 
     /**
      * 获取所有注册的服务名称
-     * @return  所有注册的服务
+     *
+     * @return 所有注册的服务
      */
     @GetMapping("getServices")
-    public ResponseInfo<List<String>> getServices(){
-        return Response.success("common.response.success",discoveryClient.getServices());
+    public ResponseInfo<List<String>> getServices() {
+        return Response.success("common.response.success", discoveryClient.getServices());
     }
 }

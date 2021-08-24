@@ -32,10 +32,10 @@ public class IndexController {
     private DiscoveryClient discoveryClient;
 
     /**
-     * 获取appName
+     * buildName
      */
-    @Value("${appName}")
-    private String appName;
+    @Value("${info.build.name}")
+    private String buildName;
     /**
      * 获取Id
      */
@@ -52,7 +52,7 @@ public class IndexController {
     @ApiOperationSupport(author = "Elliot")
     public ResponseInfo<List<String>> index() {
         List<String> result = new ArrayList<>();
-        result.add("Welcome To The " + appName + " ~");
+        result.add("Welcome To The " + buildName + " ~");
         result.add("Priority of services : " + discoveryClient.getOrder());
         result.add("Service Id : " + applicationId);
         return Response.success(ResponseEnum.SUCCESS.getMessage(), result);

@@ -1,7 +1,7 @@
 package com.lucky.kali.business.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.lucky.kali.business.dto.UserDTO;
+import com.lucky.kali.business.dto.GroupDTO;
 import com.lucky.kali.common.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,7 +12,7 @@ import lombok.experimental.SuperBuilder;
 import java.io.Serializable;
 
 /**
- * 用户表Entity
+ * 组别表
  *
  * @author Elliot
  */
@@ -21,35 +21,10 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = true)
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
-@TableName("kali_user")
-public class User extends BaseEntity<User, UserDTO> implements Serializable {
+@TableName("kali_group")
+public class Group extends BaseEntity<Group, GroupDTO> implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    /**
-     * 用户名
-     */
-    private String name;
-
-    /**
-     * 密码
-     */
-    private String password;
-
-    /**
-     * 邮箱
-     */
-    private String mail;
-
-    /**
-     * 手机号
-     */
-    private String phone;
-
-    /**
-     * 用户名-别名
-     */
-    private String screenName;
 
     /**
      * 用户组别
@@ -57,25 +32,27 @@ public class User extends BaseEntity<User, UserDTO> implements Serializable {
     private String userGroup;
 
     /**
-     * 角色ID
+     * 用户组别名称
      */
-    private String roleId;
+    private String userGroupName;
+
+    /**
+     * 权限表id
+     */
+    private String permissionId;
 
     /**
      * 年份
      */
     private String year;
 
+
     @Override
-    public UserDTO transDTO() {
-        return UserDTO.builder().id(id)
-                .name(name)
-                .password(password)
-                .mail(mail)
-                .phone(phone)
-                .screenName(screenName)
+    public GroupDTO transDTO() {
+        return GroupDTO.builder().id(id)
                 .userGroup(userGroup)
-                .roleId(roleId)
+                .userGroupName(userGroupName)
+                .permissionId(permissionId)
                 .year(year)
                 .createBy(createBy)
                 .createDate(createDate)
@@ -86,15 +63,11 @@ public class User extends BaseEntity<User, UserDTO> implements Serializable {
     }
 
     @Override
-    public User recDTO(UserDTO dto) {
-        return User.builder().id(dto.getId())
-                .name(dto.getName())
-                .password(dto.getPassword())
-                .mail(dto.getMail())
-                .phone(dto.getPhone())
-                .screenName(dto.getScreenName())
+    public Group recDTO(GroupDTO dto) {
+        return Group.builder().id(dto.getId())
                 .userGroup(dto.getUserGroup())
-                .roleId(dto.getRoleId())
+                .userGroupName(dto.getUserGroupName())
+                .permissionId(dto.getPermissionId())
                 .year(dto.getYear())
                 .createBy(dto.getCreateBy())
                 .createDate(dto.getCreateDate())

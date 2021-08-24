@@ -12,8 +12,9 @@ import com.lucky.kali.common.base.BaseService;
 public interface UserService extends BaseService<User, UserDTO> {
     /**
      * 创建用户
-     * @param userDTO       用户信息
-     * @return              创建结果
+     *
+     * @param userDTO 用户信息
+     * @return 创建结果
      */
     int createUser(UserDTO userDTO);
 

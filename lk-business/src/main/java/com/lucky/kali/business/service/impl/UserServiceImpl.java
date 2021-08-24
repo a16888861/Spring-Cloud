@@ -8,6 +8,7 @@ import com.lucky.kali.business.service.UserService;
 import com.lucky.kali.common.base.BaseServiceImpl;
 import com.lucky.kali.common.enums.GroupEnums;
 import com.lucky.kali.common.util.Md5Utils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +20,7 @@ import java.time.LocalDateTime;
  *
  * @author Elliot
  */
+@Slf4j
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class UserServiceImpl extends BaseServiceImpl<UserMapper, User, UserDTO> implements UserService {
