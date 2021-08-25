@@ -56,8 +56,8 @@ public class GroupController {
     @GetMapping("selectGroupPageList")
     @ApiOperation(value = "查询组别分页信息", produces = "application/json", notes = "管理员创建组别信息用的接口")
     @ApiOperationSupport(author = "Elliot")
-    public ResponseInfo<CommonPage<GroupVO>> selectGroupList(@ApiParam(value = "查询页数", required = true) int pageCurrent,
-                                                             @ApiParam(value = "每页数量", required = true) int pageSize) {
+    public ResponseInfo<CommonPage<GroupVO>> selectGroupPageList(@ApiParam(value = "查询页数", required = true) int pageCurrent,
+                                                                 @ApiParam(value = "每页数量", required = true) int pageSize) {
         CommonPage<GroupVO> groupVoPage = groupService.selectGroupPageList(pageCurrent, pageSize);
         if (groupVoPage.getPageSize() <= 0) {
             return Response.notFound("group.groupPageList.isEmpty");

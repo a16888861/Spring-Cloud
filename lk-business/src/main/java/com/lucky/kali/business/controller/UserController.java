@@ -4,11 +4,13 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.lucky.kali.business.dto.UserDTO;
 import com.lucky.kali.business.service.UserService;
+import com.lucky.kali.business.vo.req.UserVOPage;
 import com.lucky.kali.business.vo.req.UserVO;
 import com.lucky.kali.common.response.Response;
 import com.lucky.kali.common.response.ResponseEnum;
 import com.lucky.kali.common.response.ResponseInfo;
 import com.lucky.kali.common.util.BeanUtil;
+import com.lucky.kali.common.util.CommonPage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -35,7 +37,7 @@ public class UserController {
     private UserService userService;
 
     /**
-     * 管理员创建用户
+     * 创建用户
      *
      * @param userVO 用户信息
      * @return 创建结果
@@ -43,7 +45,7 @@ public class UserController {
     //TODO Sentinel待配置
 //    @SentinelResource(value = "createUser", blockHandler = "blockHandlerCommon")
     @PostMapping("createUser")
-    @ApiOperation(value = "创建用户信息", produces = "application/json", notes = "管理员创建用户信息用的接口")
+    @ApiOperation(value = "超级管理员创建用户", produces = "application/json", notes = "超级管理员创建用户")
     @ApiOperationSupport(author = "Elliot")
     public ResponseInfo<Response> createUser(@Valid @RequestBody @ApiParam(name = "userVO", value = "用户信息实体", required = true) UserVO userVO,
                                              BindingResult bindingResult) {
@@ -58,5 +60,22 @@ public class UserController {
         } else {
             return Response.fail(ResponseEnum.FAILURE.getMessage());
         }
+    }
+
+    /**
+     * 查询用户分页信息
+     *
+     * @param userVoPage 查询条件
+     * @return 查询结果
+     */
+    @PostMapping("selectUserPageList")
+    @ApiOperation(value = "超级管理员查询用户分页信息", produces = "application/json", notes = "超级管理员查询用户分页信息")
+    @ApiOperationSupport(author = "Elliot")
+    public ResponseInfo<CommonPage<UserDTO>> selectUserPageList(@RequestBody UserVOPage userVoPage) {
+        CommonPage<UserDTO> userPageList = userService.selectUserPageList(userVoPage);
+        if (userPageList.getPageSize() <= 0) {
+            return Response.notFound("group.groupPageList.isEmpty");
+        }
+        return Response.success(ResponseEnum.SUCCESS.getMessage(), userPageList);
     }
 }
