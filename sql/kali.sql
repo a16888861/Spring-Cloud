@@ -11,7 +11,7 @@
  Target Server Version : 50705
  File Encoding         : 65001
 
- Date: 24/08/2021 23:38:47
+ Date: 25/08/2021 19:42:44
 */
 
 SET NAMES utf8mb4;
@@ -42,6 +42,25 @@ BEGIN;
 INSERT INTO `kali_group` VALUES ('1430106533911797760', '9999', 'superAdmin', NULL, '2021', NULL, '2021-08-24 17:55:42', NULL, NULL, '0');
 INSERT INTO `kali_group` VALUES ('1430109065098715136', '9998', 'admin', NULL, '2021', NULL, '2021-08-24 18:05:46', NULL, NULL, '0');
 INSERT INTO `kali_group` VALUES ('1430109104843939840', '1000', 'user', NULL, '2021', NULL, '2021-08-24 18:05:55', NULL, NULL, '0');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for kali_group_role
+-- ----------------------------
+DROP TABLE IF EXISTS `kali_group_role`;
+CREATE TABLE `kali_group_role` (
+                                   `id` varchar(32) NOT NULL COMMENT '唯一标识',
+                                   `group_id` varchar(32) NOT NULL COMMENT '组别id',
+                                   `role_id` varchar(32) NOT NULL COMMENT '角色id',
+                                   PRIMARY KEY (`id`) USING BTREE,
+                                   KEY `idx_0` (`group_id`,`role_id`) USING BTREE,
+                                   KEY `idx_1` (`role_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='系统-组别角色表';
+
+-- ----------------------------
+-- Records of kali_group_role
+-- ----------------------------
+BEGIN;
 COMMIT;
 
 -- ----------------------------
