@@ -28,9 +28,9 @@ import javax.validation.Valid;
  * @date 2021-06-02 22:18
  */
 @RestController("userController")
+@RequestMapping("/business/user")
 @Api(value = "用户信息", tags = "用户信息接口")
 @ApiSupport(order = 101, author = "Elliot")
-@RequestMapping("/business/user")
 public class UserController {
 
     @Resource
@@ -45,7 +45,7 @@ public class UserController {
     //TODO Sentinel待配置
 //    @SentinelResource(value = "createUser", blockHandler = "blockHandlerCommon")
     @PostMapping("createUser")
-    @ApiOperation(value = "超级管理员创建用户", produces = "application/json", notes = "超级管理员创建用户")
+    @ApiOperation(value = "创建用户", produces = "application/json", notes = "创建用户账号接口")
     @ApiOperationSupport(author = "Elliot")
     public ResponseInfo<Response> createUser(@Valid @RequestBody @ApiParam(name = "userVO", value = "用户信息实体", required = true) UserVO userVO,
                                              BindingResult bindingResult) {
@@ -69,7 +69,10 @@ public class UserController {
      * @return 查询结果
      */
     @PostMapping("selectUserPageList")
-    @ApiOperation(value = "超级管理员查询用户分页信息", produces = "application/json", notes = "超级管理员查询用户分页信息")
+    @ApiOperation(value = "查询用户分页信息", produces = "application/json",
+            notes = "查询用户分页信息接口<br>" +
+                    "1.ID为：1430109634181881856 或 组别是超级管理员或者是管理员 默认是最高权限 可查询所有用户信息<br>" +
+                    "2.如果不是用户组并且ID不为空，默认查询该ID创建的所有用户")
     @ApiOperationSupport(author = "Elliot")
     public ResponseInfo<CommonPage<UserDTO>> selectUserPageList(@RequestBody UserVOPage userVoPage) {
         CommonPage<UserDTO> userPageList = userService.selectUserPageList(userVoPage);

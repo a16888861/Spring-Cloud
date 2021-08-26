@@ -13,6 +13,16 @@ import org.springframework.stereotype.Service;
  * @author Elliot
  */
 @Service("roleService")
-public class RoleServiceImpl extends BaseServiceImpl<RoleMapper,Role, RoleDTO> implements RoleService {
+public class RoleServiceImpl extends BaseServiceImpl<RoleMapper, Role, RoleDTO> implements RoleService {
 
+    /**
+     * 创建角色
+     *
+     * @param roleDTO 角色信息
+     * @return 创建结果
+     */
+    @Override
+    public int createRole(RoleDTO roleDTO) {
+        return 0;
+    }
 }

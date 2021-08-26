@@ -27,18 +27,18 @@ import javax.validation.Valid;
  * @since 2021-08-23
  */
 @RestController("groupController")
+@RequestMapping("/business/group")
 @Api(value = "组别信息", tags = "组别信息接口")
 @ApiSupport(order = 102, author = "Elliot")
-@RequestMapping("/business/group")
 public class GroupController {
 
     @Resource
     private GroupService groupService;
 
     @PostMapping("createGroup")
-    @ApiOperation(value = "创建组别信息", produces = "application/json", notes = "管理员创建组别信息用的接口")
+    @ApiOperation(value = "创建组别信息", produces = "application/json", notes = "创建组别信息用的接口")
     @ApiOperationSupport(author = "Elliot")
-    public ResponseInfo<Response> createUser(@Valid @RequestBody @ApiParam(name = "groupVO", value = "组别信息实体", required = true) GroupVO groupVO,
+    public ResponseInfo<Response> createGroup(@Valid @RequestBody @ApiParam(name = "groupVO", value = "组别信息实体", required = true) GroupVO groupVO,
                                              BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return Response.fail(bindingResult.getAllErrors().get(0).getDefaultMessage());
@@ -54,7 +54,7 @@ public class GroupController {
     }
 
     @GetMapping("selectGroupPageList")
-    @ApiOperation(value = "查询组别分页信息", produces = "application/json", notes = "管理员创建组别信息用的接口")
+    @ApiOperation(value = "查询组别分页信息", produces = "application/json", notes = "查询组别分页信息用的接口")
     @ApiOperationSupport(author = "Elliot")
     public ResponseInfo<CommonPage<GroupVO>> selectGroupPageList(@ApiParam(value = "查询页数", required = true) int pageCurrent,
                                                                  @ApiParam(value = "每页数量", required = true) int pageSize) {

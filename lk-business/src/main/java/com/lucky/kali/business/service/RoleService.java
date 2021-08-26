@@ -12,4 +12,11 @@ import com.lucky.kali.common.base.BaseService;
  */
 public interface RoleService extends BaseService<Role, RoleDTO> {
 
+    /**
+     * 创建角色
+     *
+     * @param roleDTO 角色信息
+     * @return 创建结果
+     */
+    int createRole(RoleDTO roleDTO);
 }
