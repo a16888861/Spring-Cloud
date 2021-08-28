@@ -74,10 +74,16 @@ public class UserController {
                     "1.ID为：1430109634181881856 或 组别是超级管理员或者是管理员 默认是最高权限 可查询所有用户信息<br>" +
                     "2.如果不是用户组并且ID不为空，默认查询该ID创建的所有用户")
     @ApiOperationSupport(author = "Elliot")
-    public ResponseInfo<CommonPage<UserDTO>> selectUserPageList(@RequestBody UserVOPage userVoPage) {
+    public ResponseInfo<CommonPage<UserDTO>> selectUserPageList(@RequestBody UserVOPage userVoPage, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return Response.fail(bindingResult.getAllErrors().get(0).getDefaultMessage());
+        }
         CommonPage<UserDTO> userPageList = userService.selectUserPageList(userVoPage);
+        if (userPageList == null) {
+            return Response.notFound("common.response.notfound");
+        }
         if (userPageList.getPageSize() <= 0) {
-            return Response.notFound("group.groupPageList.isEmpty");
+            return Response.notFound("user.userPageList.isEmpty");
         }
         return Response.success(ResponseEnum.SUCCESS.getMessage(), userPageList);
     }

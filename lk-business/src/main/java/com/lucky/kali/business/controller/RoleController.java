@@ -1,15 +1,16 @@
 package com.lucky.kali.business.controller;
 
 
-import cn.hutool.core.bean.BeanUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.lucky.kali.business.dto.RoleDTO;
 import com.lucky.kali.business.service.RoleService;
 import com.lucky.kali.business.vo.req.RoleVO;
+import com.lucky.kali.business.vo.req.RoleVOPage;
 import com.lucky.kali.common.response.Response;
 import com.lucky.kali.common.response.ResponseEnum;
 import com.lucky.kali.common.response.ResponseInfo;
+import com.lucky.kali.common.util.CommonPage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -53,12 +54,37 @@ public class RoleController {
             return Response.fail(bindingResult.getAllErrors().get(0).getDefaultMessage());
         }
 
-        RoleDTO roleDTO = BeanUtil.copyProperties(roleVO, RoleDTO.class);
-        int result = roleService.createRole(roleDTO);
+        int result = roleService.createRole(roleVO);
         if (result > 0) {
             return Response.success(ResponseEnum.SUCCESS.getMessage());
         } else {
             return Response.fail(ResponseEnum.FAILURE.getMessage());
         }
+    }
+
+    /**
+     * 查询角色分页信息
+     *
+     * @param roleVoPage 查询条件
+     * @return 查询结果
+     */
+    @PostMapping("selectRolePage")
+    @ApiOperation(value = "查询角色分页信息", produces = "application/json",
+            notes = "查询角色分页信息的接口<br>" +
+                    "查询状态使用enable(启用)和disable(禁用)<br>" +
+                    "type条件暂未定义")
+    @ApiOperationSupport(author = "Elliot")
+    public ResponseInfo<CommonPage<RoleDTO>> selectRolePage(@RequestBody RoleVOPage roleVoPage, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return Response.fail(bindingResult.getAllErrors().get(0).getDefaultMessage());
+        }
+        CommonPage<RoleDTO> rolePageList = roleService.selectRolePage(roleVoPage);
+        if (rolePageList == null) {
+            return Response.notFound("common.response.notfound");
+        }
+        if (rolePageList.getPageSize() <= 0) {
+            return Response.notFound("role.rolePageList.isEmpty");
+        }
+        return Response.success(ResponseEnum.SUCCESS.getMessage(), rolePageList);
     }
 }

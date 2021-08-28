@@ -35,11 +35,18 @@ public class GroupController {
     @Resource
     private GroupService groupService;
 
+    /**
+     * 创建组别信息
+     *
+     * @param groupVO       查询条件
+     * @param bindingResult 条件判断
+     * @return 创建结果
+     */
     @PostMapping("createGroup")
     @ApiOperation(value = "创建组别信息", produces = "application/json", notes = "创建组别信息用的接口")
     @ApiOperationSupport(author = "Elliot")
     public ResponseInfo<Response> createGroup(@Valid @RequestBody @ApiParam(name = "groupVO", value = "组别信息实体", required = true) GroupVO groupVO,
-                                             BindingResult bindingResult) {
+                                              BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return Response.fail(bindingResult.getAllErrors().get(0).getDefaultMessage());
         }
@@ -53,12 +60,22 @@ public class GroupController {
         }
     }
 
+    /**
+     * 查询组别分页信息
+     *
+     * @param pageCurrent 当前页
+     * @param pageSize    每页记录数
+     * @return 查询结果
+     */
     @GetMapping("selectGroupPageList")
     @ApiOperation(value = "查询组别分页信息", produces = "application/json", notes = "查询组别分页信息用的接口")
     @ApiOperationSupport(author = "Elliot")
     public ResponseInfo<CommonPage<GroupVO>> selectGroupPageList(@ApiParam(value = "查询页数", required = true) int pageCurrent,
                                                                  @ApiParam(value = "每页数量", required = true) int pageSize) {
         CommonPage<GroupVO> groupVoPage = groupService.selectGroupPageList(pageCurrent, pageSize);
+        if (groupVoPage == null) {
+            return Response.notFound("common.response.notfound");
+        }
         if (groupVoPage.getPageSize() <= 0) {
             return Response.notFound("group.groupPageList.isEmpty");
         }
