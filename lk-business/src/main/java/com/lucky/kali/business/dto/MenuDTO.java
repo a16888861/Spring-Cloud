@@ -6,6 +6,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.io.Serializable;
+
 /**
  * 系统-菜单表
  *
@@ -16,7 +18,7 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
-public class MenuDTO extends BaseDTO {
+public class MenuDTO extends BaseDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
+import java.io.Serializable;
+
 /**
  * 系统-菜单表
  *
@@ -20,7 +22,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 @TableName("kali_menu")
-public class Menu extends BaseEntity<Menu, MenuDTO> {
+public class Menu extends BaseEntity<Menu, MenuDTO> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

@@ -45,7 +45,9 @@ public class UserController {
     //TODO Sentinel待配置
 //    @SentinelResource(value = "createUser", blockHandler = "blockHandlerCommon")
     @PostMapping("createUser")
-    @ApiOperation(value = "创建用户", produces = "application/json", notes = "创建用户账号接口")
+    @ApiOperation(value = "创建用户", produces = "application/json",
+            notes = "创建用户账号接口<br>" +
+                    "组别暂定为superAdmin，admin，user")
     @ApiOperationSupport(author = "Elliot")
     public ResponseInfo<Response> createUser(@Valid @RequestBody @ApiParam(name = "userVO", value = "用户信息实体", required = true) UserVO userVO,
                                              BindingResult bindingResult) {

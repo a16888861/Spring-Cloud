@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+
+import java.io.Serializable;
+
 /**
  * 系统-角色表
  *
@@ -14,7 +17,7 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
-public class RoleDTO extends BaseDTO {
+public class RoleDTO extends BaseDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

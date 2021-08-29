@@ -4,9 +4,11 @@ import cn.hutool.core.bean.BeanUtil;
 import com.alibaba.csp.sentinel.util.StringUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lucky.kali.business.dto.GroupRoleDTO;
 import com.lucky.kali.business.dto.RoleDTO;
 import com.lucky.kali.business.entity.Role;
 import com.lucky.kali.business.mapper.RoleMapper;
+import com.lucky.kali.business.service.GroupRoleService;
 import com.lucky.kali.business.service.RoleService;
 import com.lucky.kali.business.vo.req.RoleVO;
 import com.lucky.kali.business.vo.req.RoleVOPage;
@@ -15,17 +17,20 @@ import com.lucky.kali.common.base.BaseServiceImpl;
 import com.lucky.kali.common.enums.RoleEnums;
 import com.lucky.kali.common.util.CommonPage;
 import com.lucky.kali.common.util.PageUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * 系统-角色表 服务实现类
  *
  * @author Elliot
  */
-@Slf4j
 @Service("roleService")
 public class RoleServiceImpl extends BaseServiceImpl<RoleMapper, Role, RoleDTO> implements RoleService {
+
+    @Resource
+    private GroupRoleService groupRoleService;
 
     /**
      * 创建角色
@@ -40,12 +45,16 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleMapper, Role, RoleDTO> 
         roleDTO.setCreateBy("1430109634181881856");
 
         roleDTO.setStatus(RoleEnums.getRoleCodeByRoleEnName(roleDTO.getStatus()));
-        int insert = insert(roleDTO);
+        int roleInsert = insert(roleDTO);
 
-        //TODO 组别角色表信息插入待完成
-        log.info(roleDTO.getId());
-        if (insert > 0) {
-            return insert;
+        /*组别角色表信息插入，角色和组别对应*/
+        GroupRoleDTO groupRoleDTO = GroupRoleDTO.builder()
+                .groupId(roleVO.getGroupId())
+                .roleId(roleDTO.getId())
+                .build();
+        int groupRoleInsert = groupRoleService.insert(groupRoleDTO);
+        if (roleInsert == groupRoleInsert) {
+            return groupRoleInsert;
         }
         return -1;
     }

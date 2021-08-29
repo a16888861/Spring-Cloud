@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
+import java.io.Serializable;
+
 /**
  * 系统-角色表
  *
@@ -20,7 +22,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 @TableName("kali_role")
-public class Role extends BaseEntity<Role, RoleDTO> {
+public class Role extends BaseEntity<Role, RoleDTO> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

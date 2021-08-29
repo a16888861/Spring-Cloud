@@ -67,7 +67,7 @@ public class GroupController {
      * @param pageSize    每页记录数
      * @return 查询结果
      */
-    @GetMapping("selectGroupPageList")
+    @PostMapping("selectGroupPageList")
     @ApiOperation(value = "查询组别分页信息", produces = "application/json", notes = "查询组别分页信息用的接口")
     @ApiOperationSupport(author = "Elliot")
     public ResponseInfo<CommonPage<GroupVO>> selectGroupPageList(@ApiParam(value = "查询页数", required = true) int pageCurrent,
