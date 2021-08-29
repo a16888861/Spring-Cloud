@@ -46,6 +46,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User, UserDTO> 
         } else {
             userDTO.setPassword(Md5Utils.md5Hex(userDTO.getPassword()));
         }
+        //TODO 如果不存在角色ID 创建时 默认为普通用户
         userDTO.setUserGroup(GroupEnums.getGroupCode(userDTO.getUserGroup()));
         userDTO.setYear(String.valueOf(LocalDateTime.now().getYear()));
         int insert = insert(userDTO);

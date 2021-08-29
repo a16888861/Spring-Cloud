@@ -59,4 +59,10 @@ public class UserVO implements Serializable {
     @ApiModelProperty(value = "用户组别", name = "group", required = true)
     @NotEmpty(message = "user.userGroup.NotEmpty")
     private String userGroup;
+
+    /**
+     * 角色ID
+     */
+    @ApiModelProperty(value = "角色ID", name = "roleId", hidden = true, required = false)
+    private String roleId;
 }
