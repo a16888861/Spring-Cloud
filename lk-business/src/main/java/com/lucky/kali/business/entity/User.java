@@ -66,6 +66,11 @@ public class User extends BaseEntity<User, UserDTO> implements Serializable {
      */
     private String year;
 
+    /**
+     * 状态(0正常,1锁定)
+     */
+    private String status;
+
     @Override
     public UserDTO transDTO() {
         return UserDTO.builder().id(id)
@@ -77,6 +82,7 @@ public class User extends BaseEntity<User, UserDTO> implements Serializable {
                 .userGroup(userGroup)
                 .roleId(roleId)
                 .year(year)
+                .status(status)
                 .createBy(createBy)
                 .createDate(createDate)
                 .updateBy(updateBy)
@@ -96,6 +102,7 @@ public class User extends BaseEntity<User, UserDTO> implements Serializable {
                 .userGroup(dto.getUserGroup())
                 .roleId(dto.getRoleId())
                 .year(dto.getYear())
+                .status(dto.getStatus())
                 .createBy(dto.getCreateBy())
                 .createDate(dto.getCreateDate())
                 .updateBy(dto.getUpdateBy())

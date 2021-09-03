@@ -1,13 +1,20 @@
 package com.lucky.kali.business.service.impl;
 
+import cn.hutool.core.util.ObjectUtil;
 import com.alibaba.csp.sentinel.util.StringUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lucky.kali.business.dto.GroupDTO;
+import com.lucky.kali.business.dto.RoleDTO;
 import com.lucky.kali.business.dto.UserDTO;
 import com.lucky.kali.business.entity.User;
 import com.lucky.kali.business.mapper.UserMapper;
+import com.lucky.kali.business.service.GroupService;
+import com.lucky.kali.business.service.RoleService;
 import com.lucky.kali.business.service.UserService;
+import com.lucky.kali.business.vo.req.LoginVO;
 import com.lucky.kali.business.vo.req.UserVOPage;
+import com.lucky.kali.common.base.BaseDTO;
 import com.lucky.kali.common.base.BaseEntity;
 import com.lucky.kali.common.base.BaseServiceImpl;
 import com.lucky.kali.common.enums.GroupEnums;
@@ -18,6 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 
 /**
@@ -29,6 +37,41 @@ import java.time.LocalDateTime;
 @Service("userService")
 @Transactional(rollbackFor = Exception.class)
 public class UserServiceImpl extends BaseServiceImpl<UserMapper, User, UserDTO> implements UserService {
+
+    @Resource
+    private GroupService groupService;
+    @Resource
+    private RoleService roleService;
+
+    /**
+     * 登陆接口
+     *
+     * @param loginVO 登陆信息
+     * @return 查询结果
+     */
+    @Override
+    public UserDTO doLogin(LoginVO loginVO) {
+        GroupDTO groupDTO = groupService.selectById(loginVO.getGroupId());
+        if (ObjectUtil.isNull(groupDTO)) {
+            return null;
+        }
+        RoleDTO roleDTO = roleService.selectById(loginVO.getRoleId());
+        if (ObjectUtil.isNull(roleDTO)) {
+            return null;
+        }
+        UserDTO userDTO = selectOne(new LambdaQueryWrapper<User>()
+                .eq(BaseEntity::getDelFlag, BaseEntity.DEL_FLAG_NORMAL)
+                .eq(User::getUserGroup, groupDTO.getUserGroup())
+                .eq(User::getRoleId, loginVO.getRoleId())
+                .eq(User::getMail, loginVO.getMailOrPhone())
+                .or()
+                .eq(User::getPhone, loginVO.getMailOrPhone())
+        );
+        if (ObjectUtil.isNull(userDTO)) {
+            return null;
+        }
+        return userDTO;
+    }
 
     /**
      * 创建用户
@@ -49,6 +92,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User, UserDTO> 
         //TODO 如果不存在角色ID 创建时 默认为普通用户
         userDTO.setUserGroup(GroupEnums.getGroupCode(userDTO.getUserGroup()));
         userDTO.setYear(String.valueOf(LocalDateTime.now().getYear()));
+        userDTO.setStatus(BaseDTO.DEL_FLAG_NORMAL);
         int insert = insert(userDTO);
         if (insert > 0) {
             return insert;
@@ -99,7 +143,8 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User, UserDTO> 
                 .like(StringUtil.isNotBlank(userVoPage.getMail()), User::getMail, userVoPage.getMail())
                 .like(StringUtil.isNotBlank(userVoPage.getPhone()), User::getPhone, userVoPage.getPhone())
                 .like(StringUtil.isNotBlank(userVoPage.getScreenName()), User::getScreenName, userVoPage.getScreenName())
-                .like(StringUtil.isNotBlank(userVoPage.getUserGroup()), User::getUserGroup, GroupEnums.getGroupCode(userVoPage.getUserGroup()));
+                .like(StringUtil.isNotBlank(userVoPage.getUserGroup()), User::getUserGroup, GroupEnums.getGroupCode(userVoPage.getUserGroup()))
+                .eq(StringUtil.isNotBlank(userVoPage.getStatus()), User::getStatus, userVoPage.getStatus());
         return u;
     }
 }

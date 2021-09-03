@@ -2,6 +2,7 @@ package com.lucky.kali.business.service;
 
 import com.lucky.kali.business.dto.UserDTO;
 import com.lucky.kali.business.entity.User;
+import com.lucky.kali.business.vo.req.LoginVO;
 import com.lucky.kali.business.vo.req.UserVOPage;
 import com.lucky.kali.common.base.BaseService;
 import com.lucky.kali.common.util.CommonPage;
@@ -12,6 +13,15 @@ import com.lucky.kali.common.util.CommonPage;
  * @author Elliot
  */
 public interface UserService extends BaseService<User, UserDTO> {
+
+    /**
+     * 登陆接口
+     *
+     * @param loginVO 登陆信息
+     * @return 查询结果
+     */
+    UserDTO doLogin(LoginVO loginVO);
+
     /**
      * 创建用户
      *
@@ -27,5 +37,4 @@ public interface UserService extends BaseService<User, UserDTO> {
      * @return 查询结果
      */
     CommonPage<UserDTO> selectUserPageList(UserVOPage userVoPage);
-
 }

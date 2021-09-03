@@ -74,4 +74,10 @@ public class UserVOPage implements Serializable {
      */
     @ApiModelProperty(value = "年份", name = "year", required = false)
     private String year;
+
+    /**
+     * 状态(0正常,1锁定)
+     */
+    @ApiModelProperty(value = "状态(0正常,1锁定)", name = "status", required = false)
+    private String status;
 }

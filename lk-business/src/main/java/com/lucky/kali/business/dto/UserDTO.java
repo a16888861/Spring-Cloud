@@ -61,4 +61,9 @@ public class UserDTO extends BaseDTO implements Serializable {
      */
     private String year;
 
+    /**
+     * 状态(0正常,1锁定)
+     */
+    private String status;
+
 }
