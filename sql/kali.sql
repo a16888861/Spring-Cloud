@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : MySQL-5.7.5(本地Docker)
+ Source Server         : 47.241.45.29-docker
  Source Server Type    : MySQL
  Source Server Version : 50705
- Source Host           : localhost:3306
+ Source Host           : 47.241.45.29:3306
  Source Schema         : kali
 
  Target Server Type    : MySQL
  Target Server Version : 50705
  File Encoding         : 65001
 
- Date: 29/08/2021 15:07:01
+ Date: 05/09/2021 23:10:14
 */
 
 SET NAMES utf8mb4;
@@ -66,8 +66,7 @@ CREATE TABLE `kali_group_role` (
 -- Records of kali_group_role
 -- ----------------------------
 BEGIN;
-INSERT INTO `kali_group_role` VALUES ('1431869092945997824', '1430106533911797760', '1431869092530761728', NULL, '2021-08-29 14:39:29', NULL, NULL, '0');
-INSERT INTO `kali_group_role` VALUES ('1431875929757986816', '1430106533911797760', '1431875929724432384', NULL, '2021-08-29 15:06:39', NULL, NULL, '0');
+INSERT INTO `kali_group_role` VALUES ('1431876295320940544', '1430106533911797760', '1431876295237054464', NULL, '2021-08-29 15:08:06', NULL, NULL, '0');
 COMMIT;
 
 -- ----------------------------
@@ -130,7 +129,7 @@ CREATE TABLE `kali_role` (
 -- Records of kali_role
 -- ----------------------------
 BEGIN;
-INSERT INTO `kali_role` VALUES ('1431875929724432384', NULL, '10000', '超级管理员', 'superAdmin', '1', '0', NULL, '1430109634181881856', '2021-08-29 15:06:39', NULL, NULL, '', '0');
+INSERT INTO `kali_role` VALUES ('1431876295237054464', NULL, '10000', '超级管理员', 'superAdmin', '1', '0', NULL, '1430109634181881856', '2021-08-29 15:08:06', NULL, NULL, '', '0');
 COMMIT;
 
 -- ----------------------------
