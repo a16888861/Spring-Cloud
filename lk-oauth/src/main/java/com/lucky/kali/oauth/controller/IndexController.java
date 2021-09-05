@@ -2,17 +2,23 @@ package com.lucky.kali.oauth.controller;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import com.lucky.kali.common.fegin.UserAccountClient;
 import com.lucky.kali.common.response.Response;
 import com.lucky.kali.common.response.ResponseEnum;
 import com.lucky.kali.common.response.ResponseInfo;
+import com.lucky.kali.common.vo.req.LoginVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +33,9 @@ public class IndexController {
     @Resource
     private DiscoveryClient discoveryClient;
 
+    @Resource
+    private UserAccountClient userAccountClient;
+
     /**
      * buildName
      */
@@ -37,6 +46,26 @@ public class IndexController {
      */
     @Value("${spring.application.name}")
     private String applicationId;
+
+    /**
+     * 用户登陆
+     *
+     * @param loginVO       登陆信息
+     * @param bindingResult 判断参数
+     * @return 登陆结果
+     */
+    @PostMapping("doLogin")
+    @ApiOperation(value = "登陆", produces = "application/json",
+            notes = "登陆用的接口<br>" +
+                    "组别id + 角色id + 用户名 + 密码 进行验证<br>" +
+                    "利用Jwt生成token", position = 1)
+    @ApiOperationSupport(author = "Elliot")
+    public ResponseInfo<String> login(@Valid @RequestBody LoginVO loginVO, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return Response.fail(bindingResult.getAllErrors().get(0).getDefaultMessage());
+        }
+        return userAccountClient.doLogin(loginVO);
+    }
 
     /**
      * Index信息

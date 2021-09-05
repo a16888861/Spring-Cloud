@@ -30,10 +30,6 @@
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-web</artifactId>
                 </exclusion>
                 <exclusion>
@@ -43,10 +39,6 @@
                 <exclusion>
                     <groupId>com.alibaba</groupId>
                     <artifactId>druid-spring-boot-starter</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework.cloud</groupId>
-                    <artifactId>spring-cloud-starter-bootstrap</artifactId>
                 </exclusion>
                 <exclusion>
                     <groupId>org.projectlombok</groupId>
@@ -63,10 +55,6 @@
                 <exclusion>
                     <groupId>com.baomidou</groupId>
                     <artifactId>mybatis-plus-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework.cloud</groupId>
-                    <artifactId>spring-cloud-starter-oauth2</artifactId>
                 </exclusion>
                 <exclusion>
                     <groupId>com.github.xiaoymin</groupId>

@@ -1,9 +1,13 @@
 {
   "properties": [
     {
-      "name": "appName",
+      "name": "info.build.name",
       "type": "java.lang.String",
-      "description": "项目名."
+      "description": "Description for info.build.name."
+    },
+    {
+      "name": "info.build.version",
+      "type": "java.lang.String",
+      "description": "Description for info.build.version."
     }
-  ]
-}
+  ] }

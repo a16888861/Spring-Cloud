@@ -1,4 +1,4 @@
-package com.lucky.kali.business.vo.req;
+package com.lucky.kali.common.vo.req;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

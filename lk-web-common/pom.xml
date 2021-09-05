@@ -22,32 +22,6 @@
   </properties>
 
   <dependencies>
-    <!-- spring cloud starter -->
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.cloud</groupId>-->
-<!--      <artifactId>spring-cloud-starter</artifactId>-->
-<!--    </dependency>-->
-    <!-- spring cloud starter bootstrap -->
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.cloud</groupId>-->
-<!--      <artifactId>spring-cloud-starter-bootstrap</artifactId>-->
-<!--    </dependency>-->
-    <!-- spring cloud starter oauth2(包含了spring security无需单独引入)相关 -->
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-oauth2</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>org.bouncycastle</groupId>
-          <artifactId>bcpkix-jdk15on</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <!-- spring boot starter -->
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-starter</artifactId>-->
-<!--    </dependency>-->
     <!-- spring boot starter web -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -101,11 +75,6 @@
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
     </dependency>
-    <!-- mybatis -->
-<!--    <dependency>-->
-<!--      <groupId>org.mybatis.spring.boot</groupId>-->
-<!--      <artifactId>mybatis-spring-boot-starter</artifactId>-->
-<!--    </dependency>-->
     <!-- mybatis-plus -->
     <dependency>
       <groupId>com.baomidou</groupId>
@@ -175,6 +144,7 @@
       <artifactId>java-jwt</artifactId>
       <version>${jwt.version}</version>
     </dependency>
+    <!--Base实现类用-->
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis</artifactId>

@@ -6,7 +6,6 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.lucky.kali.business.dto.UserDTO;
 import com.lucky.kali.business.service.UserService;
-import com.lucky.kali.business.vo.req.LoginVO;
 import com.lucky.kali.business.vo.req.UserVO;
 import com.lucky.kali.business.vo.req.UserVOPage;
 import com.lucky.kali.common.base.BaseEntity;
@@ -17,6 +16,7 @@ import com.lucky.kali.common.util.BeanUtil;
 import com.lucky.kali.common.util.CommonPage;
 import com.lucky.kali.common.util.JwtUtil;
 import com.lucky.kali.common.util.Md5Utils;
+import com.lucky.kali.common.vo.req.LoginVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -55,9 +55,14 @@ public class UserController {
     @ApiOperation(value = "登陆", produces = "application/json",
             notes = "登陆用的接口<br>" +
                     "组别id + 角色id + 用户名 + 密码 进行验证<br>" +
-                    "利用Jwt生成token", position = 1)
+                    "利用Jwt生成token<br>" +
+                    "\"groupId\": \"1430106533911797760\"<br>" +
+                    "\"roleId\": \"1431876295237054464\"<br>" +
+                    "\"mailOrPhone\": \"admin@mail.com\"<br>" +
+                    "\"password\": \"TOBENO.1\"",
+            position = 1)
     @ApiOperationSupport(author = "Elliot")
-    public ResponseInfo<String> login(@Valid @RequestBody LoginVO loginVO, BindingResult bindingResult) {
+    public ResponseInfo<String> doLogin(@Valid @RequestBody LoginVO loginVO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return Response.fail(bindingResult.getAllErrors().get(0).getDefaultMessage());
         }
