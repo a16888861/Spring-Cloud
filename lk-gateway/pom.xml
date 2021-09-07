@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>lk-gateway</artifactId>
-    <version>2021.1</version>
+    <version>${model.version}</version>
     <packaging>jar</packaging>
     <name>GayeWay</name>
     <description>网关</description>
@@ -24,43 +24,8 @@
         <!-- common包 -->
         <dependency>
             <groupId>com.lucky.kali</groupId>
-            <artifactId>lk-web-common</artifactId>
-            <version>${project.version}</version>
-            <!-- 去除多余包 -->
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-web</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-jdbc</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.alibaba</groupId>
-                    <artifactId>druid-spring-boot-starter</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.projectlombok</groupId>
-                    <artifactId>lombok</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>mysql</groupId>
-                    <artifactId>mysql-connector-java</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.baomidou</groupId>
-                    <artifactId>mybatis-plus-boot-starter</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.baomidou</groupId>
-                    <artifactId>mybatis-plus-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.github.xiaoymin</groupId>
-                    <artifactId>knife4j-spring-boot-starter</artifactId>
-                </exclusion>
-            </exclusions>
+            <artifactId>lk-response-common</artifactId>
+            <version>${model.version}</version>
         </dependency>
 
         <!-- gateway -->
@@ -68,7 +33,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
-
         <!-- Spring Cloud2020移除了Ribbon,加入loadbalancer依赖后解决负载均衡问题 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -90,13 +54,6 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
-
-        <!-- lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
         </dependency>
 
     </dependencies>
