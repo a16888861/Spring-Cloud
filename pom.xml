@@ -86,9 +86,11 @@
         <hutool.version>5.6.3</hutool.version>
         <swagger.version>2.0.8</swagger.version>
         <oauth2.version>2.2.5.RELEASE</oauth2.version>
+        <secruity.version>2.2.5.RELEASE</secruity.version>
         <poi.version>3.17</poi.version>
         <redis.version>2.3.12.RELEASE</redis.version>
         <jwt.version>3.10.3</jwt.version>
+        <test.version>2.5.3</test.version>
     </properties>
 
     <!-- 依赖管理 -->
@@ -109,6 +111,11 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-oauth2</artifactId>
                 <version>${oauth2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-security</artifactId>
+                <version>${secruity.version}</version>
             </dependency>
             <!-- spring cloud alibaba dependencies -->
             <dependency>
@@ -193,6 +200,14 @@
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi</artifactId>
                 <version>${poi.version}</version>
+            </dependency>
+
+            <!-- spring-boot-starter-test 使用完后移除 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${test.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

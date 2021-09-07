@@ -1,12 +1,15 @@
 package com.lucky.kali.oauth.config;
 
+import com.lucky.kali.oauth.service.impl.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
@@ -14,7 +17,7 @@ import org.springframework.security.oauth2.provider.client.JdbcClientDetailsServ
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.token.*;
-import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -25,19 +28,24 @@ import java.util.List;
  * @author BenjaminEngle
  */
 @Configuration
+/*开启认证服务器*/
+@EnableAuthorizationServer
 public class AuthorizationServerConfigurerAdapterConfig extends AuthorizationServerConfigurerAdapter {
+
+    @Resource
+    private RedisConnectionFactory redisConnectionFactory;
 
     /**
      * 加密
      */
     @Resource
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     /**
      * 加载用户信息
      */
-//    @Resource
-//    private UserServiceImpl userDetailsService;
+    @Resource
+    private UserDetailsServiceImpl userDetailsService;
 
     /**
      * 认证管理器
@@ -61,13 +69,13 @@ public class AuthorizationServerConfigurerAdapterConfig extends AuthorizationSer
      * jwt设置需要的字段
      */
 //    @Resource
-//    private JwtTokenEnhancer jwtTokenEnhancer;
+//    private TokenEnhancer tokenEnhancer;
 
     /**
      * jks公钥
      */
-    @Resource
-    private JwtAccessTokenConverter jwtAccessTokenConverter;
+//    @Resource
+//    private JwtAccessTokenConverter jwtAccessTokenConverter;
 
     /**
      * 授权码
@@ -80,6 +88,13 @@ public class AuthorizationServerConfigurerAdapterConfig extends AuthorizationSer
      */
     @Resource
     private ClientDetailsService clientDetailsService;
+
+    @Bean
+    public RedisTokenStore tokenStore() {
+        RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
+        tokenStore.setPrefix("user-token:");
+        return tokenStore;
+    }
 
     /**
      * 设置授权码模式的授权码如何存取
@@ -102,6 +117,21 @@ public class AuthorizationServerConfigurerAdapterConfig extends AuthorizationSer
         return new JdbcClientDetailsService(dataSource);
     }
 
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer security) {
+        security.allowFormAuthenticationForClients()
+                .passwordEncoder(passwordEncoder)
+                /*oauth/token_key是公开*/
+                .tokenKeyAccess("permitAll()")
+                /*oauth/check_token公开*/
+                .checkTokenAccess("isAuthenticated()");
+    }
+
+    @Override
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        clients.withClientDetails(clientDetailsService);
+    }
+
     /**
      * 令牌管理服务
      */
@@ -110,8 +140,8 @@ public class AuthorizationServerConfigurerAdapterConfig extends AuthorizationSer
         /*jwt令牌内容增强*/
         TokenEnhancerChain enhancerChain = new TokenEnhancerChain();
         List<TokenEnhancer> delegates = new ArrayList<>();
-//        delegates.add(jwtTokenEnhancer);
-        delegates.add(jwtAccessTokenConverter);
+//        delegates.add(tokenEnhancer);
+//        delegates.add(jwtAccessTokenConverter);
         /*配置JWT的内容增强器*/
         enhancerChain.setTokenEnhancers(delegates);
         /*配置tokenServices参数*/
@@ -120,6 +150,8 @@ public class AuthorizationServerConfigurerAdapterConfig extends AuthorizationSer
         service.setClientDetailsService(clientDetailsService);
         /*支持刷新令牌*/
         service.setSupportRefreshToken(true);
+        /*是否复用 refreshToken*/
+        service.setReuseRefreshToken(false);
         /*令牌存储,把access_token和refresh_token保存到数据库*/
         service.setTokenStore(tokenStore);
         /*配置JWT的内容增强*/
@@ -132,34 +164,28 @@ public class AuthorizationServerConfigurerAdapterConfig extends AuthorizationSer
         return service;
     }
 
+    /**
+     * config方法
+     *
+     * @param endpoints 令牌管理服务
+     */
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) {
-        security.allowFormAuthenticationForClients()
-                .passwordEncoder(bCryptPasswordEncoder)
-                /*oauth/token_key是公开*/
-                .tokenKeyAccess("permitAll()")
-                /*oauth/check_token公开*/
-                .checkTokenAccess("isAuthenticated()");
-    }
-
-    @Override
-    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(clientDetailsService);
-    }
-
-    @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         /*配置授权管理认证对象*/
         endpoints.authenticationManager(authenticationManager)
                 /*配置加载用户信息的服务*/
-//                .userDetailsService(userDetailsService)
+                .userDetailsService(userDetailsService)
                 /*授权码服务,添加就可以保存到数据库了*/
                 .authorizationCodeServices(authorizationCodeServices)
                 /*jwt保存的信息*/
-                .accessTokenConverter(jwtAccessTokenConverter)
+//                .accessTokenConverter(jwtAccessTokenConverter)
                 /*令牌管理服务，调用上面的方法*/
                 .tokenServices(tokenService())
-                .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);
+                /*允许的令牌端点请求方法(默认情况下，仅启用POST方法)*/
+                .allowedTokenEndpointRequestMethods(
+                        HttpMethod.GET,
+                        HttpMethod.POST
+                );
     }
 
 }

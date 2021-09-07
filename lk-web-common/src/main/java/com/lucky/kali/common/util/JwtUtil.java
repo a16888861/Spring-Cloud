@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import lombok.extern.slf4j.Slf4j;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
 
 /**
@@ -36,6 +37,7 @@ public class JwtUtil {
         return JWT.create()
                 .withIssuer(ISSUER)
                 .withClaim(PARAM_KEY, claim)
+                .withIssuedAt(LocalDateTimeUtil.localDateTimeToDate(LocalDateTime.now()))
                 .withClaim(PARAM_DATE, Calendar.getInstance().getTimeInMillis())
                 .sign(alg);
     }
