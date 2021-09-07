@@ -11,17 +11,18 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>lk-response-common</artifactId>
+  <artifactId>lk-util-common</artifactId>
   <version>${model.version}</version>
   <packaging>jar</packaging>
-  <name>Common-Response</name>
-  <description>About Response</description>
+  <name>Common-Utils</name>
+  <description>About Utils</description>
 
   <properties>
     <java.version>1.8</java.version>
   </properties>
 
   <dependencies>
+    <!-- Utils相关 -->
     <!-- lombok -->
     <dependency>
       <groupId>org.projectlombok</groupId>
@@ -32,6 +33,32 @@
     <dependency>
       <groupId>com.github.xiaoymin</groupId>
       <artifactId>knife4j-spring-boot-starter</artifactId>
+    </dependency>
+    <!-- HuTool工具箱 -->
+    <dependency>
+      <groupId>cn.hutool</groupId>
+      <artifactId>hutool-all</artifactId>
+    </dependency>
+    <!-- json-smart -->
+    <dependency>
+      <groupId>net.minidev</groupId>
+      <artifactId>json-smart</artifactId>
+    </dependency>
+    <!-- apache-poi -->
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+    </dependency>
+    <!--JWT依赖-->
+    <dependency>
+      <groupId>com.auth0</groupId>
+      <artifactId>java-jwt</artifactId>
+      <version>${jwt.version}</version>
+    </dependency>
+    <!-- commons-lang3 -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
     </dependency>
   </dependencies>
 

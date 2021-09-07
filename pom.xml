@@ -27,10 +27,16 @@
     <modules>
         <!-- 公共资源 -->
         <module>lk-web-common</module>
-        <!-- Response相关 -->
-        <module>lk-common/lk-common-response</module>
+        <!-- MySQL相关 -->
+        <module>lk-common/lk-common-mysql</module>
+        <!-- MyBatis-Plus相关 -->
+        <module>lk-common/lk-common-mybatis-plus</module>
         <!-- Redis相关 -->
         <module>lk-common/lk-common-redis</module>
+        <!-- Response相关 -->
+        <module>lk-common/lk-common-response</module>
+        <!-- Utils相关 -->
+        <module>lk-common/lk-common-util</module>
         <!-- 网关 -->
         <module>lk-gateway</module>
         <!-- 鉴权 -->

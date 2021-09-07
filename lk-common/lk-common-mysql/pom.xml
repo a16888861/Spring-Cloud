@@ -11,27 +11,29 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>lk-response-common</artifactId>
+  <artifactId>lk-mysql-common</artifactId>
   <version>${model.version}</version>
   <packaging>jar</packaging>
-  <name>Common-Response</name>
-  <description>About Response</description>
+  <name>Common-MySQL</name>
+  <description>About MySQL</description>
 
   <properties>
     <java.version>1.8</java.version>
   </properties>
 
   <dependencies>
-    <!-- lombok -->
+    <!-- MySql驱动 -->
     <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <scope>compile</scope>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jdbc</artifactId>
     </dependency>
-    <!-- swagger -->
     <dependency>
-      <groupId>com.github.xiaoymin</groupId>
-      <artifactId>knife4j-spring-boot-starter</artifactId>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid-spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
     </dependency>
   </dependencies>
 
