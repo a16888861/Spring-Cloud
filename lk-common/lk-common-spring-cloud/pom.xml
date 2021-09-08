@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <parent>
     <groupId>com.lucky.kali</groupId>
     <artifactId>SpringCloudFormework</artifactId>
@@ -9,46 +11,38 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>lk-business</artifactId>
+  <artifactId>lk-spring-cloud-common</artifactId>
   <version>${model.version}</version>
   <packaging>jar</packaging>
-  <name>Business</name>
-  <description>商家模块</description>
+  <name>Common-Spring-Cloud</name>
+  <description>About SpringCloud</description>
 
   <properties>
     <java.version>1.8</java.version>
   </properties>
 
   <dependencies>
-
-    <!-- util common包 -->
+    <!-- spring cloud starter -->
     <dependency>
-      <groupId>com.lucky.kali</groupId>
-      <artifactId>lk-util-common</artifactId>
-      <version>${model.version}</version>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter</artifactId>
     </dependency>
-
+    <!-- Spring Cloud2020移除了Ribbon,加入loadbalancer依赖后解决负载均衡问题 -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-loadbalancer</artifactId>
+    </dependency>
+    <!-- spring cloud starter bootstrap -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-bootstrap</artifactId>
+    </dependency>
+    <!-- spring cloud starter loadbalancer -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+    </dependency>
   </dependencies>
-
-  <build>
-    <finalName>lk-business</finalName>
-
-    <resources>
-      <!--需要动态添加的资源-->
-      <resource>
-        <directory>src/main/resources</directory>
-        <filtering>true</filtering>
-      </resource>
-    </resources>
-
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <version>${plugin.buildAndTest.version}</version>
-      </plugin>
-    </plugins>
-  </build>
 
   <!-- 仓库节点 -->
   <repositories>

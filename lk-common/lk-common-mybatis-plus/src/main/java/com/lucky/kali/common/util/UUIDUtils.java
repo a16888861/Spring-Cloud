@@ -3,7 +3,7 @@ package com.lucky.kali.common.util;
 import java.util.Random;
 
 /**
- * @author elliot
+ * @author Elliot
  */
 public final class UUIDUtils {
     private static final Random RANDOM = new Random();

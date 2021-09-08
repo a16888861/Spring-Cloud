@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
- * @author elliot
+ * @author Elliot
  */
 @Data
 @NoArgsConstructor

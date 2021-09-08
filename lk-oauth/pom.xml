@@ -2,121 +2,100 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <parent>
-    <groupId>com.lucky.kali</groupId>
-    <artifactId>SpringCloudFormework</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.lucky.kali</groupId>
+        <artifactId>SpringCloudFormework</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>lk-oauth</artifactId>
-  <version>${model.version}</version>
-  <packaging>jar</packaging>
-  <name>OAuth</name>
-  <description>鉴权模块</description>
+    <artifactId>lk-oauth</artifactId>
+    <version>${model.version}</version>
+    <packaging>jar</packaging>
+    <name>OAuth</name>
+    <description>鉴权模块</description>
 
-  <properties>
-    <java.version>1.8</java.version>
-  </properties>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 
-  <dependencies>
+    <dependencies>
+        <!-- spring cloud starter oauth2 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bcpkix-jdk15on</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
-    <!-- common包 -->
-    <dependency>
-      <groupId>com.lucky.kali</groupId>
-      <artifactId>lk-web-common</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+        <!-- util common包 -->
+        <dependency>
+            <groupId>com.lucky.kali</groupId>
+            <artifactId>lk-util-common</artifactId>
+            <version>${model.version}</version>
+        </dependency>
 
-    <!-- spring-boot-starter-test 使用完后移除 -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
+    </dependencies>
 
-    <!-- spring cloud starter oauth2 -->
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-oauth2</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>org.bouncycastle</groupId>
-          <artifactId>bcpkix-jdk15on</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-security</artifactId>
-    </dependency>
+    <build>
+        <finalName>lk-oauth</finalName>
 
-    <!-- Spring Cloud2020移除了Ribbon,加入loadbalancer依赖后解决负载均衡问题 -->
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-loadbalancer</artifactId>
-    </dependency>
+        <resources>
+            <!--需要动态添加的资源-->
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
 
-    <!-- nacos注册中心 -->
-    <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-    </dependency>
-    <!-- nacos配置中心 -->
-    <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-    </dependency>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${plugin.buildAndTest.version}</version>
+            </plugin>
+        </plugins>
+    </build>
 
-  </dependencies>
-
-  <build>
-    <finalName>lk-oauth</finalName>
-
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-<!--        <version>2.5.0</version>-->
-      </plugin>
-    </plugins>
-  </build>
-
-  <!-- 仓库节点 -->
-  <repositories>
-    <repository>
-      <id>spring-alibaba</id>
-      <name>Spring Milestones</name>
-      <url>https://maven.aliyun.com/repository/spring</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-    <repository>
-      <id>spring-public-alibaba</id>
-      <name>Spring Snapshots</name>
-      <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-    </repository>
-  </repositories>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>spring-alibaba</id>
-      <name>Spring Milestones</name>
-      <url>https://maven.aliyun.com/repository/spring</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </pluginRepository>
-    <pluginRepository>
-      <id>spring-public-alibaba</id>
-      <name>Spring Snapshots</name>
-      <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-    </pluginRepository>
-  </pluginRepositories>
+    <!-- 仓库节点 -->
+    <repositories>
+        <repository>
+            <id>spring-alibaba</id>
+            <name>Spring Milestones</name>
+            <url>https://maven.aliyun.com/repository/spring</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-public-alibaba</id>
+            <name>Spring Snapshots</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-alibaba</id>
+            <name>Spring Milestones</name>
+            <url>https://maven.aliyun.com/repository/spring</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-public-alibaba</id>
+            <name>Spring Snapshots</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
 </project>

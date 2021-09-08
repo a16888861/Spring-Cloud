@@ -14,8 +14,8 @@ import com.lucky.kali.business.vo.req.RoleVO;
 import com.lucky.kali.business.vo.req.RoleVOPage;
 import com.lucky.kali.common.base.BaseEntity;
 import com.lucky.kali.common.base.BaseServiceImpl;
+import com.lucky.kali.common.base.CommonPage;
 import com.lucky.kali.common.enums.RoleEnums;
-import com.lucky.kali.common.util.CommonPage;
 import com.lucky.kali.common.util.PageUtil;
 import org.springframework.stereotype.Service;
 

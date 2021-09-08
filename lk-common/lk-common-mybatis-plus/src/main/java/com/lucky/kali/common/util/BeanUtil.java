@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * 队列属性复制
  *
- * @author elliot
+ * @author Elliot
  * @param <T>
  */
 public final class BeanUtil<T extends Serializable> {

@@ -2,6 +2,7 @@
 package com.lucky.kali.common.util;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lucky.kali.common.base.CommonPage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 

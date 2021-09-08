@@ -4,7 +4,7 @@ import com.lucky.kali.business.dto.GroupDTO;
 import com.lucky.kali.business.entity.Group;
 import com.lucky.kali.business.vo.req.GroupVO;
 import com.lucky.kali.common.base.BaseService;
-import com.lucky.kali.common.util.CommonPage;
+import com.lucky.kali.common.base.CommonPage;
 
 /**
  * 组别表 服务类

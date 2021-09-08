@@ -25,8 +25,15 @@
 
     <!-- 模块 -->
     <modules>
-        <!-- 公共资源 -->
-        <module>lk-web-common</module>
+        <!-- 公共资源(已拆解为小型Common模式) -->
+        <!-- Boot相关 -->
+        <module>lk-common/lk-common-spring-boot</module>
+        <!-- Cloud相关 -->
+        <module>lk-common/lk-common-spring-cloud</module>
+        <!-- Nacos相关 -->
+        <module>lk-common/lk-common-nacos</module>
+        <!-- Sentinel相关 -->
+        <module>lk-common/lk-common-sentinel</module>
         <!-- MySQL相关 -->
         <module>lk-common/lk-common-mysql</module>
         <!-- MyBatis-Plus相关 -->
@@ -37,6 +44,8 @@
         <module>lk-common/lk-common-response</module>
         <!-- Utils相关 -->
         <module>lk-common/lk-common-util</module>
+
+        <!--业务模块-->
         <!-- 网关 -->
         <module>lk-gateway</module>
         <!-- 鉴权 -->
@@ -83,25 +92,44 @@
 
     <!-- 版本控制 -->
     <properties>
+        <!-- 模块版本号 -->
         <model.version>2021.1</model.version>
+        <!-- Java 版本号 -->
         <java.version>1.8</java.version>
-        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
+        <!-- SpringCloud版本号 -->
         <spring-cloud.version>2020.0.3</spring-cloud.version>
+        <!-- SpringCloudAlibaba版本号 -->
+        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
+        <!-- nacos健康检查版本号 -->
         <nacos-config-spring-boot-actuator.version>0.2.4</nacos-config-spring-boot-actuator.version>
+        <!-- mysql连接版本号 -->
         <mysql-connector.version>8.0.25</mysql-connector.version>
+        <!-- druid连接池版本号 -->
         <druid.version>1.2.6</druid.version>
+        <!-- mybatis-plus版本号 -->
         <mybatis-plus.version>3.4.3.2</mybatis-plus.version>
+        <!-- lombok版本号 -->
         <lombok.version>1.18.20</lombok.version>
+        <!-- commons-lang3版本号 -->
         <commons-lang3.version>3.12.0</commons-lang3.version>
+        <!-- fastjson版本号 -->
         <fastjson.version>1.2.62</fastjson.version>
+        <!-- hutool工具箱版本号 -->
         <hutool.version>5.6.3</hutool.version>
+        <!-- swagger版本号 -->
         <swagger.version>2.0.8</swagger.version>
+        <!-- oauth2版本号 -->
         <oauth2.version>2.2.5.RELEASE</oauth2.version>
+        <!-- spring-cloud-starter-security版本号 -->
         <secruity.version>2.2.5.RELEASE</secruity.version>
+        <!-- poi版本号 -->
         <poi.version>3.17</poi.version>
+        <!-- Redis版本号 -->
         <redis.version>2.3.12.RELEASE</redis.version>
+        <!-- jwt版本号 -->
         <jwt.version>3.10.3</jwt.version>
-        <test.version>2.5.3</test.version>
+        <!-- spring测试组件和插件版本号 -->
+        <plugin.buildAndTest.version>2.5.3</plugin.buildAndTest.version>
     </properties>
 
     <!-- 依赖管理 -->
@@ -149,11 +177,11 @@
                 <version>${spring-cloud-alibaba.version}</version>
             </dependency>
             <!-- nacos author -->
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.boot</groupId>-->
-<!--                <artifactId>nacos-config-spring-boot-actuator</artifactId>-->
-<!--                <version>${nacos-config-spring-boot-actuator.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.boot</groupId>
+                <artifactId>nacos-config-spring-boot-actuator</artifactId>
+                <version>${nacos-config-spring-boot-actuator.version}</version>
+            </dependency>
 
             <!-- 数据库相关 -->
             <!-- Druid驱动 -->
@@ -217,7 +245,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
-                <version>${test.version}</version>
+                <version>${plugin.buildAndTest.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>

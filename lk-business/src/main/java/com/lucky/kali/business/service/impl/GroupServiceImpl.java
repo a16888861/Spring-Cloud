@@ -9,7 +9,7 @@ import com.lucky.kali.business.service.GroupService;
 import com.lucky.kali.business.vo.req.GroupVO;
 import com.lucky.kali.common.base.BaseEntity;
 import com.lucky.kali.common.base.BaseServiceImpl;
-import com.lucky.kali.common.util.CommonPage;
+import com.lucky.kali.common.base.CommonPage;
 import com.lucky.kali.common.util.PageUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

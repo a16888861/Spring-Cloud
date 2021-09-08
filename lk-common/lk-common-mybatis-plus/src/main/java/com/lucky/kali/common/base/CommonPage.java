@@ -1,5 +1,5 @@
 
-package com.lucky.kali.common.util;
+package com.lucky.kali.common.base;
 
 import java.io.Serializable;
 import java.util.List;

@@ -22,6 +22,50 @@
   </properties>
 
   <dependencies>
+    <!--SpringCloud相关-->
+    <dependency>
+      <groupId>com.lucky.kali</groupId>
+      <artifactId>lk-spring-cloud-common</artifactId>
+      <version>${model.version}</version>
+    </dependency>
+    <!--SpringBoot相关-->
+    <dependency>
+      <groupId>com.lucky.kali</groupId>
+      <artifactId>lk-springboot-common</artifactId>
+      <version>${model.version}</version>
+    </dependency>
+
+    <!-- nacos相关-->
+    <dependency>
+      <groupId>com.lucky.kali</groupId>
+      <artifactId>lk-nacos-common</artifactId>
+      <version>${model.version}</version>
+    </dependency>
+    <!-- sentinel相关-->
+    <dependency>
+      <groupId>com.lucky.kali</groupId>
+      <artifactId>lk-sentinel-common</artifactId>
+      <version>${model.version}</version>
+    </dependency>
+    <!-- redis相关-->
+    <dependency>
+      <groupId>com.lucky.kali</groupId>
+      <artifactId>lk-redis-common</artifactId>
+      <version>${model.version}</version>
+    </dependency>
+    <!-- mysql相关-->
+    <dependency>
+      <groupId>com.lucky.kali</groupId>
+      <artifactId>lk-mysql-common</artifactId>
+      <version>${model.version}</version>
+    </dependency>
+    <!-- mybatis-plus相关-->
+    <dependency>
+      <groupId>com.lucky.kali</groupId>
+      <artifactId>lk-mybatis-plus-common</artifactId>
+      <version>${model.version}</version>
+    </dependency>
+
     <!-- Utils相关 -->
     <!-- lombok -->
     <dependency>
@@ -29,36 +73,46 @@
       <artifactId>lombok</artifactId>
       <scope>compile</scope>
     </dependency>
+
+    <!-- FastJson -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+    </dependency>
+
+    <!-- openfeign -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-openfeign</artifactId>
+    </dependency>
+
+    <!-- commons-lang3 -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+
+    <!-- jakarta validator校验依赖 -->
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+    </dependency>
+    <!-- hibernate validator校验依赖 -->
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+    </dependency>
+
     <!-- swagger -->
     <dependency>
       <groupId>com.github.xiaoymin</groupId>
       <artifactId>knife4j-spring-boot-starter</artifactId>
-    </dependency>
-    <!-- HuTool工具箱 -->
-    <dependency>
-      <groupId>cn.hutool</groupId>
-      <artifactId>hutool-all</artifactId>
-    </dependency>
-    <!-- json-smart -->
-    <dependency>
-      <groupId>net.minidev</groupId>
-      <artifactId>json-smart</artifactId>
-    </dependency>
-    <!-- apache-poi -->
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi</artifactId>
     </dependency>
     <!--JWT依赖-->
     <dependency>
       <groupId>com.auth0</groupId>
       <artifactId>java-jwt</artifactId>
       <version>${jwt.version}</version>
-    </dependency>
-    <!-- commons-lang3 -->
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
     </dependency>
   </dependencies>
 
