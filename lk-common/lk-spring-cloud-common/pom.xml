@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <parent>
         <groupId>com.lucky.kali</groupId>
         <artifactId>SpringCloudFormework</artifactId>
@@ -9,69 +11,38 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>lk-oauth</artifactId>
+    <artifactId>lk-spring-cloud-common</artifactId>
     <version>2021.1</version>
     <packaging>jar</packaging>
-    <name>Lk-OAuth</name>
-    <description>鉴权模块</description>
+    <name>Common-Spring-Cloud</name>
+    <description>About SpringCloud</description>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
-        <!-- spring cloud starter oauth2 -->
+        <!-- spring cloud starter -->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter</artifactId>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; Spring Cloud2020移除了Ribbon,加入loadbalancer依赖后解决负载均衡问题 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-loadbalancer</artifactId>-->
+<!--        </dependency>-->
+        <!-- spring cloud starter bootstrap -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-oauth2</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.bouncycastle</groupId>
-                    <artifactId>bcpkix-jdk15on</artifactId>
-                </exclusion>
-            </exclusions>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
-
-        <!-- util common包 -->
+        <!-- spring cloud starter loadbalancer -->
         <dependency>
-            <groupId>com.lucky.kali</groupId>
-            <artifactId>lk-util-common</artifactId>
-            <version>2021.1</version>
-        </dependency>
-
-        <!-- spring-boot-starter-test 使用完后移除 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- junit单元测试 -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <finalName>lk-oauth</finalName>
-
-        <resources>
-            <!--需要动态添加的资源-->
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.5.3</version>
-            </plugin>
-        </plugins>
-    </build>
 
     <!-- 仓库节点 -->
     <repositories>
@@ -110,4 +81,5 @@
             </releases>
         </pluginRepository>
     </pluginRepositories>
+
 </project>

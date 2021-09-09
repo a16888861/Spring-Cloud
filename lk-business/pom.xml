@@ -10,9 +10,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>lk-business</artifactId>
-  <version>${model.version}</version>
+  <version>2021.1</version>
   <packaging>jar</packaging>
-  <name>Business</name>
+  <name>Lk-Business</name>
   <description>商家模块</description>
 
   <properties>
@@ -25,7 +25,7 @@
     <dependency>
       <groupId>com.lucky.kali</groupId>
       <artifactId>lk-util-common</artifactId>
-      <version>${model.version}</version>
+      <version>2021.1</version>
     </dependency>
 
   </dependencies>

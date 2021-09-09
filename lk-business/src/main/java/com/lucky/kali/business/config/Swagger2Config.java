@@ -8,6 +8,7 @@ import org.springframework.util.ClassUtils;
 import springfox.documentation.RequestHandler;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
@@ -47,15 +48,16 @@ public class Swagger2Config {
                 //分组名称
                 .groupName("服务提供者模块")
                 .select()
-                //采用包扫描的方式来确定要显示的接口
-//                .apis(RequestHandlerSelectors.basePackage("com.lucky.kali.oauth.controller"))
-                //采用包含注解的方式来确定要显示的接口(两种方式：根据类注释和根据方法注释，看情况选择)
+                /*采用包扫描的方式来确定要显示的接口*/
+                .apis(RequestHandlerSelectors.basePackage("com.lucky.kali.business.controller"))
+                /*采用包含注解的方式来确定要显示的接口(两种方式：根据类注释和根据方法注释，看情况选择)*/
 //                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
 //                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
-                .apis(basePackage("com.lucky.kali.business.controller"))
-                //扫描全部
+                /*自写多包扫描方法(方法过时)*/
+//                .apis(basePackage("com.lucky.kali.business.controller"))
+                /*扫描全部*/
                 .paths(PathSelectors.any())
-                //扫描指定
+                /*扫描指定*/
 //                .paths(PathSelectors.regex("/index/*"))
                 .build()
                 .extensions(openApiExtensionResolver.buildExtensions("服务提供者模块"));

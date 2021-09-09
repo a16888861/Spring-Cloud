@@ -10,9 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>lk-gateway</artifactId>
-    <version>${model.version}</version>
+    <version>2021.1</version>
     <packaging>jar</packaging>
-    <name>GayeWay</name>
+    <name>Lk-GayeWay</name>
     <description>网关</description>
 
     <properties>
@@ -30,26 +30,26 @@
         <dependency>
             <groupId>com.lucky.kali</groupId>
             <artifactId>lk-spring-cloud-common</artifactId>
-            <version>${model.version}</version>
+            <version>2021.1</version>
         </dependency>
         <!-- nacos相关-->
         <dependency>
             <groupId>com.lucky.kali</groupId>
             <artifactId>lk-nacos-common</artifactId>
-            <version>${model.version}</version>
+            <version>2021.1</version>
         </dependency>
         <!-- sentinel相关-->
         <dependency>
             <groupId>com.lucky.kali</groupId>
             <artifactId>lk-sentinel-common</artifactId>
-            <version>${model.version}</version>
+            <version>2021.1</version>
         </dependency>
 
         <!-- common包 -->
         <dependency>
             <groupId>com.lucky.kali</groupId>
             <artifactId>lk-response-common</artifactId>
-            <version>${model.version}</version>
+            <version>2021.1</version>
         </dependency>
 
     </dependencies>

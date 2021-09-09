@@ -11,36 +11,32 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>lk-spring-cloud-common</artifactId>
-  <version>${model.version}</version>
+  <artifactId>lk-spring-boot-common</artifactId>
+  <version>2021.1</version>
   <packaging>jar</packaging>
-  <name>Common-Spring-Cloud</name>
-  <description>About SpringCloud</description>
+  <name>Common-Spring-Boot</name>
+  <description>About SpringBoot</description>
 
   <properties>
     <java.version>1.8</java.version>
   </properties>
 
   <dependencies>
-    <!-- spring cloud starter -->
+    <!-- spring boot starter web -->
     <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-    <!-- Spring Cloud2020移除了Ribbon,加入loadbalancer依赖后解决负载均衡问题 -->
+    <!-- spring 配置文件处理器 -->
     <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-loadbalancer</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
     </dependency>
-    <!-- spring cloud starter bootstrap -->
+    <!-- spring boot starter logging(日志) -->
     <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-bootstrap</artifactId>
-    </dependency>
-    <!-- spring cloud starter loadbalancer -->
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-logging</artifactId>
     </dependency>
   </dependencies>
 
