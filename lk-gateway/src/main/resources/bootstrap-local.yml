@@ -47,9 +47,9 @@ spring:
             # Method 方法谓词，这里是匹配 GET 和 POST 请求
             - Method=GET,POST,PUT,DELETE
 #          # 过滤器，请求在传递过程中可以通过过滤器对其进行一定的修改(转发之前去掉1层路径)
-          filters:
-            - SwaggerHeaderFilter
-            - StripPrefix=1
+#          filters:
+#            - SwaggerHeaderFilter
+#            - StripPrefix=1
 #            - PreserveHostHeader
         - id: lk-business
           # lb代表从注册中心获取服务(负载均衡)
@@ -62,10 +62,10 @@ spring:
             # Method 方法谓词，这里是匹配 GET 和 POST 请求
             - Method=GET,POST,PUT,DELETE
           # 过滤器，请求在传递过程中可以通过过滤器对其进行一定的修改(转发之前去掉1层路径)
-          filters:
-            - SwaggerHeaderFilter
-            - StripPrefix=1
-        #                    - PreserveHostHeader
+#          filters:
+#            - SwaggerHeaderFilter
+#            - StripPrefix=1
+#            - PreserveHostHeader
         - id: lk-consumer
           # lb代表从注册中心获取服务(负载均衡)
           uri: lb://lk-consumer
@@ -77,10 +77,10 @@ spring:
             # Method 方法谓词，这里是匹配 GET 和 POST 请求
             - Method=GET,POST,PUT,DELETE
           # 过滤器，请求在传递过程中可以通过过滤器对其进行一定的修改(转发之前去掉1层路径)
-          filters:
-            - SwaggerHeaderFilter
-            - StripPrefix=1
-      #                    - PreserveHostHeader
+#          filters:
+#            - SwaggerHeaderFilter
+#            - StripPrefix=1
+#            - PreserveHostHeader
       # httpClient 连接超时控制
       httpclient:
         connect-timeout: 6000
