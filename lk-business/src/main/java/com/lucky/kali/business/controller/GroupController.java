@@ -3,7 +3,7 @@ package com.lucky.kali.business.controller;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import com.lucky.kali.business.dto.GroupDTO;
+import com.lucky.kali.common.dto.GroupDTO;
 import com.lucky.kali.business.service.GroupService;
 import com.lucky.kali.business.vo.req.GroupVO;
 import com.lucky.kali.common.base.CommonPage;

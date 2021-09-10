@@ -4,7 +4,7 @@ import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.json.JSONUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import com.lucky.kali.business.dto.UserDTO;
+import com.lucky.kali.common.dto.UserDTO;
 import com.lucky.kali.business.service.UserService;
 import com.lucky.kali.business.vo.req.UserVO;
 import com.lucky.kali.business.vo.req.UserVOPage;

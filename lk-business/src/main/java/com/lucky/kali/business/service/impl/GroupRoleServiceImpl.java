@@ -2,9 +2,9 @@ package com.lucky.kali.business.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.lucky.kali.business.dto.GroupDTO;
+import com.lucky.kali.common.dto.GroupDTO;
 import com.lucky.kali.business.dto.GroupRoleDTO;
-import com.lucky.kali.business.dto.RoleDTO;
+import com.lucky.kali.common.dto.RoleDTO;
 import com.lucky.kali.business.entity.GroupRole;
 import com.lucky.kali.business.mapper.GroupRoleMapper;
 import com.lucky.kali.business.service.GroupRoleService;

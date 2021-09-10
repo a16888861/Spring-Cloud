@@ -3,7 +3,7 @@ package com.lucky.kali.business.controller;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import com.lucky.kali.business.dto.RoleDTO;
+import com.lucky.kali.common.dto.RoleDTO;
 import com.lucky.kali.business.service.RoleService;
 import com.lucky.kali.business.vo.req.RoleVO;
 import com.lucky.kali.business.vo.req.RoleVOPage;

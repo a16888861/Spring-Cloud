@@ -1,6 +1,6 @@
 package com.lucky.kali.oauth.config;
 
-import com.lucky.kali.oauth.service.impl.UserDetailsServiceImpl;
+import com.lucky.kali.oauth.service.impl.UserInfoService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -45,7 +45,7 @@ public class AuthorizationServerConfigurerAdapterConfig extends AuthorizationSer
      * 加载用户信息
      */
     @Resource
-    private UserDetailsServiceImpl userDetailsService;
+    private UserInfoService userInfoService;
 
     /**
      * 认证管理器
@@ -174,7 +174,7 @@ public class AuthorizationServerConfigurerAdapterConfig extends AuthorizationSer
         /*配置授权管理认证对象*/
         endpoints.authenticationManager(authenticationManager)
                 /*配置加载用户信息的服务*/
-                .userDetailsService(userDetailsService)
+                .userDetailsService(userInfoService)
                 /*授权码服务,添加就可以保存到数据库了*/
                 .authorizationCodeServices(authorizationCodeServices)
                 /*jwt保存的信息*/

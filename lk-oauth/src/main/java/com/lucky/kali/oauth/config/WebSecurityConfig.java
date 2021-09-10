@@ -1,6 +1,6 @@
 package com.lucky.kali.oauth.config;
 
-import com.lucky.kali.oauth.service.impl.UserDetailsServiceImpl;
+import com.lucky.kali.oauth.service.impl.UserInfoServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     public UserDetailsService userDetailsService() {
-        return new UserDetailsServiceImpl();
+        return new UserInfoServiceImpl();
     }
 
     /**

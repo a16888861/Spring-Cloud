@@ -1,7 +1,7 @@
 package com.lucky.kali.business.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.lucky.kali.business.dto.UserDTO;
+import com.lucky.kali.common.dto.UserDTO;
 import com.lucky.kali.common.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

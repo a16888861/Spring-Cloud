@@ -1,6 +1,6 @@
 package com.lucky.kali.business.vo.resp;
 
-import com.lucky.kali.business.dto.RoleDTO;
+import com.lucky.kali.common.dto.RoleDTO;
 import com.lucky.kali.business.vo.req.GroupVO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

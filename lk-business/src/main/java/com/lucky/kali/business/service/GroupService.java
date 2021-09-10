@@ -1,10 +1,10 @@
 package com.lucky.kali.business.service;
 
-import com.lucky.kali.business.dto.GroupDTO;
-import com.lucky.kali.business.entity.Group;
+import com.lucky.kali.common.dto.GroupDTO;
 import com.lucky.kali.business.vo.req.GroupVO;
 import com.lucky.kali.common.base.BaseService;
 import com.lucky.kali.common.base.CommonPage;
+import com.lucky.kali.business.entity.Group;
 
 /**
  * 组别表 服务类

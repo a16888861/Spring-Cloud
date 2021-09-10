@@ -1,4 +1,4 @@
-package com.lucky.kali.business.dto;
+package com.lucky.kali.common.dto;
 
 import com.lucky.kali.common.base.BaseDTO;
 import lombok.Data;

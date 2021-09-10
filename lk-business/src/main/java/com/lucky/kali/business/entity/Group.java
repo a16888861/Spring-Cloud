@@ -1,8 +1,8 @@
 package com.lucky.kali.business.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.lucky.kali.business.dto.GroupDTO;
 import com.lucky.kali.common.base.BaseEntity;
+import com.lucky.kali.common.dto.GroupDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

@@ -1,11 +1,11 @@
 package com.lucky.kali.business.service;
 
-import com.lucky.kali.business.dto.RoleDTO;
 import com.lucky.kali.business.entity.Role;
 import com.lucky.kali.business.vo.req.RoleVO;
 import com.lucky.kali.business.vo.req.RoleVOPage;
 import com.lucky.kali.common.base.BaseService;
 import com.lucky.kali.common.base.CommonPage;
+import com.lucky.kali.common.dto.RoleDTO;
 
 /**
  * 系统-角色表 服务类

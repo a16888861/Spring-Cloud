@@ -2,7 +2,7 @@ package com.lucky.kali.business.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lucky.kali.business.dto.GroupDTO;
+import com.lucky.kali.common.dto.GroupDTO;
 import com.lucky.kali.business.entity.Group;
 import com.lucky.kali.business.mapper.GroupMapper;
 import com.lucky.kali.business.service.GroupService;

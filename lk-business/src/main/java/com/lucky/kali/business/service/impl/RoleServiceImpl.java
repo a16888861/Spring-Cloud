@@ -5,7 +5,7 @@ import com.alibaba.csp.sentinel.util.StringUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lucky.kali.business.dto.GroupRoleDTO;
-import com.lucky.kali.business.dto.RoleDTO;
+import com.lucky.kali.common.dto.RoleDTO;
 import com.lucky.kali.business.entity.Role;
 import com.lucky.kali.business.mapper.RoleMapper;
 import com.lucky.kali.business.service.GroupRoleService;
