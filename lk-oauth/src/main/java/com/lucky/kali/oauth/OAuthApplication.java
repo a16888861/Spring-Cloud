@@ -15,7 +15,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "com.lucky.kali", exclude = DataSourceAutoConfiguration.class)
 @MapperScan(basePackages = {"com/lucky/kali/oauth/mapper"})
-@EnableFeignClients(basePackages = "com.lucky.kali")
+@EnableFeignClients(basePackages = "com.lucky.kali.oauth.fegin")
 public class OAuthApplication {
     public static void main(String[] args) {
         SpringApplication.run(OAuthApplication.class, args);

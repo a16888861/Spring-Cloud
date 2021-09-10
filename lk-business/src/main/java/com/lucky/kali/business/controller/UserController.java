@@ -1,22 +1,16 @@
 package com.lucky.kali.business.controller;
 
-import cn.hutool.core.util.ObjectUtil;
-import cn.hutool.json.JSONUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import com.lucky.kali.common.dto.UserDTO;
 import com.lucky.kali.business.service.UserService;
 import com.lucky.kali.business.vo.req.UserVO;
 import com.lucky.kali.business.vo.req.UserVOPage;
-import com.lucky.kali.common.base.BaseEntity;
 import com.lucky.kali.common.base.CommonPage;
+import com.lucky.kali.common.dto.UserDTO;
 import com.lucky.kali.common.response.Response;
 import com.lucky.kali.common.response.ResponseEnum;
 import com.lucky.kali.common.response.ResponseInfo;
 import com.lucky.kali.common.util.BeanUtil;
-import com.lucky.kali.common.util.JwtUtil;
-import com.lucky.kali.common.util.Md5Utils;
-import com.lucky.kali.common.vo.req.LoginVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -43,54 +37,6 @@ public class UserController {
 
     @Resource
     private UserService userService;
-
-    /**
-     * 用户登陆
-     *
-     * @param loginVO       登陆信息
-     * @param bindingResult 判断参数
-     * @return 登陆结果
-     */
-    @PostMapping("doLogin")
-    @ApiOperation(value = "登陆", produces = "application/json",
-            notes = "登陆用的接口<br>" +
-                    "组别id + 角色id + 用户名 + 密码 进行验证<br>" +
-                    "利用Jwt生成token<br>" +
-                    "\"groupId\": \"1430106533911797760\"<br>" +
-                    "\"roleId\": \"1431876295237054464\"<br>" +
-                    "\"mailOrPhone\": \"admin@mail.com\"<br>" +
-                    "\"password\": \"TOBENO.1\"",
-            position = 1)
-    @ApiOperationSupport(author = "Elliot")
-    public ResponseInfo<String> doLogin(@Valid @RequestBody LoginVO loginVO, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return Response.fail(bindingResult.getAllErrors().get(0).getDefaultMessage());
-        }
-
-        loginVO.setPassword(Md5Utils.md5Hex(loginVO.getPassword()));
-        UserDTO userDTO = userService.doLogin(loginVO);
-        /*信息为空，则返回未找到*/
-        if (ObjectUtil.isNull(userDTO)) {
-            return Response.notFound("common.response.notfound");
-        }
-        /*如果用户状态是1，则代表用户被锁定，返回对应信息*/
-        if (userDTO.getStatus().equals(BaseEntity.DEL_FLAG_DELETE)) {
-            return Response.fail(ResponseEnum.USER_LOCK.getMessage());
-        }
-        /*密码不一致，返回错误信息*/
-        if (!userDTO.getPassword().equals(loginVO.getPassword())) {
-            return Response.fail("user.password.IsError");
-        }
-        String token = JwtUtil.createToken(JSONUtil.toJsonStr(userDTO));
-
-        //TODO Token待存放到Redis中
-//        UserDTO userDTO1 = JSONUtil.toBean(JwtUtil.getClaim(token), UserDTO.class);
-//        log.info(userDTO1.toString());
-//        log.info(token);
-//        log.info(JwtUtil.getClaim(token));
-
-        return Response.success("common.response.success", token, (String[]) null);
-    }
 
     /**
      * 创建用户
