@@ -1,23 +1,15 @@
 package com.lucky.kali.oauth.service.impl;
 
-import cn.hutool.core.util.ObjectUtil;
-import com.lucky.kali.common.base.BaseEntity;
-import com.lucky.kali.common.dto.UserDTO;
-import com.lucky.kali.common.response.Response;
-import com.lucky.kali.common.response.ResponseEnum;
-import com.lucky.kali.common.response.ResponseInfo;
-import com.lucky.kali.common.util.Md5Utils;
-import com.lucky.kali.common.vo.req.LoginVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.validation.Valid;
 
 /**
  * 用户登录验证逻辑和权限处理
@@ -26,40 +18,10 @@ import javax.validation.Valid;
  */
 @Service("userInfoServiceImpl")
 @Slf4j
-public class UserInfoServiceImpl implements UserInfoService {
+public class UserInfoServiceImpl implements UserDetailsService {
 
     @Resource
     private PasswordEncoder passwordEncoder;
-
-    /**
-     * 用户登录接口
-     *
-     * @param loginVO 登录信息
-     * @return 登录结果
-     */
-    @Override
-    public ResponseInfo<UserDTO> loadUserByUsername(@Valid LoginVO loginVO) {
-//        if (bindingResult.hasErrors()) {
-//            Response.fail(bindingResult.getAllErrors().get(0).getDefaultMessage());
-//        }
-        log.info("登录信息为：" + loginVO);
-        loginVO.setPassword(Md5Utils.md5Hex(loginVO.getPassword()));
-        UserDTO userDTO = null;
-        /*信息为空，则返回未找到*/
-        if (ObjectUtil.isNull(userDTO)) {
-            return Response.notFound("common.response.notfound");
-        }
-        /*如果用户状态是1，则代表用户被锁定，返回对应信息*/
-        if (userDTO.getStatus().equals(BaseEntity.DEL_FLAG_DELETE)) {
-            return Response.fail(ResponseEnum.USER_LOCK.getMessage());
-        }
-        /*密码不一致，返回错误信息*/
-        if (!userDTO.getPassword().equals(loginVO.getPassword())) {
-            return Response.fail("user.password.IsError");
-        }
-        return Response.success("common.response.success",userDTO);
-    }
-
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

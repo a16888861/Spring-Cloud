@@ -26,6 +26,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        /*自定义排除拦截路径集合*/
         List<String> excludePathList = new ArrayList<>();
         excludePathList.add("/doc.html");
         excludePathList.add("/webjars/**");
@@ -35,7 +36,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
         excludePathList.add("/v2/**");
         /*自定义拦截器*/
         InterceptorRegistration interceptorRegistration = registry.addInterceptor(userInfoInterceptor);
+        /*addPathPatterns方法（指定拦截路径，往往使用 "/**"）*/
         interceptorRegistration.addPathPatterns("/**");
+        /*excludePathPatterns方法（指定排除拦截路径，用于登录等部分开放接口）*/
         interceptorRegistration.excludePathPatterns(excludePathList);
     }
 }

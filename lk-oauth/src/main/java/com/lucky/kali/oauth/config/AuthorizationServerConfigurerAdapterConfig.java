@@ -1,6 +1,6 @@
 package com.lucky.kali.oauth.config;
 
-import com.lucky.kali.oauth.service.impl.UserInfoService;
+import com.lucky.kali.oauth.service.impl.UserInfoServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -30,6 +30,7 @@ import java.util.List;
 @Configuration
 /*开启认证服务器*/
 @EnableAuthorizationServer
+/*继承Spring Security Oauth2配置类AuthorizationServerConfigurerAdapter(授权自定义)*/
 public class AuthorizationServerConfigurerAdapterConfig extends AuthorizationServerConfigurerAdapter {
 
     @Resource
@@ -45,7 +46,7 @@ public class AuthorizationServerConfigurerAdapterConfig extends AuthorizationSer
      * 加载用户信息
      */
     @Resource
-    private UserInfoService userInfoService;
+    private UserInfoServiceImpl userInfoService;
 
     /**
      * 认证管理器
@@ -54,7 +55,8 @@ public class AuthorizationServerConfigurerAdapterConfig extends AuthorizationSer
     private AuthenticationManager authenticationManager;
 
     /**
-     * JWT令牌存储方案
+     * token管理服务 JWT令牌存储方案
+     *
      */
     @Resource
     private TokenStore tokenStore;
@@ -84,16 +86,37 @@ public class AuthorizationServerConfigurerAdapterConfig extends AuthorizationSer
     private AuthorizationCodeServices authorizationCodeServices;
 
     /**
+     * ClientDetails信息加载实现类
      * 将客户端client id secret这些信息存储到数据库
      */
     @Resource
     private ClientDetailsService clientDetailsService;
+
+    /**
+     * 客户端配置，将客户端client id secret这些信息存储到数据库
+     *
+     * @return 客户端详细信息服务
+     */
+    @Bean
+    public ClientDetailsService clientDetailsService() {
+        return new JdbcClientDetailsService(dataSource);
+    }
 
     @Bean
     public RedisTokenStore tokenStore() {
         RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
         tokenStore.setPrefix("user-token:");
         return tokenStore;
+    }
+
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer security) {
+        security.allowFormAuthenticationForClients()
+                .passwordEncoder(passwordEncoder)
+                /*oauth/token_key是公开*/
+                .tokenKeyAccess("permitAll()")
+                /*oauth/check_token公开*/
+                .checkTokenAccess("isAuthenticated()");
     }
 
     /**
@@ -108,25 +131,11 @@ public class AuthorizationServerConfigurerAdapterConfig extends AuthorizationSer
     }
 
     /**
-     * 客户端配置，将客户端client id secret这些信息存储到数据库
+     * 配置客户端详情信息（也就是回调配置 Client Details)
      *
-     * @return 客户端详细信息服务
+     * @param clients ClientDetailsService实例对象
+     * @throws Exception 异常
      */
-    @Bean
-    public ClientDetailsService clientDetailsService() {
-        return new JdbcClientDetailsService(dataSource);
-    }
-
-    @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) {
-        security.allowFormAuthenticationForClients()
-                .passwordEncoder(passwordEncoder)
-                /*oauth/token_key是公开*/
-                .tokenKeyAccess("permitAll()")
-                /*oauth/check_token公开*/
-                .checkTokenAccess("isAuthenticated()");
-    }
-
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.withClientDetails(clientDetailsService);

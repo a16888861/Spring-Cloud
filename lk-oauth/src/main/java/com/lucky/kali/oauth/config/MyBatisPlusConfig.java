@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Configuration;
  * @author Elliot
  */
 @Configuration
-@MapperScan("com/lucky/kali/business/mapper")
+@MapperScan("com/lucky/kali")
 public class MyBatisPlusConfig {
     /**
-     * 设置分页插件
+     * 设置分页插件(不设置的话，分页查询会出问题)
      */
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
