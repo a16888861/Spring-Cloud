@@ -48,8 +48,8 @@
         <!--业务模块-->
         <!-- 网关 -->
         <module>lk-gateway</module>
-        <!-- 鉴权 -->
-        <module>lk-oauth</module>
+        <!-- 用户 -->
+        <module>lk-userInfo</module>
         <!-- 服务者 -->
         <module>lk-business</module>
         <!-- 消费者 -->
