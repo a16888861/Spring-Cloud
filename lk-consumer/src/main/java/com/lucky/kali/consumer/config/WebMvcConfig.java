@@ -27,6 +27,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         List<String> excludePathList = new ArrayList<>();
+        excludePathList.add("/");
         excludePathList.add("/doc.html");
         excludePathList.add("/webjars/**");
         excludePathList.add("/oauth/token");

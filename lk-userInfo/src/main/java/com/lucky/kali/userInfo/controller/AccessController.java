@@ -60,8 +60,9 @@ public class AccessController {
         /*密码加密*/
         loginVO.setPassword(Md5Utils.md5Hex(loginVO.getPassword()));
         UserDTO userDTO = userService.doLogin(loginVO);
+        /*如果用户信息为空，返回用户未找到*/
         if (ObjectUtil.isNull(userDTO)) {
-            return Response.notFound(ResponseEnum.FAILURE.getMessage());
+            return Response.notFound("user.isNull");
         }
         /*如果用户状态是1，则代表用户被锁定，返回对应信息*/
         if (userDTO.getStatus().equals(BaseEntity.DEL_FLAG_DELETE)) {
@@ -74,11 +75,11 @@ public class AccessController {
         /*打印用户信息*/
         log.info("登陆成功，用户信息为：" + userDTO);
         /*token*/
-        String token = JwtUtil.createToken(userDTO.getPhone() + "-" + userDTO.getMail());
+        String token = JwtUtil.createToken("user-token-" + userDTO.getPhone() + "-" + userDTO.getMail());
         /*token过期时间(30分钟)*/
         long tokenExpiredTime = TimeUnit.SECONDS.toSeconds(1800);
         /*刷新token*/
-        String refreshToken = JwtUtil.createToken(Md5Utils.md5Hex(userDTO.getId()));
+        String refreshToken = JwtUtil.createToken(userDTO.getId());
         /*刷新token过期时间(7天)*/
         long refreshTokenExpiredTime = TimeUnit.SECONDS.toSeconds(604800);
         UserTokenVO userTokenVO = UserTokenVO.builder()
@@ -87,9 +88,9 @@ public class AccessController {
                 .build();
         /*Token相关信息存放到Redis中*/
         /*存储Token信息(30分钟后过期)*/
-        redisUtil.set("user-token-" + userDTO.getPhone(), token, tokenExpiredTime);
+        redisUtil.set("user-token-" + userDTO.getPhone() + "-" + userDTO.getMail(), token, tokenExpiredTime);
         /*存储刷新Token信息(7天后过期)*/
-        redisUtil.set("user-refreshToken-" + userDTO.getId(), token, refreshTokenExpiredTime);
+        redisUtil.set("user-refreshToken-" + userDTO.getId(), refreshToken, refreshTokenExpiredTime);
         return Response.success(ResponseEnum.SUCCESS.getMessage(), userTokenVO);
     }
 }

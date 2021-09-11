@@ -57,7 +57,7 @@ public class LocalDateTimeUtil {
         ZonedDateTime zonedDateTime = localDateTime.atZone(zoneId);
         Instant instant = zonedDateTime.toInstant();
         Date date = Date.from(instant);
-        log.info("localDateTimeToDate：转换前：" + localDateTime + "   转换后：" + date);
+        /*log.info("localDateTimeToDate：转换前：" + localDateTime + "   转换后：" + date);*/
         return date;
     }
 
@@ -70,7 +70,7 @@ public class LocalDateTimeUtil {
     public static LocalDateTime dateToLocalDateTime(Date date) {
         ZoneId zoneId = ZoneId.systemDefault();
         LocalDateTime localDateTime = LocalDateTime.ofInstant(date.toInstant(), zoneId);
-        log.info("dateToLocalDateTime：转换前：" + date + "   转换后：" + localDateTime);
+        /*log.info("dateToLocalDateTime：转换前：" + date + "   转换后：" + localDateTime);*/
         return localDateTime;
     }
 }

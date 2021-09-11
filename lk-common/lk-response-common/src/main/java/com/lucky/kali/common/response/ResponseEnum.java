@@ -28,7 +28,15 @@ public enum ResponseEnum {
     /**
      * 用户未分配权限
      */
-    USER_ILLEGAL(603, "common.response.userIllegal");
+    USER_ILLEGAL(603, "common.response.userIllegal"),
+    /**
+     * Token失效
+     */
+    TOKEN_ERROR(403, "common.response.token.error"),
+    /**
+     * Token失效
+     */
+    TOKEN_TIMEOUT(403, "common.response.token.timeOut");
 
     private final int code;
 
