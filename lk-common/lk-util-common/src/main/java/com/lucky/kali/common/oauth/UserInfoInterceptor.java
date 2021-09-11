@@ -52,6 +52,7 @@ public class UserInfoInterceptor implements HandlerInterceptor {
         if (!redisUtil.hasKey(claim)){
             /*TODO 判断刷新token是否过期 待添加*/
             try {
+                /*重定向URL待添加*/
                 response.sendRedirect("Token已过期");
             } catch (IOException e) {
                 e.printStackTrace();
@@ -61,6 +62,7 @@ public class UserInfoInterceptor implements HandlerInterceptor {
         /*判断token是否错误*/
         if (!authorization.equals(redisUtil.get(claim))) {
             try {
+                /*重定向URL待添加*/
                 response.sendRedirect("Token信息错误");
             } catch (IOException e) {
                 e.printStackTrace();
