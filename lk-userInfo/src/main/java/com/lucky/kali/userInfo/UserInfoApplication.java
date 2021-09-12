@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @author Elliot
@@ -14,6 +15,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication(scanBasePackages = "com.lucky.kali", exclude = DataSourceAutoConfiguration.class)
 @MapperScan(basePackages = {"com/lucky/kali/userInfo/mapper"})
 @EnableFeignClients(basePackages = "com.lucky.kali")
+@ComponentScan(basePackages={"com.lucky.kali"})
 public class UserInfoApplication {
     public static void main(String[] args) {
         SpringApplication.run(UserInfoApplication.class, args);
