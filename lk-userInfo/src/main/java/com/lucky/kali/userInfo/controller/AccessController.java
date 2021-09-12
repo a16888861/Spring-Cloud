@@ -81,8 +81,8 @@ public class AccessController {
         long tokenExpiredTime = TimeUnit.SECONDS.toSeconds(1800);
         /*刷新token*/
         String refreshToken = JwtUtil.createToken(CommonConstants.USER_REFRESH_TOKEN + CommonConstants.HORIZONTAL_BAR + userDTO.getId());
-        /*刷新token过期时间(7天)*/
-        long refreshTokenExpiredTime = TimeUnit.SECONDS.toSeconds(604800);
+        /*刷新token过期时间(2小时)*/
+        long refreshTokenExpiredTime = TimeUnit.SECONDS.toSeconds(7200);
         UserTokenVO userTokenVO = UserTokenVO.builder()
                 .token(token).tokenExpiredTime((int) tokenExpiredTime)
                 .refreshToken(refreshToken).refreshTokenExpiredTime((int) refreshTokenExpiredTime)
@@ -91,7 +91,7 @@ public class AccessController {
         /*存储Token信息(30分钟后过期)*/
         redisUtil.set(CommonConstants.USER_TOKEN + CommonConstants.HORIZONTAL_BAR + userDTO.getPhone() + CommonConstants.HORIZONTAL_BAR + userDTO.getMail(),
                 CommonConstants.TOKEN_PREFIX + CommonConstants.SPACE + token, tokenExpiredTime);
-        /*存储刷新Token信息(7天后过期)*/
+        /*存储刷新Token信息(2小时后过期)*/
         redisUtil.set(CommonConstants.USER_REFRESH_TOKEN + CommonConstants.HORIZONTAL_BAR + userDTO.getId(),
                 CommonConstants.TOKEN_PREFIX + CommonConstants.SPACE + refreshToken, refreshTokenExpiredTime);
         return Response.success(ResponseEnum.SUCCESS.getMessage(), userTokenVO);
