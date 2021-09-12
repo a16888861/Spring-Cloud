@@ -2,11 +2,13 @@
 
 ## 方便开发使用的Spring-cloud框架
 
-需要的环境都运行在docker容器当中
+需要的环境都运行在docker容器当中(也可以自行安装环境)
 
-也根据项目说明自行添加环境(shell脚本目前只有mac环境)
+环境说明:mysql + redis + nacos + sentinel
 
-各个模块的鉴权采用简单的明文验证
+根据项目说明自行添加环境(shell脚本目前只有mac环境)
+
+鉴权部分采用jwt进行认证
 
 ### Spring Project生成地址
 
