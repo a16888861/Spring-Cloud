@@ -41,12 +41,12 @@ public class Swagger2Config {
      */
     private static final String SPLIT_SYMBOL = ";";
 
-    @Bean(value = "服务提供者模块")
+    @Bean(value = "用户模块")
     public Docket api1() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 //分组名称
-                .groupName("服务提供者模块")
+                .groupName("用户模块")
                 .select()
                 /*采用包扫描的方式来确定要显示的接口*/
                 .apis(RequestHandlerSelectors.basePackage("com.lucky.kali.userInfo.controller"))

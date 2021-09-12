@@ -109,19 +109,6 @@
       <artifactId>knife4j-spring-boot-starter</artifactId>
     </dependency>
 
-    <!-- easyexcel -->
-    <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>easyexcel</artifactId>
-      <version>${easyexcel.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.ow2.asm</groupId>
-          <artifactId>asm</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-
     <!--JWT依赖-->
     <dependency>
       <groupId>com.auth0</groupId>

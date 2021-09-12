@@ -31,6 +31,16 @@
             <groupId>com.lucky.kali</groupId>
             <artifactId>lk-spring-cloud-common</artifactId>
             <version>2021.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- nacos相关-->
         <dependency>
