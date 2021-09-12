@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 47.241.45.29-docker
+ Source Server         : MySQL-5.7.5(本地Docker)
  Source Server Type    : MySQL
  Source Server Version : 50705
- Source Host           : 47.241.45.29:3306
+ Source Host           : localhost:3306
  Source Schema         : kali
 
  Target Server Type    : MySQL
  Target Server Version : 50705
  File Encoding         : 65001
 
- Date: 05/09/2021 23:10:14
+ Date: 12/09/2021 16:25:08
 */
 
 SET NAMES utf8mb4;
@@ -165,8 +165,8 @@ CREATE TABLE `kali_user` (
                              `screen_name` varchar(32) CHARACTER SET utf8 DEFAULT NULL COMMENT '用户名-别名',
                              `user_group` varchar(32) CHARACTER SET utf8 DEFAULT NULL COMMENT '用户组别',
                              `role_id` varchar(32) DEFAULT NULL COMMENT '角色id',
-                             `status` char(1) DEFAULT NULL COMMENT '状态(0正常,1锁定)',
                              `year` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT '年份',
+                             `status` char(1) CHARACTER SET utf8 DEFAULT NULL COMMENT '用户状态(0正常1锁定)',
                              `create_by` varchar(32) CHARACTER SET utf8 DEFAULT NULL COMMENT '创建人',
                              `create_date` datetime DEFAULT NULL COMMENT '创建时间',
                              `update_by` varchar(32) CHARACTER SET utf8 DEFAULT NULL COMMENT '修改人',
@@ -179,8 +179,8 @@ CREATE TABLE `kali_user` (
 -- Records of kali_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `kali_user` VALUES ('1430066935624323072', '张泱森', '@6y!@2&8@6fyÒ!2c@2af5@°°fa$$0&&2', '2271998412@qq.com', '18234125116', '阿森', '9998', NULL, '0', '2021', '1430109634181881856', '2021-08-24 15:18:21', NULL, NULL, '0');
-INSERT INTO `kali_user` VALUES ('1430109634181881856', '超级管理员', '°c2◊20a620&@582a@yÒ6!y2ya!ay$fÒ$', 'admin@mail.com', '18888888888', 'SuperAdmin', '9999', '1431876295237054464', '0','2021', '', '2021-08-24 18:08:02', NULL, NULL, '0');
+INSERT INTO `kali_user` VALUES ('1430066935624323072', '张泱森', '@6y!@2&8@6fyÒ!2c@2af5@°°fa$$0&&2', '2271998412@qq.com', '18234125116', '阿森', '9998', NULL, '2021', '0', '1430109634181881856', '2021-08-24 15:18:21', NULL, NULL, '0');
+INSERT INTO `kali_user` VALUES ('1430109634181881856', '超级管理员', '°c2◊20a620&@582a@yÒ6!y2ya!ay$fÒ$', 'admin@mail.com', '18888888888', 'SuperAdmin', '9999', '1431876295237054464', '2021', '0', '', '2021-08-24 18:08:02', NULL, NULL, '0');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
