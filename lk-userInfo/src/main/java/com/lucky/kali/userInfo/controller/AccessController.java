@@ -4,6 +4,7 @@ import cn.hutool.core.util.ObjectUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.lucky.kali.common.base.BaseEntity;
+import com.lucky.kali.common.constants.CommonConstants;
 import com.lucky.kali.common.dto.UserDTO;
 import com.lucky.kali.common.response.Response;
 import com.lucky.kali.common.response.ResponseEnum;
@@ -75,11 +76,11 @@ public class AccessController {
         /*打印用户信息*/
         log.info("登陆成功，用户信息为：" + userDTO);
         /*token*/
-        String token = JwtUtil.createToken("user-token-" + userDTO.getPhone() + "-" + userDTO.getMail());
+        String token = JwtUtil.createToken(CommonConstants.USER_TOKEN + CommonConstants.HORIZONTAL_BAR + userDTO.getPhone() + CommonConstants.HORIZONTAL_BAR + userDTO.getMail());
         /*token过期时间(30分钟)*/
         long tokenExpiredTime = TimeUnit.SECONDS.toSeconds(1800);
         /*刷新token*/
-        String refreshToken = JwtUtil.createToken(userDTO.getId());
+        String refreshToken = JwtUtil.createToken(CommonConstants.USER_REFRESH_TOKEN + CommonConstants.HORIZONTAL_BAR + userDTO.getId());
         /*刷新token过期时间(7天)*/
         long refreshTokenExpiredTime = TimeUnit.SECONDS.toSeconds(604800);
         UserTokenVO userTokenVO = UserTokenVO.builder()
@@ -88,9 +89,11 @@ public class AccessController {
                 .build();
         /*Token相关信息存放到Redis中*/
         /*存储Token信息(30分钟后过期)*/
-        redisUtil.set("user-token-" + userDTO.getPhone() + "-" + userDTO.getMail(), token, tokenExpiredTime);
+        redisUtil.set(CommonConstants.USER_TOKEN + CommonConstants.HORIZONTAL_BAR + userDTO.getPhone() + CommonConstants.HORIZONTAL_BAR + userDTO.getMail(),
+                CommonConstants.TOKEN_PREFIX + CommonConstants.SPACE + token, tokenExpiredTime);
         /*存储刷新Token信息(7天后过期)*/
-        redisUtil.set("user-refreshToken-" + userDTO.getId(), refreshToken, refreshTokenExpiredTime);
+        redisUtil.set(CommonConstants.USER_REFRESH_TOKEN + CommonConstants.HORIZONTAL_BAR + userDTO.getId(),
+                CommonConstants.TOKEN_PREFIX + CommonConstants.SPACE + refreshToken, refreshTokenExpiredTime);
         return Response.success(ResponseEnum.SUCCESS.getMessage(), userTokenVO);
     }
 }
