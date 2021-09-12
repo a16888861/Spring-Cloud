@@ -128,6 +128,7 @@
         <redis.version>2.3.12.RELEASE</redis.version>
         <!-- jwt版本号 -->
         <jwt.version>3.10.3</jwt.version>
+        <easyexcel.version>2.2.10</easyexcel.version>
         <!-- spring测试组件和插件版本号 -->
         <plugin.buildAndTest.version>2.5.3</plugin.buildAndTest.version>
     </properties>
@@ -240,6 +241,13 @@
                 <artifactId>poi</artifactId>
                 <version>${poi.version}</version>
             </dependency>
+            <!-- easyexcel -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
+            </dependency>
+
 
             <!-- spring-boot-starter-test 使用完后移除 -->
             <dependency>
