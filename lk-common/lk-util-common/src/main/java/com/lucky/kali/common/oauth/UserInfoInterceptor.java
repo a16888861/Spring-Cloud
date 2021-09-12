@@ -75,7 +75,7 @@ public class UserInfoInterceptor implements HandlerInterceptor {
             }
         }
         /*判断token是否错误*/
-        if (!authorization.equals(redisUtil.get(claim))) {
+        if (!authorization.equals(redisUtil.get(claim)) && !xAuthorization.equals(redisUtil.get(xClaim))) {
             try {
                 /*重定向URL待添加*/
                 response.sendRedirect("Token信息错误");
