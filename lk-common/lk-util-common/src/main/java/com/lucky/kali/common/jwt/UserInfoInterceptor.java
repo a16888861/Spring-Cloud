@@ -27,6 +27,8 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class UserInfoInterceptor implements HandlerInterceptor {
 
+    private final ThreadLocal<Long> THREAD = new ThreadLocal<>();
+
     @Resource
     private RedisUtil redisUtil;
 
@@ -43,6 +45,7 @@ public class UserInfoInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        THREAD.set(System.currentTimeMillis());
         /*获取请求头授权信息(也就是token和刷新token)*/
         String authorization = request.getHeader(CommonConstants.AUTHORIZATION);
         String xAuthorization = request.getHeader(CommonConstants.X_AUTHORIZATION);
@@ -65,6 +68,7 @@ public class UserInfoInterceptor implements HandlerInterceptor {
                 long tokenExpiredTime = TimeUnit.SECONDS.toSeconds(1800);
                 redisUtil.set(claim, authorization, tokenExpiredTime);
             } else {
+                response.setStatus(ResponseEnum.TOKEN_TIMEOUT.getCode());
                 try {
                     /*重定向URL待添加*/
                     response.sendRedirect("Token已过期");
@@ -76,13 +80,14 @@ public class UserInfoInterceptor implements HandlerInterceptor {
         }
         /*判断token是否错误*/
         if (!authorization.equals(redisUtil.get(claim)) && !xAuthorization.equals(redisUtil.get(xClaim))) {
+            response.setStatus(ResponseEnum.TOKEN_ERROR.getCode());
             try {
                 /*重定向URL待添加*/
                 response.sendRedirect("Token信息错误");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            throw new BaseException(Response.fail(ResponseEnum.TOKEN_TIMEOUT.getMessage()).getMessage());
+            throw new BaseException(Response.fail(ResponseEnum.TOKEN_ERROR.getMessage()).getMessage());
         }
         return Boolean.TRUE;
     }
@@ -108,7 +113,9 @@ public class UserInfoInterceptor implements HandlerInterceptor {
      */
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        log.info("afterCompletion未做任何处理");
+        long millis = System.currentTimeMillis();
+        log.info(request.getServletPath() + "耗时：" + (millis - THREAD.get()) + "ms");
+        THREAD.remove();
         HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
     }
 }

@@ -30,9 +30,9 @@ public enum ResponseEnum {
      */
     USER_ILLEGAL(603, "common.response.userIllegal"),
     /**
-     * Token失效
+     * Token错误
      */
-    TOKEN_ERROR(403, "common.response.token.error"),
+    TOKEN_ERROR(500, "common.response.token.error"),
     /**
      * Token失效
      */
