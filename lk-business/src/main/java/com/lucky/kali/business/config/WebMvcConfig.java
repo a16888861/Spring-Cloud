@@ -1,6 +1,6 @@
 package com.lucky.kali.business.config;
 
-import com.lucky.kali.common.oauth.UserInfoInterceptor;
+import com.lucky.kali.common.jwt.UserInfoInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

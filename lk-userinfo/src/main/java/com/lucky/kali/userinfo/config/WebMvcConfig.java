@@ -1,11 +1,10 @@
-package com.lucky.kali.consumer.config;
+package com.lucky.kali.userinfo.config;
 
 import com.lucky.kali.common.jwt.UserInfoInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -33,6 +32,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
         excludePathList.add("/error");
         excludePathList.add("/favicon.ico");
         excludePathList.add("/webjars/**");
+        excludePathList.add("/access/doLogin");
+        excludePathList.add("/access/check_token");
+        excludePathList.add("/swagger-resources");
         excludePathList.add("/swagger-resources");
         excludePathList.add("/v2/**");
         /*自定义拦截器*/

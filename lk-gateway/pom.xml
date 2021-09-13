@@ -60,13 +60,6 @@
             <groupId>com.lucky.kali</groupId>
             <artifactId>lk-response-common</artifactId>
             <version>2021.1</version>
-            <!-- 暂时移除swagger包 不然有冲突无法启动(冲突暂未找到) -->
-            <exclusions>
-                <exclusion>
-                    <groupId>com.github.xiaoymin</groupId>
-                    <artifactId>knife4j-spring-boot-starter</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
     </dependencies>
