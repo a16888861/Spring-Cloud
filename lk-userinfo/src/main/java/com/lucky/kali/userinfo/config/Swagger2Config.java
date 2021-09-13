@@ -2,6 +2,7 @@ package com.lucky.kali.userinfo.config;
 
 import com.github.xiaoymin.knife4j.spring.extension.OpenApiExtensionResolver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.ClassUtils;
@@ -29,6 +30,9 @@ import java.util.function.Predicate;
 @EnableSwagger2WebMvc
 public class Swagger2Config {
 
+    @Value("${knife4j.enable}")
+    public boolean knife4jEnable;
+
     private final OpenApiExtensionResolver openApiExtensionResolver;
 
     @Autowired
@@ -45,7 +49,8 @@ public class Swagger2Config {
     public Docket api1() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                //分组名称
+                .enable(knife4jEnable)
+                /*分组名称(要和网关的路由id一致)*/
                 .groupName("用户模块")
                 .select()
                 /*采用包扫描的方式来确定要显示的接口*/

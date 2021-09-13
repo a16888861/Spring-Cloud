@@ -36,22 +36,22 @@ spring:
           #是将请求路径上的服务名配置为小写（因为服务注册的时候，向注册中心注册时将服务名转成大写的了），比如以/service-hi/*的请求路径被路由转发到服务名为service-hi的服务上。
           lowerCaseServiceId: true
       routes:
-        - id: lk-userinfo
+        - id: 用户模块
           # lb代表从注册中心获取服务(负载均衡)
           uri: lb://lk-userinfo
           # 数字越小，优先级越高
           order: 2
           #断言,路径相匹配的进行路由。注意是Path的P是大写
           predicates:
-            - Path=/userInfo/**,/access/**
+            - Path=/userinfo/**,/access/**
             # Method 方法谓词，这里是匹配 GET 和 POST 请求
             - Method=GET,POST,PUT,DELETE
 #          # 过滤器，请求在传递过程中可以通过过滤器对其进行一定的修改(转发之前去掉1层路径)
-#          filters:
-#            - SwaggerHeaderFilter
-#            - StripPrefix=1
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1
 #            - PreserveHostHeader
-        - id: lk-business
+        - id: 服务提供者模块
           # lb代表从注册中心获取服务(负载均衡)
           uri: lb://lk-business
           # 数字越小，优先级越高
@@ -62,11 +62,11 @@ spring:
             # Method 方法谓词，这里是匹配 GET 和 POST 请求
             - Method=GET,POST,PUT,DELETE
           # 过滤器，请求在传递过程中可以通过过滤器对其进行一定的修改(转发之前去掉1层路径)
-#          filters:
-#            - SwaggerHeaderFilter
-#            - StripPrefix=1
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1
 #            - PreserveHostHeader
-        - id: lk-consumer
+        - id: 服务消费者模块
           # lb代表从注册中心获取服务(负载均衡)
           uri: lb://lk-consumer
           # 数字越小，优先级越高
@@ -77,9 +77,9 @@ spring:
             # Method 方法谓词，这里是匹配 GET 和 POST 请求
             - Method=GET,POST,PUT,DELETE
           # 过滤器，请求在传递过程中可以通过过滤器对其进行一定的修改(转发之前去掉1层路径)
-#          filters:
-#            - SwaggerHeaderFilter
-#            - StripPrefix=1
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1
 #            - PreserveHostHeader
       # httpClient 连接超时控制
       httpclient:

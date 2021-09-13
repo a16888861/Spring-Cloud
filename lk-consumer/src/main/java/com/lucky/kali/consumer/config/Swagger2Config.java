@@ -1,6 +1,7 @@
 package com.lucky.kali.consumer.config;
 
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -22,11 +23,15 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 @EnableSwagger2WebMvc
 public class Swagger2Config {
 
+    @Value("${knife4j.enable}")
+    public boolean knife4jEnable;
+
     @Bean(value = "服务消费者模块")
     public Docket api1() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                //分组名称
+                .enable(knife4jEnable)
+                /*分组名称(要和网关的路由id一致)*/
                 .groupName("服务消费者模块")
                 .select()
                 //扫描全部

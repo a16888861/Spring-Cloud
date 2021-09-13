@@ -1,4 +1,4 @@
-package com.lucky.kali.gateway.controller;
+package com.lucky.kali.gateway.handler;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +13,7 @@ import java.util.Optional;
 
 /**
  * 获取api接口信息
+ * @author Elliot
  */
 @RestController
 @RequestMapping("/swagger-resources")
