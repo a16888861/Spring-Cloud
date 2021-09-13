@@ -25,7 +25,7 @@ public class LoginVO implements Serializable {
     /**
      * 邮箱/手机号
      */
-    @NotEmpty(message = "user.mail.NotEmpty")
+    @NotEmpty(message = "user.mailOrPhone.NotEmpty")
     @ApiModelProperty(value = "邮箱/手机号", name = "mailOrPhone", hidden = false, required = true, position = 2)
     private String mailOrPhone;
 

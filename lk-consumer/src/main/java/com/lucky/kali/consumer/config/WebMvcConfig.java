@@ -29,9 +29,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
         List<String> excludePathList = new ArrayList<>();
         excludePathList.add("/");
         excludePathList.add("/doc.html");
+        excludePathList.add("/error");
+        excludePathList.add("/favicon.ico");
         excludePathList.add("/webjars/**");
-        excludePathList.add("/oauth/token");
-        excludePathList.add("/oauth/check_token");
         excludePathList.add("/swagger-resources");
         excludePathList.add("/v2/**");
         /*自定义拦截器*/
