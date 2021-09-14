@@ -49,7 +49,8 @@ public class UserController {
     @PostMapping("createUser")
     @ApiOperation(value = "创建用户", produces = "application/json",
             notes = "创建用户账号接口<br>" +
-                    "组别暂定为superAdmin，admin，user", position = 2)
+                    "组别暂定为superAdmin，admin，user<br>" +
+                    "如果创建参数没有加roleId，则默认为普通用户", position = 2)
     @ApiOperationSupport(author = "Elliot")
     public ResponseInfo<Response> createUser(@Valid @RequestBody @ApiParam(name = "userVO", value = "用户信息实体", required = true) UserVO userVO,
                                              BindingResult bindingResult) {
@@ -78,7 +79,7 @@ public class UserController {
                     "1.ID为：1430109634181881856 或 组别是超级管理员或者是管理员 默认是最高权限 可查询所有用户信息<br>" +
                     "2.如果不是用户组并且ID不为空，默认查询该ID创建的所有用户", position = 3)
     @ApiOperationSupport(author = "Elliot")
-    public ResponseInfo<CommonPage<UserDTO>> selectUserPageList(@RequestBody UserVOPage userVoPage, BindingResult bindingResult) {
+    public ResponseInfo<CommonPage<UserDTO>> selectUserPageList(@Valid @RequestBody UserVOPage userVoPage, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return Response.fail(bindingResult.getAllErrors().get(0).getDefaultMessage());
         }

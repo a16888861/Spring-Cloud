@@ -27,7 +27,7 @@ import javax.annotation.Resource;
  */
 @RestController("groupRoleController")
 @Api(value = "组别角色信息", tags = "组别角色信息接口")
-@ApiSupport(order = 104, author = "Elliot")
+@ApiSupport(order = 105, author = "Elliot")
 @RequestMapping("/userInfo/groupRole")
 public class GroupRoleController {
     @Resource
