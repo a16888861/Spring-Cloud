@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lucky.kali.common.base.BaseEntity;
 import com.lucky.kali.common.base.BaseServiceImpl;
 import com.lucky.kali.common.base.CommonPage;
+import com.lucky.kali.common.context.UserContextUtil;
 import com.lucky.kali.common.dto.RoleDTO;
 import com.lucky.kali.common.enums.RoleEnums;
 import com.lucky.kali.common.util.PageUtil;
@@ -41,9 +42,7 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleMapper, Role, RoleDTO> 
     @Override
     public int createRole(RoleVO roleVO) {
         RoleDTO roleDTO = BeanUtil.copyProperties(roleVO, RoleDTO.class);
-        //TODO 创建者待添加
-        roleDTO.setCreateBy("1430109634181881856");
-
+        roleDTO.setCreateBy(UserContextUtil.getUserInfo().getId());
         roleDTO.setStatus(RoleEnums.getRoleCodeByRoleEnName(roleDTO.getStatus()));
         int roleInsert = insert(roleDTO);
 
@@ -51,6 +50,7 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleMapper, Role, RoleDTO> 
         GroupRoleDTO groupRoleDTO = GroupRoleDTO.builder()
                 .groupId(roleVO.getGroupId())
                 .roleId(roleDTO.getId())
+                .createBy(UserContextUtil.getUserInfo().getId())
                 .build();
         int groupRoleInsert = groupRoleService.insert(groupRoleDTO);
         if (roleInsert == groupRoleInsert) {

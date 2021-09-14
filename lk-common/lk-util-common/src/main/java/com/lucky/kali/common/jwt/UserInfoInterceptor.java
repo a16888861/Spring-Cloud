@@ -1,7 +1,10 @@
 package com.lucky.kali.common.jwt;
 
+import cn.hutool.json.JSONUtil;
 import com.alibaba.csp.sentinel.util.StringUtil;
 import com.lucky.kali.common.constants.CommonConstants;
+import com.lucky.kali.common.context.UserContextUtil;
+import com.lucky.kali.common.dto.UserDTO;
 import com.lucky.kali.common.exception.BaseException;
 import com.lucky.kali.common.response.Response;
 import com.lucky.kali.common.response.ResponseEnum;
@@ -89,6 +92,8 @@ public class UserInfoInterceptor implements HandlerInterceptor {
             }
             throw new BaseException(Response.fail(ResponseEnum.TOKEN_ERROR.getMessage()).getMessage());
         }
+        /*请求前向全局线程中存储用户信息*/
+        UserContextUtil.setUserInfo(JSONUtil.toBean((String) redisUtil.get(CommonConstants.USER_INFO), UserDTO.class));
         return Boolean.TRUE;
     }
 
@@ -113,9 +118,12 @@ public class UserInfoInterceptor implements HandlerInterceptor {
      */
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        /*统计方法执行耗时*/
         long millis = System.currentTimeMillis();
         log.info(request.getServletPath() + "耗时：" + (millis - THREAD.get()) + "ms");
         THREAD.remove();
+        /*每次请求完成后，清理存储的用户线程*/
+        UserContextUtil.remove();
         HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
     }
 }

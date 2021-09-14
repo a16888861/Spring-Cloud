@@ -8,6 +8,8 @@ import com.lucky.kali.common.base.BaseDTO;
 import com.lucky.kali.common.base.BaseEntity;
 import com.lucky.kali.common.base.BaseServiceImpl;
 import com.lucky.kali.common.base.CommonPage;
+import com.lucky.kali.common.constants.CommonConstants;
+import com.lucky.kali.common.context.UserContextUtil;
 import com.lucky.kali.common.dto.UserDTO;
 import com.lucky.kali.common.enums.GroupEnums;
 import com.lucky.kali.common.util.Md5Utils;
@@ -61,8 +63,8 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User, UserDTO> 
      */
     @Override
     public int createUser(UserDTO userDTO) {
-        //TODO 创建者待添加 -> 完了写一个 上下文类 从服务上下文中获取创建者ID
-        userDTO.setCreateBy("superAdmin");
+        /*从服务上下文中获取创建者ID*/
+        userDTO.setCreateBy(UserContextUtil.getUserInfo().getId());
         if (StringUtil.isBlank(userDTO.getPassword())) {
             /*如果没有填写密码，则设置初始密码为111111*/
             userDTO.setPassword(Md5Utils.md5Hex("111111"));
@@ -70,6 +72,9 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User, UserDTO> 
             userDTO.setPassword(Md5Utils.md5Hex(userDTO.getPassword()));
         }
         //TODO 如果不存在角色ID 创建时 默认为普通用户
+//        if (StringUtil.isBlank(userDTO.getRoleId())){
+//            userDTO.setRoleId();
+//        }
         userDTO.setUserGroup(GroupEnums.getGroupCode(userDTO.getUserGroup()));
         userDTO.setYear(String.valueOf(LocalDateTime.now().getYear()));
         userDTO.setStatus(BaseDTO.DEL_FLAG_NORMAL);
@@ -91,22 +96,27 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User, UserDTO> 
         Page<UserDTO> page = new Page<>();
         page.setCurrent(userVoPage.getPageCurrent()).setSize(userVoPage.getPageSize());
         Page<UserDTO> userPage;
-        /*如果是超级管理员或者是管理员组别，默认查询所有*/
-        //TODO 待添加 从上下文取当前用户信息存储的所有信息
-//        if ("1430109634181881856".equals(userVoPage.getId()) || GroupEnums.GROUP_ADMIN.getGroupName().equals(userVoPage.getUserGroup())) {
-        if ("1430109634181881856".equals(userVoPage.getId())) {
-            userPage = selectPage(page, setSelectValue(new LambdaQueryWrapper<>(), userVoPage));
-//        } else if (!GroupEnums.GROUP_USER.getGroupName().equals(userVoPage.getUserGroup()) && StringUtil.isNotBlank(userVoPage.getId())) {
-        } else if (StringUtil.isNotBlank(userVoPage.getId())) {
-            /*如果不是用户组并且id不为空，默认查询他自己创建的所有用户*/
-            LambdaQueryWrapper<User> u = setSelectValue(new LambdaQueryWrapper<>(), userVoPage);
+        boolean selectAll;
+        /*如果当前登录的用户是超级管理员，并且组别为管理员或者超级管理员，默认查询所有*/
+        selectAll = UserContextUtil.getUserInfo().getId().equals(userVoPage.getId()) &&
+                GroupEnums.GROUP_ADMIN.getGroupName().equals(userVoPage.getUserGroup()) ||
+                GroupEnums.GROUP_SUPER_ADMIN.getGroupName().equals(userVoPage.getUserGroup());
+        if (selectAll) {
+            userPage = selectPage(page, setSelectValue(new LambdaQueryWrapper<>(), userVoPage, CommonConstants.SELECT_ALL));
+            return PageUtil.transform(userPage, UserDTO.class);
+        }
+        /*如果不是用户组并且id不为空，默认查询他自己创建的所有用户*/
+        selectAll = !GroupEnums.GROUP_USER.getGroupName().equals(userVoPage.getUserGroup()) &&
+                StringUtil.isNotBlank(userVoPage.getId());
+        if (selectAll) {
+            LambdaQueryWrapper<User> u = setSelectValue(new LambdaQueryWrapper<>(), userVoPage, "");
             u.eq(User::getCreateBy, userVoPage.getId());
             userPage = selectPage(page, u);
+            return PageUtil.transform(userPage, UserDTO.class);
         } else {
             /*否则默认返回空*/
             return new CommonPage<>();
         }
-        return PageUtil.transform(userPage, UserDTO.class);
     }
 
     /**
@@ -116,7 +126,10 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User, UserDTO> 
      * @param userVoPage 赋值参数
      * @return 条件赋值结果
      */
-    private LambdaQueryWrapper<User> setSelectValue(LambdaQueryWrapper<User> u, UserVOPage userVoPage) {
+    private LambdaQueryWrapper<User> setSelectValue(LambdaQueryWrapper<User> u, UserVOPage userVoPage, String isAll) {
+        if (CommonConstants.SELECT_ALL.equals(isAll)) {
+            userVoPage.setUserGroup(null);
+        }
         u.eq(BaseEntity::getDelFlag, BaseEntity.DEL_FLAG_NORMAL)
                 .eq(StringUtil.isNotBlank(userVoPage.getYear()), User::getYear, userVoPage.getYear())
                 .like(StringUtil.isNotBlank(userVoPage.getName()), User::getName, userVoPage.getName())

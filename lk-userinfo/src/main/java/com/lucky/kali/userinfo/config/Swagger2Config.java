@@ -70,7 +70,7 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Business RESTFUL APIs(Swagger-2.0.8)")
+                .title("UserInfo RESTFUL APIs(Swagger-2.0.8)")
                 .description("用户模块API文档")
                 .contact(new Contact("Elliot", "https://xstrojan.top/about/", "a12888821@gmail.com"))
                 .version("1.0")

@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lucky.kali.common.base.BaseEntity;
 import com.lucky.kali.common.base.BaseServiceImpl;
 import com.lucky.kali.common.base.CommonPage;
+import com.lucky.kali.common.context.UserContextUtil;
 import com.lucky.kali.common.dto.GroupDTO;
 import com.lucky.kali.common.util.PageUtil;
 import com.lucky.kali.userinfo.entity.Group;
@@ -36,6 +37,7 @@ public class GroupServiceImpl extends BaseServiceImpl<GroupMapper, Group, GroupD
     @Override
     public int createGroup(GroupDTO groupDTO) {
         groupDTO.setYear(String.valueOf(LocalDateTime.now().getYear()));
+        groupDTO.setCreateBy(UserContextUtil.getUserInfo().getId());
         int insert = insert(groupDTO);
         if (insert > 0) {
             return insert;

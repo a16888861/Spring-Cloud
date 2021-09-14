@@ -1,6 +1,7 @@
 package com.lucky.kali.userinfo.controller;
 
 import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
@@ -111,6 +112,8 @@ public class AccessController {
         /*存储刷新Token信息(2小时后过期)*/
         redisUtil.set(CommonConstants.USER_REFRESH_TOKEN + CommonConstants.HORIZONTAL_BAR + userDTO.getId(),
                 CommonConstants.TOKEN_PREFIX + CommonConstants.SPACE + refreshToken, refreshTokenExpiredTime);
+        /*登录成功后 将用户信息放到redis中(存储150分钟)*/
+        redisUtil.set(CommonConstants.USER_INFO, JSONUtil.toJsonStr(userDTO), 9000);
         return Response.success(ResponseEnum.SUCCESS.getMessage(), userTokenVO);
     }
 
@@ -154,6 +157,8 @@ public class AccessController {
         String xAuthorization = request.getHeader(CommonConstants.X_AUTHORIZATION);
         /*删除redis中的token信息*/
         redisUtil.del(JwtUtil.getClaim(authorization.split(CommonConstants.SPACE)[1]), JwtUtil.getClaim(xAuthorization.split(CommonConstants.SPACE)[1]));
+        /*删除redis中的用户信息*/
+        redisUtil.del(CommonConstants.USER_INFO);
         return Response.success(ResponseEnum.SUCCESS.getMessage(), (String) null);
     }
 }

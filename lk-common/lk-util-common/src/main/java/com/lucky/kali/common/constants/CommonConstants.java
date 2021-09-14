@@ -6,6 +6,16 @@ package com.lucky.kali.common.constants;
 public class CommonConstants {
 
     /**
+     * 查询判断条件
+     */
+    public static final String SELECT_ALL = "all";
+
+    /**
+     * 用户信息前缀
+     */
+    public static final String USER_INFO = "user-info";
+
+    /**
      * 横杠
      */
     public static final String HORIZONTAL_BAR = "-";
