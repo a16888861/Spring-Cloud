@@ -414,8 +414,7 @@ public final class RedisUtil {
 
     public long setRemove(String key, Object... values) {
         try {
-            Long count = redisTemplate.opsForSet().remove(key, values);
-            return count;
+            return redisTemplate.opsForSet().remove(key, values);
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
@@ -430,6 +429,7 @@ public final class RedisUtil {
      * @param key   键
      * @param start 开始
      * @param end   结束 0 到 -1代表所有值
+     * @return 结果
      */
     public List<Object> lGet(String key, long start, long end) {
         try {
@@ -445,6 +445,7 @@ public final class RedisUtil {
      * 获取list缓存的长度
      *
      * @param key 键
+     * @return 结果
      */
     public long lGetListSize(String key) {
         try {
@@ -461,6 +462,7 @@ public final class RedisUtil {
      *
      * @param key   键
      * @param index 索引 index>=0时， 0 表头，1 第二个元素，依次类推；index<0时，-1，表尾，-2倒数第二个元素，依次类推
+     * @return 结果
      */
     public Object lGetIndex(String key, long index) {
         try {
@@ -477,6 +479,7 @@ public final class RedisUtil {
      *
      * @param key   键
      * @param value 值
+     * @return 结果
      */
     public boolean lSet(String key, Object value) {
         try {
@@ -495,6 +498,7 @@ public final class RedisUtil {
      * @param key   键
      * @param value 值
      * @param time  时间(秒)
+     * @return 结果
      */
     public boolean lSet(String key, Object value, long time) {
         try {
@@ -516,7 +520,7 @@ public final class RedisUtil {
      *
      * @param key   键
      * @param value 值
-     * @return
+     * @return 结果
      */
     public boolean lSet(String key, List<Object> value) {
         try {
@@ -536,7 +540,7 @@ public final class RedisUtil {
      * @param key   键
      * @param value 值
      * @param time  时间(秒)
-     * @return
+     * @return 结果
      */
     public boolean lSet(String key, List<Object> value, long time) {
         try {
@@ -558,7 +562,7 @@ public final class RedisUtil {
      * @param key   键
      * @param index 索引
      * @param value 值
-     * @return
+     * @return 结果
      */
 
     public boolean lUpdateIndex(String key, long index, Object value) {

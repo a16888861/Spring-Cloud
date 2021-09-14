@@ -29,7 +29,7 @@ public enum GroupEnums {
      */
     private final String groupName;
 
-    GroupEnums(String groupCode, String groupName){
+    GroupEnums(String groupCode, String groupName) {
         this.groupCode = groupCode;
         this.groupName = groupName;
     }
@@ -44,8 +44,9 @@ public enum GroupEnums {
 
     /**
      * 获取组别Name
-     * @param groupCode     组别Code
-     * @return              组别Name
+     *
+     * @param groupCode 组别Code
+     * @return 组别Name
      */
     public static String getGroupName(String groupCode) {
         for (GroupEnums g : GroupEnums.values()) {
@@ -58,8 +59,9 @@ public enum GroupEnums {
 
     /**
      * 获取组别Code
-     * @param groupName     组别Name
-     * @return              组别Code
+     *
+     * @param groupName 组别Name
+     * @return 组别Code
      */
     public static String getGroupCode(String groupName) {
         for (GroupEnums g : GroupEnums.values()) {
