@@ -1,6 +1,8 @@
 
 package com.lucky.kali.common.base;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,26 +18,31 @@ public class CommonPage<T extends Serializable> implements Serializable {
     /**
      * 当前分页的数据集
      */
+    @ApiModelProperty(value = "当前分页的数据集", name = "list")
     private List<T> list = null;
 
     /**
      * 总记录数
      */
+    @ApiModelProperty(value = "总记录数", name = "totalCount")
     private int totalCount = 0;
 
     /**
      * 总页数
      */
+    @ApiModelProperty(value = "总页数", name = "totalPage")
     private int totalPage = 0;
 
     /**
      * 当前页
      */
+    @ApiModelProperty(value = "当前页", name = "pageCurrent")
     private int pageCurrent = 1;
 
     /**
      * 每页记录数
      */
+    @ApiModelProperty(value = "每页记录数", name = "pageSize")
     private int pageSize = 20;
 
     /**

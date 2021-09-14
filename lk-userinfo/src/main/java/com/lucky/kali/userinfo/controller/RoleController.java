@@ -46,7 +46,10 @@ public class RoleController {
      * @return 创建结果
      */
     @PostMapping("createRole")
-    @ApiOperation(value = "创建角色信息", produces = "application/json", notes = "创建角色信息用的接口")
+    @ApiOperation(value = "创建角色信息", produces = "application/json",
+            notes = "创建角色信息用的接口<br>" +
+                    "status:填写enable或disable<br>" +
+                    "type:暂未定义字段信息")
     @ApiOperationSupport(author = "Elliot")
     public ResponseInfo<Response> createRole(@Valid @RequestBody @ApiParam(name = "roleVO", value = "角色信息实体", required = true) RoleVO roleVO,
                                              BindingResult bindingResult) {
