@@ -1,9 +1,11 @@
 package com.lucky.kali.userinfo.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.lucky.kali.common.base.CommonPage;
 import com.lucky.kali.common.dto.UserDTO;
+import com.lucky.kali.common.exception.ExceptionUtil;
 import com.lucky.kali.common.response.Response;
 import com.lucky.kali.common.response.ResponseEnum;
 import com.lucky.kali.common.response.ResponseInfo;
@@ -44,14 +46,13 @@ public class UserController {
      * @param userVO 用户信息
      * @return 创建结果
      */
-    //TODO Sentinel待配置
-//    @SentinelResource(value = "createUser", blockHandler = "blockHandlerCommon")
     @PostMapping("createUser")
     @ApiOperation(value = "创建用户", produces = "application/json",
             notes = "创建用户账号接口<br>" +
                     "组别暂定为superAdmin，admin，user<br>" +
                     "如果创建参数没有加roleId，则默认为普通用户", position = 2)
     @ApiOperationSupport(author = "Elliot")
+    @SentinelResource(value = "createUser", blockHandlerClass = ExceptionUtil.class, blockHandler = "handleException")
     public ResponseInfo<Response> createUser(@Valid @RequestBody @ApiParam(name = "userVO", value = "用户信息实体", required = true) UserVO userVO,
                                              BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {

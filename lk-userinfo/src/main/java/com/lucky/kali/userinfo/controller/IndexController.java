@@ -1,7 +1,9 @@
 package com.lucky.kali.userinfo.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import com.lucky.kali.common.exception.ExceptionUtil;
 import com.lucky.kali.common.response.Response;
 import com.lucky.kali.common.response.ResponseEnum;
 import com.lucky.kali.common.response.ResponseInfo;
@@ -48,6 +50,7 @@ public class IndexController {
     @GetMapping("/")
     @ApiOperation(value = "获取首页信息", produces = "application/json")
     @ApiOperationSupport(author = "Elliot")
+    @SentinelResource(value = "index", blockHandlerClass = ExceptionUtil.class, blockHandler = "handleException")
     public ResponseInfo<List<String>> index() {
         List<String> result = new ArrayList<>();
         result.add("Welcome To The " + buildName + " ~");
