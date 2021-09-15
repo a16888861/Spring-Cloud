@@ -15,7 +15,7 @@ public final class ExceptionUtil {
 
     public static ResponseInfo<String> handleException(BlockException ex) {
         log.error("错误发生: " + ex.getClass().getCanonicalName());
-        return Response.custom(445, "common.response.sentinel.error", null);
+        return Response.custom(408, "common.response.sentinel.error", null);
     }
 
 }
