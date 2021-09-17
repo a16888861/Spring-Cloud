@@ -36,48 +36,48 @@ public class UserVOPage implements Serializable {
     @NotEmpty(message = "common.response.pageSize.NotEmpty")
     private Integer pageSize;
 
-    @ApiModelProperty(value = "用户标识符", name = "id", required = false)
+    @ApiModelProperty(value = "用户标识符", name = "id", required = false, position = 3)
     private String id;
 
     /**
      * 用户名
      */
-    @ApiModelProperty(value = "用户名", name = "name", required = false)
+    @ApiModelProperty(value = "用户名", name = "name", required = false, position = 4)
     private String name;
 
     /**
      * 邮箱
      */
-    @ApiModelProperty(value = "邮箱", name = "mail", required = false)
+    @ApiModelProperty(value = "邮箱", name = "mail", required = false, position = 5)
     private String mail;
 
     /**
      * 手机号
      */
-    @ApiModelProperty(value = "手机号", name = "phone", required = false)
+    @ApiModelProperty(value = "手机号", name = "phone", required = false, position = 6)
     private String phone;
 
     /**
      * 用户名-别名
      */
-    @ApiModelProperty(value = "用户名-别名", name = "screenName", required = false)
+    @ApiModelProperty(value = "用户名-别名", name = "screenName", required = false, position = 7)
     private String screenName;
 
     /**
      * 用户组别
      */
-    @ApiModelProperty(value = "用户组别", name = "group", required = false)
+    @ApiModelProperty(value = "用户组别", name = "group", required = false, position = 8)
     private String userGroup;
 
     /**
      * 年份
      */
-    @ApiModelProperty(value = "年份", name = "year", required = false)
+    @ApiModelProperty(value = "年份", name = "year", required = false, position = 9)
     private String year;
 
     /**
      * 状态(0正常,1锁定)
      */
-    @ApiModelProperty(value = "状态(0正常,1锁定)", name = "status", required = false)
+    @ApiModelProperty(value = "状态(0正常,1锁定)", name = "status", required = false, position = 10)
     private String status;
 }
