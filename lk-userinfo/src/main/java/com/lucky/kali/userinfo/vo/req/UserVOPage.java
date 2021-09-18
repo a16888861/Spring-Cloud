@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -26,14 +26,14 @@ public class UserVOPage implements Serializable {
      * 当前页
      */
     @ApiModelProperty(value = "当前页", name = "pageCurrent", required = true, position = 1)
-    @NotEmpty(message = "common.response.pageCurrent.NotEmpty")
+    @NotNull(message = "common.response.pageCurrent.NotEmpty")
     private Integer pageCurrent;
 
     /**
      * 每页记录数
      */
     @ApiModelProperty(value = "每页记录数", name = "pageSize", required = true, position = 2)
-    @NotEmpty(message = "common.response.pageSize.NotEmpty")
+    @NotNull(message = "common.response.pageSize.NotEmpty")
     private Integer pageSize;
 
     @ApiModelProperty(value = "用户标识符", name = "id", required = false, position = 3)

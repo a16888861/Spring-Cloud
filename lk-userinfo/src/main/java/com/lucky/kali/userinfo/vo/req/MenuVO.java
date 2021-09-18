@@ -16,13 +16,18 @@ import java.io.Serializable;
  * @author Elliot
  */
 @Data
-@Accessors(chain = true)
-@SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 @ApiModel("菜单表实体")
+@Accessors(chain = true)
+@SuperBuilder(toBuilder = true)
 public class MenuVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    /**
+     * 主键id
+     */
+    private String id;
 
     /**
      * 系统id
@@ -98,8 +103,8 @@ public class MenuVO implements Serializable {
     private String isShow;
 
     /**
-     * 菜单类型
+     * 菜单类型(0总菜单，子菜单用1，2，3，4，5顺序向下区分)
      */
-    @ApiModelProperty(value = "菜单类型", name = "type", hidden = false, required = false, position = 11)
+    @ApiModelProperty(value = "菜单类型(0总菜单，子菜单用1，2，3，4，5顺序向下区分)", name = "type", hidden = false, required = false, position = 11)
     private String type;
 }

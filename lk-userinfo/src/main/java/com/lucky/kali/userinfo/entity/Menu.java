@@ -87,7 +87,7 @@ public class Menu extends BaseEntity<Menu, MenuDTO> implements Serializable {
     private String isShow;
 
     /**
-     * 菜单类型
+     * 菜单类型(0总菜单，子菜单用1，2，3，4，5顺序向下区分)
      */
     private String type;
 

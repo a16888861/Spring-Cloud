@@ -4,6 +4,7 @@ import com.lucky.kali.common.base.BaseDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
@@ -15,9 +16,10 @@ import java.io.Serializable;
  * @since 2021-08-24
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-@SuperBuilder(toBuilder = true)
 @NoArgsConstructor
+@Accessors(chain = true)
+@SuperBuilder(toBuilder = true)
+@EqualsAndHashCode(callSuper = true)
 public class MenuDTO extends BaseDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -83,7 +85,7 @@ public class MenuDTO extends BaseDTO implements Serializable {
     private String isShow;
 
     /**
-     * 菜单类型
+     * 菜单类型(0总菜单，子菜单用1，2，3，4，5顺序向下区分)
      */
     private String type;
 

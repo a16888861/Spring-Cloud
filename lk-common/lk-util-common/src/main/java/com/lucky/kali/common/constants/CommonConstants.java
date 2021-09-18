@@ -6,9 +6,17 @@ package com.lucky.kali.common.constants;
 public class CommonConstants {
 
     /**
-     * 查询判断条件
+     * 查询判断条件(所有)
      */
     public static final String SELECT_ALL = "all";
+    /**
+     * 查询判断条件(顶级)
+     */
+    public static final String SELECT_TOP = "top";
+    /**
+     * 查询判断条件(空)
+     */
+    public static final String SELECT_NULL = "null";
 
     /*----------------------------------------符号相关----------------------------------------*/
     /**

@@ -47,12 +47,15 @@ public class Response {
     public static <T> ResponseInfo<T> fail(String message, String... args) {
         return returnResult(ResponseEnum.FAILURE.getCode(), response.messageSource.getMessage(message, args, LocaleContextHolder.getLocale()), null);
     }
+
     public static <T> ResponseInfo<T> fail(ResponseEnum responseEnum) {
         return returnResult(responseEnum.getCode(), response.messageSource.getMessage(responseEnum.getMessage(), null, LocaleContextHolder.getLocale()), null);
     }
+
     public static <T> ResponseInfo<T> fail(ResponseEnum responseEnum, String message, String... args) {
         return returnResult(responseEnum.getCode(), response.messageSource.getMessage(message, args, LocaleContextHolder.getLocale()), null);
     }
+
     public static <T> ResponseInfo<T> fail(ResponseEnum responseEnum, String message, T data, String... args) {
         return returnResult(responseEnum.getCode(), response.messageSource.getMessage(message, args, LocaleContextHolder.getLocale()), data);
     }
@@ -63,12 +66,15 @@ public class Response {
     public static <T> ResponseInfo<T> success(String message, String... args) {
         return returnResult(ResponseEnum.SUCCESS.getCode(), response.messageSource.getMessage(message, args, LocaleContextHolder.getLocale()), null);
     }
+
     public static <T> ResponseInfo<T> success(ResponseEnum responseEnum) {
-        return returnResult(ResponseEnum.SUCCESS.getCode(), response.messageSource.getMessage(responseEnum.getMessage(), null , LocaleContextHolder.getLocale()), null);
+        return returnResult(ResponseEnum.SUCCESS.getCode(), response.messageSource.getMessage(responseEnum.getMessage(), null, LocaleContextHolder.getLocale()), null);
     }
+
     public static <T> ResponseInfo<T> success(ResponseEnum responseEnum, String message, String... args) {
         return returnResult(ResponseEnum.SUCCESS.getCode(), response.messageSource.getMessage(message, args, LocaleContextHolder.getLocale()), null);
     }
+
     public static <T> ResponseInfo<T> success(String message, T data, String... args) {
         return returnResult(ResponseEnum.SUCCESS.getCode(), response.messageSource.getMessage(message, args, LocaleContextHolder.getLocale()), data);
     }
@@ -79,16 +85,22 @@ public class Response {
     public static <T> ResponseInfo<T> notFound(String message, String... args) {
         return returnResult(ResponseEnum.NOTFOUND.getCode(), response.messageSource.getMessage(message, args, LocaleContextHolder.getLocale()), null);
     }
+
     public static <T> ResponseInfo<T> notFound(ResponseEnum responseEnum) {
         return returnResult(ResponseEnum.NOTFOUND.getCode(), response.messageSource.getMessage(responseEnum.getMessage(), null, LocaleContextHolder.getLocale()), null);
     }
+
     public static <T> ResponseInfo<T> notFound(ResponseEnum responseEnum, String message, String... args) {
         return returnResult(ResponseEnum.NOTFOUND.getCode(), response.messageSource.getMessage(message, args, LocaleContextHolder.getLocale()), null);
     }
+
     public static <T> ResponseInfo<T> notFound(ResponseEnum responseEnum, String message, T data, String... args) {
         return returnResult(ResponseEnum.NOTFOUND.getCode(), response.messageSource.getMessage(message, args, LocaleContextHolder.getLocale()), data);
     }
 
+    /**
+     * 自定义
+     */
     public static <T> ResponseInfo<T> custom(int code, String message, T data, String... args) {
         return returnResult(code, response.messageSource.getMessage(message, args, LocaleContextHolder.getLocale()), data);
     }
