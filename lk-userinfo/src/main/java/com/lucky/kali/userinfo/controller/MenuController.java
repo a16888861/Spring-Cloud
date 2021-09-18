@@ -5,6 +5,7 @@ import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.lucky.kali.common.response.Response;
 import com.lucky.kali.common.response.ResponseEnum;
 import com.lucky.kali.common.response.ResponseInfo;
+import com.lucky.kali.userinfo.service.MenuService;
 import com.lucky.kali.userinfo.vo.req.MenuVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 
 /**
@@ -27,13 +29,20 @@ import javax.validation.Valid;
 @Api(value = "菜单信息", tags = "菜单信息接口")
 @ApiSupport(order = 105, author = "Elliot")
 public class MenuController {
+    @Resource
+    private MenuService menuService;
 
     @PostMapping("createMenu")
-    @ApiOperation(value = "创建菜单信息接口",produces = "application/json")
-    public ResponseInfo<Response> createMenu(@Valid @RequestBody MenuVO menuVO, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
+    @ApiOperation(value = "创建菜单信息接口", produces = "application/json")
+    public ResponseInfo<Response> createMenu(@Valid @RequestBody MenuVO menuVO, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return Response.fail(bindingResult.getAllErrors().get(0).getDefaultMessage());
         }
-        return Response.success(ResponseEnum.SUCCESS.getMessage());
+        Integer result = menuService.createMenu(menuVO);
+        if (result > 0) {
+            return Response.success(ResponseEnum.SUCCESS.getMessage());
+        } else {
+            return Response.fail(ResponseEnum.FAILURE.getMessage());
+        }
     }
 }
