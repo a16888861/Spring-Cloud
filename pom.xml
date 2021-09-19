@@ -50,8 +50,8 @@
         <module>lk-gateway</module>
         <!-- 用户 -->
         <module>lk-userinfo</module>
-        <!-- 服务者 -->
-        <module>lk-business</module>
+        <!-- 用户文章 -->
+        <module>lk-article</module>
         <!-- 消费者 -->
         <module>lk-consumer</module>
     </modules>
