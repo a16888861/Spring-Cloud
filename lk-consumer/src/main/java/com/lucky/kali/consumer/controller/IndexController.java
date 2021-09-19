@@ -78,7 +78,7 @@ public class IndexController {
                     .instances(instances).build();
             voList.add(vo);
         });
-        return Response.success("common.response.success", voList);
+        return Response.success(ResponseEnum.SUCCESS.getMessage(), voList);
     }
 
     /**
@@ -102,6 +102,6 @@ public class IndexController {
     @ApiOperation(value = "获取所有注册的服务名称", produces = "application/json")
     @ApiOperationSupport(author = "Elliot")
     public ResponseInfo<List<String>> getServices() {
-        return Response.success("common.response.success", discoveryClient.getServices());
+        return Response.success(ResponseEnum.SUCCESS.getMessage(), discoveryClient.getServices());
     }
 }
