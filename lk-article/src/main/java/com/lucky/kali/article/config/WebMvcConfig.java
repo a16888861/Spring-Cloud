@@ -1,4 +1,4 @@
-package com.lucky.kali.business.config;
+package com.lucky.kali.article.config;
 
 import com.lucky.kali.common.jwt.UserInfoInterceptor;
 import org.springframework.context.annotation.Configuration;

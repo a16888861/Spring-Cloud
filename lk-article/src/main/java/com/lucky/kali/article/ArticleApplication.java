@@ -1,4 +1,4 @@
-package com.lucky.kali.business;
+package com.lucky.kali.article;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -13,11 +13,11 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "com.lucky.kali", exclude = DataSourceAutoConfiguration.class)
-@MapperScan(basePackages = {"com/lucky/kali/business/mapper"})
+@MapperScan(basePackages = {"com/lucky/kali/article/mapper"})
 @EnableFeignClients(basePackages = "com.lucky.kali")
 @ComponentScan(basePackages={"com.lucky.kali"})
-public class BusinessApplication {
+public class ArticleApplication {
     public static void main(String[] args) {
-        SpringApplication.run(BusinessApplication.class, args);
+        SpringApplication.run(ArticleApplication.class, args);
     }
 }

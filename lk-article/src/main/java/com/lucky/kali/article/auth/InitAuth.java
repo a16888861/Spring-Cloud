@@ -1,4 +1,4 @@
-package com.lucky.kali.business.auth;
+package com.lucky.kali.article.auth;
 
 import com.lucky.kali.common.util.JwtUtil;
 import lombok.extern.slf4j.Slf4j;

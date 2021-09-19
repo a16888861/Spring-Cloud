@@ -1,4 +1,4 @@
-package com.lucky.kali.business.config;
+package com.lucky.kali.article.config;
 
 import com.github.xiaoymin.knife4j.spring.extension.OpenApiExtensionResolver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,33 +45,33 @@ public class Swagger2Config {
      */
     private static final String SPLIT_SYMBOL = ";";
 
-    @Bean(value = "服务提供者模块")
+    @Bean(value = "用户文章模块")
     public Docket api1() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .enable(knife4jEnable)
                 /*分组名称(要和网关的路由id一致)*/
-                .groupName("服务提供者模块")
+                .groupName("用户文章模块")
                 .select()
                 /*采用包扫描的方式来确定要显示的接口*/
-                .apis(RequestHandlerSelectors.basePackage("com.lucky.kali.business.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.lucky.kali.article.controller"))
                 /*采用包含注解的方式来确定要显示的接口(两种方式：根据类注释和根据方法注释，看情况选择)*/
 //                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
 //                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 /*自写多包扫描方法(方法过时)*/
-//                .apis(basePackage("com.lucky.kali.business.controller"))
+//                .apis(basePackage("com.lucky.kali.article.controller"))
                 /*扫描全部*/
                 .paths(PathSelectors.any())
                 /*扫描指定*/
 //                .paths(PathSelectors.regex("/index/*"))
                 .build()
-                .extensions(openApiExtensionResolver.buildExtensions("服务提供者模块"));
+                .extensions(openApiExtensionResolver.buildExtensions("用户文章模块"));
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Business RESTFUL APIs(Swagger-2.0.8)")
-                .description("服务提供者模块API文档")
+                .title("Article RESTFUL APIs(Swagger-2.0.8)")
+                .description("用户文章模块API文档")
                 .contact(new Contact("Elliot", "https://xstrojan.top/about/", "a12888821@gmail.com"))
                 .version("1.0")
                 .termsOfServiceUrl("https://github.com/a16888861/Spring-Cloud")

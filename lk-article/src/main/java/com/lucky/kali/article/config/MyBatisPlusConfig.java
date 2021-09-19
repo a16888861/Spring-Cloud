@@ -1,4 +1,4 @@
-package com.lucky.kali.business.config;
+package com.lucky.kali.article.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;

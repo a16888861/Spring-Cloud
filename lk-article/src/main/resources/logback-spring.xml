@@ -3,7 +3,7 @@
 <configuration scan="false" scanPeriod="60 seconds" debug="false">
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
     <springProperty name="LOG_HOME" source="logging.file.path" defaultValue="./.logs/default" />
-    <property name="appName" value="lk-business"/>
+    <property name="appName" value="lk-article"/>
     <springProfile name="dev">
         <property name="LOG_HOME" value="./.logs/dev"/>
     </springProfile>
@@ -48,7 +48,7 @@
         </layout>
     </appender>
 
-    <logger name="com.lucky.kali.business" level="debug" additivity="true"/>
+    <logger name="com.lucky.kali.article" level="debug" additivity="true"/>
     <logger name="org.springframework" level="error" additivity="true"/>
     <logger name="java.sql.Connection" level="info"/>
     <logger name="java.sql.Statement" level="info"/>
