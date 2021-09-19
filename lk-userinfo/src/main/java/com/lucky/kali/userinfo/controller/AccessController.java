@@ -5,6 +5,7 @@ import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import com.lucky.kali.common.aspect.Log;
 import com.lucky.kali.common.base.BaseEntity;
 import com.lucky.kali.common.constants.CommonConstants;
 import com.lucky.kali.common.dto.GroupDTO;
@@ -60,6 +61,7 @@ public class AccessController {
      * @param bindingResult 参数校验
      * @return 登陆结果
      */
+    @Log("登陆")
     @PostMapping("doLogin")
     @ApiOperation(value = "用户登陆", produces = "application/json",
             notes = "登陆用的接口<br>" +
@@ -123,6 +125,7 @@ public class AccessController {
      * @param request 请求
      * @return 当前登陆的用户信息
      */
+    @Log("获取当前登陆的用户信息")
     @GetMapping("getUserInfo")
     @ApiOperation(value = "获取当前登陆用户信息", produces = "application/json",
             notes = "获取当前登陆用户的信息<br>" +
@@ -147,6 +150,7 @@ public class AccessController {
      * @param request 请求
      * @return 结果
      */
+    @Log("退出登陆")
     @GetMapping("logout")
     @ApiOperation(value = "退出登陆", produces = "application/json",
             notes = "退出登陆",
