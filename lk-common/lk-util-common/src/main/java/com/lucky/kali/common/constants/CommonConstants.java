@@ -27,8 +27,20 @@ public class CommonConstants {
      * 空格
      */
     public static final String SPACE = " ";
+    /**
+     * 逗号
+     */
+    public static final String COMMA = ",";
+    /**
+     * 冒号
+     */
+    public static final String COLON = ":";
 
     /*----------------------------------------Token相关----------------------------------------*/
+    /**
+     * token
+     */
+    public static final String TOKEN = "token";
     /**
      * 用户信息前缀
      */

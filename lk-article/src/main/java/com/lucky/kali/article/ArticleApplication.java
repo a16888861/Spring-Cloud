@@ -13,9 +13,9 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "com.lucky.kali", exclude = DataSourceAutoConfiguration.class)
-@MapperScan(basePackages = {"com/lucky/kali/article/mapper"})
+@MapperScan(basePackages = {"com/lucky/kali/article/mapper", "com/lucky/kali/common/aspect"})
 @EnableFeignClients(basePackages = "com.lucky.kali")
-@ComponentScan(basePackages={"com.lucky.kali"})
+@ComponentScan(basePackages = {"com.lucky.kali"})
 public class ArticleApplication {
     public static void main(String[] args) {
         SpringApplication.run(ArticleApplication.class, args);

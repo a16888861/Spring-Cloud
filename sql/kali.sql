@@ -11,7 +11,7 @@
  Target Server Version : 50705
  File Encoding         : 65001
 
- Date: 18/09/2021 00:04:05
+ Date: 20/09/2021 00:06:02
 */
 
 SET NAMES utf8mb4;
@@ -90,7 +90,7 @@ CREATE TABLE `kali_menu` (
                              `code` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT '菜单编码',
                              `status` varchar(10) CHARACTER SET utf8 DEFAULT NULL COMMENT '菜单状态(0锁定1正常)',
                              `is_show` char(1) CHARACTER SET utf8 NOT NULL COMMENT '是否显示(0否1是)',
-                             `type` varchar(10) CHARACTER SET utf8 DEFAULT NULL COMMENT '菜单类型',
+                             `type` varchar(10) CHARACTER SET utf8 DEFAULT NULL COMMENT '菜单类型(0总菜单，子菜单用1，2，3，4，5顺序向下区分)',
                              `create_by` varchar(32) CHARACTER SET utf8 NOT NULL COMMENT '创建人',
                              `create_date` datetime NOT NULL COMMENT '创建时间',
                              `update_by` varchar(32) CHARACTER SET utf8 DEFAULT NULL COMMENT '修改人',
@@ -103,7 +103,7 @@ CREATE TABLE `kali_menu` (
 -- Records of kali_menu
 -- ----------------------------
 BEGIN;
-INSERT INTO `kali_menu` VALUES ('1438882770994839552', '', '', '', NULL, '总菜单', '/', '', '', '0', '000000', '1', '1', '', '1430109634181881856', '2021-09-17 23:09:20', NULL, NULL, '0');
+INSERT INTO `kali_menu` VALUES ('1438882770994839552', '', '', '', NULL, '总菜单', '/', '', '', '0', '000000', '1', '1', '0', '1430109634181881856', '2021-09-17 23:09:20', NULL, NULL, '0');
 COMMIT;
 
 -- ----------------------------
@@ -188,6 +188,30 @@ CREATE TABLE `kali_user` (
 BEGIN;
 INSERT INTO `kali_user` VALUES ('1430066935624323072', '张泱森', '@6y!@2&8@6fyÒ!2c@2af5@°°fa$$0&&2', '2271998412@qq.com', '18234125116', '阿森', '9998', NULL, '2021', '0', '1430109634181881856', '2021-08-24 15:18:21', NULL, NULL, '0');
 INSERT INTO `kali_user` VALUES ('1430109634181881856', '超级管理员', '°c2◊20a620&@582a@yÒ6!y2ya!ay$fÒ$', 'admin@mail.com', '18888888888', 'SuperAdmin', '9999', '1431876295237054464', '2021', '0', '', '2021-08-24 18:08:02', NULL, NULL, '0');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for sys_log
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_log`;
+CREATE TABLE `sys_log` (
+                           `id` varchar(32) NOT NULL COMMENT '标识符',
+                           `ip` varchar(32) CHARACTER SET utf8 DEFAULT NULL COMMENT 'ip地址',
+                           `module_name` varchar(50) DEFAULT NULL COMMENT '模块名',
+                           `method` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '操作方法',
+                           `operation` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '操作描述',
+                           `take_up_time` mediumtext CHARACTER SET utf8 COMMENT '耗时ms',
+                           `params` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '参数',
+                           `year` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT '年份',
+                           `create_by` varchar(32) CHARACTER SET utf8 DEFAULT NULL COMMENT '操作者',
+                           `create_date` datetime DEFAULT NULL COMMENT '操作日期',
+                           PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='系统-日志表';
+
+-- ----------------------------
+-- Records of sys_log
+-- ----------------------------
+BEGIN;
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
