@@ -2,6 +2,7 @@ package com.lucky.kali.userinfo.controller;
 
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.json.JSONUtil;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
@@ -11,6 +12,7 @@ import com.lucky.kali.common.constants.CommonConstants;
 import com.lucky.kali.common.dto.GroupDTO;
 import com.lucky.kali.common.dto.RoleDTO;
 import com.lucky.kali.common.dto.UserDTO;
+import com.lucky.kali.common.exception.ExceptionUtil;
 import com.lucky.kali.common.response.Response;
 import com.lucky.kali.common.response.ResponseEnum;
 import com.lucky.kali.common.response.ResponseInfo;
@@ -61,7 +63,6 @@ public class AccessController {
      * @param bindingResult 参数校验
      * @return 登陆结果
      */
-    @Log("登陆")
     @PostMapping("doLogin")
     @ApiOperation(value = "用户登陆", produces = "application/json",
             notes = "登陆用的接口<br>" +
@@ -72,6 +73,7 @@ public class AccessController {
                     "password: TOBENO.1",
             position = 1)
     @ApiOperationSupport(author = "Elliot")
+    @SentinelResource(value = "doLogin", blockHandlerClass = ExceptionUtil.class, blockHandler = "handleException")
     public ResponseInfo<UserTokenVO> doLogin(@Valid @RequestBody LoginVO loginVO, BindingResult bindingResult) {
         log.info("登陆信息为：" + loginVO);
         /*信息校验*/
