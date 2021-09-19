@@ -43,11 +43,20 @@ public class LogAspect {
     @Resource
     private SysLogMapper sysLogMapper;
 
+    /**
+     * 设置切入点
+     */
     @Pointcut("@annotation(com.lucky.kali.common.aspect.Log)")
     public void pointcut() {
     }
 
-
+    /**
+     * 切入点(以自定义的注解为切入点进行操作)
+     *
+     * @param point 继续连接点(ProceedingJoinPoint)继承连接点(JoinPoint)
+     * @return 结果
+     * @throws Throwable 异常
+     */
     @Around("pointcut()")
     public Object around(ProceedingJoinPoint point) throws Throwable {
         Object result;
@@ -61,7 +70,14 @@ public class LogAspect {
         return result;
     }
 
-    @Async
+    /**
+     * 保存日志方法(交给异步线程池处理)
+     *
+     * @param joinPoint 继续连接点(ProceedingJoinPoint)继承连接点(JoinPoint)
+     * @param time      执行时长
+     * @throws IOException 异常
+     */
+    @Async("asyncServiceExecutor")
     public void saveLog(ProceedingJoinPoint joinPoint, long time) throws IOException {
         log.info("开始插入操作日志");
         /*获取操作用户编码*/
