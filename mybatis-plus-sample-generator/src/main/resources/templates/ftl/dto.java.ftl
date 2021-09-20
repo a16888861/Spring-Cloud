@@ -27,19 +27,24 @@ import lombok.experimental.SuperBuilder;
  * @since ${date}
  */
 <#if entityLombokModel>
+<#--@Data-->
+<#--    <#if superEntityClass??>-->
+<#--@EqualsAndHashCode(callSuper = true)-->
+<#--    <#else>-->
+<#--@EqualsAndHashCode(callSuper = false)-->
+<#--    </#if>-->
+<#--    <#if chainModel>-->
+<#--@Accessors(chain = true)-->
+<#--    </#if>-->
+<#--</#if>-->
+<#--<#if cfg.superBuilder>-->
+<#--@SuperBuilder(toBuilder = true)-->
+<#--@NoArgsConstructor-->
 @Data
-    <#if superEntityClass??>
-@EqualsAndHashCode(callSuper = true)
-    <#else>
-@EqualsAndHashCode(callSuper = false)
-    </#if>
-    <#if chainModel>
-@Accessors(chain = true)
-    </#if>
-</#if>
-<#if cfg.superBuilder>
-@SuperBuilder(toBuilder = true)
 @NoArgsConstructor
+@Accessors(chain = true)
+@SuperBuilder(toBuilder = true)
+@EqualsAndHashCode(callSuper = true)
 </#if>
 <#if swagger2>
 @ApiModel(value="${entity}DTO对象", description="${table.comment!}")
