@@ -3,6 +3,7 @@ package com.lucky.kali.userinfo.vo.resp;
 import com.lucky.kali.common.dto.GroupDTO;
 import com.lucky.kali.common.dto.RoleDTO;
 import com.lucky.kali.common.dto.UserDTO;
+import com.lucky.kali.userinfo.dto.MenuDTO;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,4 +32,9 @@ public class UserInfoVO {
      * 角色信息
      */
     private RoleDTO roleDTO;
+
+    /**
+     * 菜单信息
+     */
+    private MenuDTO menuDTO;
 }

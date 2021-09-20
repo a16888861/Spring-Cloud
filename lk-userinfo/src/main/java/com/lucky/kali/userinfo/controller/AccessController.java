@@ -7,8 +7,10 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.lucky.kali.common.aspect.Log;
+import com.lucky.kali.common.base.BaseController;
 import com.lucky.kali.common.base.BaseEntity;
 import com.lucky.kali.common.constants.CommonConstants;
+import com.lucky.kali.common.context.UserContextUtil;
 import com.lucky.kali.common.dto.GroupDTO;
 import com.lucky.kali.common.dto.RoleDTO;
 import com.lucky.kali.common.dto.UserDTO;
@@ -22,6 +24,7 @@ import com.lucky.kali.common.util.RedisUtil;
 import com.lucky.kali.common.vo.req.UserTokenVO;
 import com.lucky.kali.userinfo.entity.Group;
 import com.lucky.kali.userinfo.service.GroupService;
+import com.lucky.kali.userinfo.service.MenuService;
 import com.lucky.kali.userinfo.service.RoleService;
 import com.lucky.kali.userinfo.service.UserService;
 import com.lucky.kali.userinfo.vo.req.LoginVO;
@@ -29,6 +32,7 @@ import com.lucky.kali.userinfo.vo.resp.UserInfoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,7 +49,7 @@ import java.util.concurrent.TimeUnit;
 @ApiSupport(order = 1, author = "Elliot")
 @Slf4j
 @RequestMapping("access")
-public class AccessController {
+public class AccessController extends BaseController {
 
     @Resource
     private UserService userService;
@@ -53,6 +57,8 @@ public class AccessController {
     private GroupService groupService;
     @Resource
     private RoleService roleService;
+    @Resource
+    private MenuService menuService;
     @Resource
     private RedisUtil redisUtil;
 
@@ -135,15 +141,50 @@ public class AccessController {
             position = 2)
     public ResponseInfo<UserInfoVO> getUserInfoVO(HttpServletRequest request) {
         String xAuthorization = request.getHeader(CommonConstants.X_AUTHORIZATION);
+        /*查询用户信息*/
         UserDTO userDTO = userService.selectById(JwtUtil.getClaim(xAuthorization.split(CommonConstants.SPACE)[1]).split(CommonConstants.HORIZONTAL_BAR)[2]);
+        /*查询组别信息*/
         GroupDTO groupDTO = groupService.selectOne(new LambdaQueryWrapper<Group>()
                 .eq(Group::getUserGroup, userDTO.getUserGroup())
                 .eq(BaseEntity::getDelFlag, BaseEntity.DEL_FLAG_NORMAL));
+        /*查询角色信息*/
         RoleDTO roleDTO = roleService.selectById(userDTO.getRoleId());
+        //TODO 以下两种操作待添加
+        /*查询角色和菜单对应关系*/
+
+        /*根据对应关系查询菜单信息*/
+
         UserInfoVO userInfoVO = UserInfoVO.builder()
-                .userDTO(userDTO).groupDTO(groupDTO).roleDTO(roleDTO)
+                .userDTO(userDTO).groupDTO(groupDTO).roleDTO(roleDTO).menuDTO(null)
                 .build();
         return Response.success(ResponseEnum.SUCCESS.getMessage(), userInfoVO);
+    }
+
+    /**
+     * 修改当前登陆用户的用户名和英文名
+     *
+     * @param name       用户名
+     * @param screenName 英文名
+     * @return 操作结果
+     */
+    @Log("修改当前登陆用户的用户名和英文名")
+    @PutMapping("updateUserNameOrScreenName")
+    @ApiOperation(value = "修改当前登陆用户的用户名和英文名", produces = "application/json",
+            notes = "修改用户名和英文名公用接口<br>" +
+                    "修改哪个传哪个<br>")
+    public ResponseInfo<Response> updateUserNameOrScreenName(String name, String screenName) {
+        /*不为空才执行update方法，否则修改错误*/
+        if (StringUtils.isNotBlank(name)) {
+            return judgeResult(userService.updateById(UserDTO.builder()
+                    .id(UserContextUtil.getUserInfo().getId())
+                    .name(name).screenName(screenName).build()));
+        }
+        if (StringUtils.isNotBlank(screenName)) {
+            return judgeResult(userService.updateById(UserDTO.builder()
+                    .id(UserContextUtil.getUserInfo().getId())
+                    .name(name).screenName(screenName).build()));
+        }
+        return Response.fail(ResponseEnum.FAILURE.getMessage());
     }
 
     /**
