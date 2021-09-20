@@ -31,6 +31,7 @@ import com.lucky.kali.userinfo.vo.req.LoginVO;
 import com.lucky.kali.userinfo.vo.resp.UserInfoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.validation.BindingResult;
@@ -172,7 +173,7 @@ public class AccessController extends BaseController {
     @ApiOperation(value = "修改当前登陆用户的用户名和英文名", produces = "application/json",
             notes = "修改用户名和英文名公用接口<br>" +
                     "修改哪个传哪个<br>")
-    public ResponseInfo<Response> updateUserNameOrScreenName(String name, String screenName) {
+    public ResponseInfo<Response> updateUserNameOrScreenName(@ApiParam("用户名") String name, @ApiParam("英文名") String screenName) {
         /*不为空才执行update方法，否则修改错误*/
         if (StringUtils.isNotBlank(name)) {
             return judgeResult(userService.updateById(UserDTO.builder()

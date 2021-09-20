@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,7 +23,8 @@ import java.util.List;
  * @date 2021/09/19 8:11 下午
  */
 @Slf4j
-@RestController("article/articleType")
+@RestController("articleTypeController")
+@RequestMapping("article/articleType")
 @Api(value = "文章分类接口", tags = "文章分类接口")
 @ApiSupport(order = 101, author = "Elliot")
 public class ArticleTypeController {
