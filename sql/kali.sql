@@ -11,7 +11,7 @@
  Target Server Version : 50705
  File Encoding         : 65001
 
- Date: 20/09/2021 00:06:02
+ Date: 20/09/2021 21:55:04
 */
 
 SET NAMES utf8mb4;
@@ -148,6 +148,11 @@ CREATE TABLE `kali_role_menu` (
                                   `role_id` varchar(32) CHARACTER SET utf8 NOT NULL COMMENT '角色id',
                                   `menu_id` varchar(32) CHARACTER SET utf8 NOT NULL COMMENT '菜单id',
                                   `element_id` varchar(32) CHARACTER SET utf8 DEFAULT NULL COMMENT '元素id',
+                                  `create_by` varchar(32) DEFAULT NULL COMMENT '创建人',
+                                  `create_date` datetime DEFAULT NULL COMMENT '创建时间',
+                                  `update_by` varchar(32) DEFAULT NULL COMMENT '修改人',
+                                  `update_date` datetime DEFAULT NULL COMMENT '修改时间',
+                                  `del_flag` char(1) NOT NULL COMMENT '删除标志(0正常1删除)',
                                   PRIMARY KEY (`id`) USING BTREE,
                                   KEY `idx_0` (`role_id`,`menu_id`) USING BTREE,
                                   KEY `idx_1` (`menu_id`) USING BTREE
@@ -201,7 +206,7 @@ CREATE TABLE `sys_log` (
                            `method` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '操作方法',
                            `operation` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '操作描述',
                            `take_up_time` mediumtext CHARACTER SET utf8 COMMENT '耗时ms',
-                           `params` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '参数',
+                           `params` varchar(1000) CHARACTER SET utf8 DEFAULT NULL COMMENT '参数',
                            `year` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT '年份',
                            `create_by` varchar(32) CHARACTER SET utf8 DEFAULT NULL COMMENT '操作者',
                            `create_date` datetime DEFAULT NULL COMMENT '操作日期',
