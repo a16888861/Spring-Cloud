@@ -40,6 +40,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -184,12 +185,16 @@ public class AccessController extends BaseController {
         if (StringUtils.isNotBlank(name)) {
             return judgeResult(userService.updateById(UserDTO.builder()
                     .id(UserContextUtil.getUserInfo().getId())
-                    .name(name).screenName(screenName).build()));
+                    .updateBy(UserContextUtil.getUserInfo().getId())
+                    .updateDate(LocalDateTime.now())
+                    .name(name).build()));
         }
         if (StringUtils.isNotBlank(screenName)) {
             return judgeResult(userService.updateById(UserDTO.builder()
                     .id(UserContextUtil.getUserInfo().getId())
-                    .name(name).screenName(screenName).build()));
+                    .updateBy(UserContextUtil.getUserInfo().getId())
+                    .updateDate(LocalDateTime.now())
+                    .screenName(screenName).build()));
         }
         return Response.fail(ResponseEnum.FAILURE.getMessage());
     }
