@@ -27,6 +27,7 @@ public class MenuVO implements Serializable {
     /**
      * 主键id
      */
+    @ApiModelProperty(value = "主键id", name = "id", hidden = true, required = false)
     private String id;
 
     /**

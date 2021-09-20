@@ -22,11 +22,11 @@ import com.lucky.kali.common.util.JwtUtil;
 import com.lucky.kali.common.util.Md5Utils;
 import com.lucky.kali.common.util.RedisUtil;
 import com.lucky.kali.common.vo.req.UserTokenVO;
+import com.lucky.kali.userinfo.dto.MenuDTO;
+import com.lucky.kali.userinfo.dto.RoleMenuDTO;
 import com.lucky.kali.userinfo.entity.Group;
-import com.lucky.kali.userinfo.service.GroupService;
-import com.lucky.kali.userinfo.service.MenuService;
-import com.lucky.kali.userinfo.service.RoleService;
-import com.lucky.kali.userinfo.service.UserService;
+import com.lucky.kali.userinfo.entity.RoleMenu;
+import com.lucky.kali.userinfo.service.*;
 import com.lucky.kali.userinfo.vo.req.LoginVO;
 import com.lucky.kali.userinfo.vo.resp.UserInfoVO;
 import io.swagger.annotations.Api;
@@ -40,6 +40,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -58,6 +60,8 @@ public class AccessController extends BaseController {
     private GroupService groupService;
     @Resource
     private RoleService roleService;
+    @Resource
+    private RoleMenuService roleMenuService;
     @Resource
     private MenuService menuService;
     @Resource
@@ -150,13 +154,15 @@ public class AccessController extends BaseController {
                 .eq(BaseEntity::getDelFlag, BaseEntity.DEL_FLAG_NORMAL));
         /*查询角色信息*/
         RoleDTO roleDTO = roleService.selectById(userDTO.getRoleId());
-        //TODO 以下两种操作待添加
         /*查询角色和菜单对应关系*/
-
-        /*根据对应关系查询菜单信息*/
-
+        List<RoleMenuDTO> roleMenuDTOList = roleMenuService.selectList(new LambdaQueryWrapper<RoleMenu>()
+                .eq(RoleMenu::getRoleId, roleDTO.getId())
+                .eq(RoleMenu::getDelFlag, BaseEntity.DEL_FLAG_NORMAL));
+        /*根据对应关系查询菜单信息(一级菜单)*/
+        List<MenuDTO> menuDTOList = new ArrayList<>();
+        roleMenuDTOList.forEach(roleMenuDTO -> menuDTOList.add(menuService.selectById(roleMenuDTO.getMenuId())));
         UserInfoVO userInfoVO = UserInfoVO.builder()
-                .userDTO(userDTO).groupDTO(groupDTO).roleDTO(roleDTO).menuDTO(null)
+                .userDTO(userDTO).groupDTO(groupDTO).roleDTO(roleDTO).menuDTOList(menuDTOList)
                 .build();
         return Response.success(ResponseEnum.SUCCESS.getMessage(), userInfoVO);
     }

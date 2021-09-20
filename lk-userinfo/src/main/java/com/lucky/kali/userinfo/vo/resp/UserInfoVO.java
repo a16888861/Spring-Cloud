@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.util.List;
+
 /**
  * @author Elliot
  */
@@ -36,5 +38,5 @@ public class UserInfoVO {
     /**
      * 菜单信息
      */
-    private MenuDTO menuDTO;
+    private List<MenuDTO> menuDTOList;
 }

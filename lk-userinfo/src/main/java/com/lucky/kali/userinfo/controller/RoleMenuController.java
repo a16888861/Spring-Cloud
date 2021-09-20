@@ -45,7 +45,8 @@ public class RoleMenuController extends BaseController {
     @ApiOperation(value = "创建角色菜单(单个分配)", produces = "application/json",
             notes = "创建角色菜单(单个分配)<br>" +
                     "仅用于关联一级菜单")
-    public ResponseInfo<Response> createRoleMenu(@ApiParam("角色id") String roleId, @ApiParam("菜单id") String menuId) {
+    public ResponseInfo<Response> createRoleMenu(@ApiParam(value = "角色id", required = true) String roleId,
+                                                 @ApiParam(value = "菜单id", required = true) String menuId) {
         RoleMenuDTO roleMenuDTO = RoleMenuDTO.builder()
                 .roleId(roleId).menuId(menuId).createBy(UserContextUtil.getUserInfo().getId()).build();
         return judgeResult(roleMenuService.insert(roleMenuDTO));
