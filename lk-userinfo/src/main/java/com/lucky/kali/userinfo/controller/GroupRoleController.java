@@ -50,7 +50,7 @@ public class GroupRoleController {
         }
         GroupRoleVO groupRoleVoList = groupRoleService.selectGroupRoleList(groupId);
         if (groupRoleVoList == null) {
-            return Response.notFound("common.response.notfound");
+            return Response.notFound(ResponseEnum.NOTFOUND.getMessage());
         }
         if (groupRoleVoList.getRoleList().size() <= 0) {
             return Response.notFound("groupRole.groupRoleVoList.isEmpty");

@@ -3,6 +3,7 @@ package com.lucky.kali.userinfo.controller;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import com.lucky.kali.common.base.BaseController;
 import com.lucky.kali.common.base.CommonPage;
 import com.lucky.kali.common.dto.RoleDTO;
 import com.lucky.kali.common.response.Response;
@@ -33,7 +34,7 @@ import javax.validation.Valid;
 @RequestMapping("/userInfo/role")
 @Api(value = "角色信息", tags = "角色信息接口")
 @ApiSupport(order = 103, author = "Elliot")
-public class RoleController {
+public class RoleController extends BaseController {
 
     @Resource
     private RoleService roleService;
@@ -57,12 +58,7 @@ public class RoleController {
             return Response.fail(bindingResult.getAllErrors().get(0).getDefaultMessage());
         }
 
-        int result = roleService.createRole(roleVO);
-        if (result > 0) {
-            return Response.success(ResponseEnum.SUCCESS.getMessage());
-        } else {
-            return Response.fail(ResponseEnum.FAILURE.getMessage());
-        }
+        return judgeResult(roleService.createRole(roleVO));
     }
 
     /**

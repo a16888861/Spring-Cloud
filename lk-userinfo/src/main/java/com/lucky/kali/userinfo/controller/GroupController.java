@@ -3,6 +3,7 @@ package com.lucky.kali.userinfo.controller;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import com.lucky.kali.common.base.BaseController;
 import com.lucky.kali.common.base.CommonPage;
 import com.lucky.kali.common.dto.GroupDTO;
 import com.lucky.kali.common.response.Response;
@@ -33,7 +34,7 @@ import javax.validation.Valid;
 @RequestMapping("/userInfo/group")
 @Api(value = "组别信息", tags = "组别信息接口")
 @ApiSupport(order = 102, author = "Elliot")
-public class GroupController {
+public class GroupController extends BaseController {
 
     @Resource
     private GroupService groupService;
@@ -55,12 +56,7 @@ public class GroupController {
         }
 
         GroupDTO groupDTO = BeanUtil.copyProperties(groupVO, GroupDTO.class);
-        int result = groupService.createGroup(groupDTO);
-        if (result > 0) {
-            return Response.success(ResponseEnum.SUCCESS.getMessage());
-        } else {
-            return Response.fail(ResponseEnum.FAILURE.getMessage());
-        }
+        return judgeResult(groupService.createGroup(groupDTO));
     }
 
     /**

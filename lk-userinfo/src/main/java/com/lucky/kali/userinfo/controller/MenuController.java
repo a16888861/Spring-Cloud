@@ -3,6 +3,7 @@ package com.lucky.kali.userinfo.controller;
 
 import cn.hutool.core.util.ObjectUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import com.lucky.kali.common.base.BaseController;
 import com.lucky.kali.common.enums.MenuEnums;
 import com.lucky.kali.common.response.Response;
 import com.lucky.kali.common.response.ResponseEnum;
@@ -32,7 +33,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/userInfo/menu")
 @Api(value = "菜单信息", tags = "菜单信息接口")
 @ApiSupport(order = 105, author = "Elliot")
-public class MenuController {
+public class MenuController extends BaseController {
     @Resource
     private MenuService menuService;
 
@@ -52,12 +53,7 @@ public class MenuController {
         if (bindingResult.hasErrors()) {
             return Response.fail(bindingResult.getAllErrors().get(0).getDefaultMessage());
         }
-        Integer result = menuService.createMenu(menuVO);
-        if (result > 0) {
-            return Response.success(ResponseEnum.SUCCESS.getMessage());
-        } else {
-            return Response.fail(ResponseEnum.FAILURE.getMessage());
-        }
+        return judgeResult(menuService.createMenu(menuVO));
     }
 
     /**

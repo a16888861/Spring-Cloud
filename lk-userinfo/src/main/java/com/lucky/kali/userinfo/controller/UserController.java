@@ -3,6 +3,7 @@ package com.lucky.kali.userinfo.controller;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import com.lucky.kali.common.base.BaseController;
 import com.lucky.kali.common.base.CommonPage;
 import com.lucky.kali.common.dto.UserDTO;
 import com.lucky.kali.common.exception.ExceptionUtil;
@@ -35,7 +36,7 @@ import javax.validation.Valid;
 @RequestMapping("/userInfo/user")
 @Api(value = "用户信息", tags = "用户信息接口")
 @ApiSupport(order = 101, author = "Elliot")
-public class UserController {
+public class UserController extends BaseController {
 
     @Resource
     private UserService userService;
@@ -58,14 +59,8 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return Response.fail(bindingResult.getAllErrors().get(0).getDefaultMessage());
         }
-
         UserDTO userDTO = BeanUtil.copyProperties(userVO, UserDTO.class);
-        int user = userService.createUser(userDTO);
-        if (user > 0) {
-            return Response.success(ResponseEnum.SUCCESS.getMessage());
-        } else {
-            return Response.fail(ResponseEnum.FAILURE.getMessage());
-        }
+        return judgeResult(userService.createUser(userDTO));
     }
 
     /**
@@ -86,7 +81,7 @@ public class UserController {
         }
         CommonPage<UserDTO> userPageList = userService.selectUserPageList(userVoPage);
         if (userPageList == null) {
-            return Response.notFound("common.response.notfound");
+            return Response.notFound(ResponseEnum.NOTFOUND.getMessage());
         }
         if (userPageList.getPageSize() <= 0) {
             return Response.notFound("user.userPageList.isEmpty");
