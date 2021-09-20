@@ -1,6 +1,7 @@
 package com.lucky.kali.userinfo.controller;
 
 
+import com.alibaba.csp.sentinel.util.StringUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.lucky.kali.common.aspect.Log;
 import com.lucky.kali.common.base.BaseController;
@@ -47,8 +48,12 @@ public class RoleMenuController extends BaseController {
                     "仅用于关联一级菜单")
     public ResponseInfo<Response> createRoleMenu(@ApiParam(value = "角色id", required = true) String roleId,
                                                  @ApiParam(value = "菜单id", required = true) String menuId) {
-        RoleMenuDTO roleMenuDTO = RoleMenuDTO.builder()
-                .roleId(roleId).menuId(menuId).createBy(UserContextUtil.getUserInfo().getId()).build();
-        return judgeResult(roleMenuService.insert(roleMenuDTO));
+        if (StringUtil.isNotBlank(roleId) && StringUtil.isNotBlank(menuId)) {
+            RoleMenuDTO roleMenuDTO = RoleMenuDTO.builder()
+                    .roleId(roleId).menuId(menuId).createBy(UserContextUtil.getUserInfo().getId()).build();
+            return judgeResult(roleMenuService.insert(roleMenuDTO));
+        } else {
+            return judgeResult(-1);
+        }
     }
 }
