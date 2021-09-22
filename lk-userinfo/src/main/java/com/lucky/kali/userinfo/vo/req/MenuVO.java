@@ -34,7 +34,7 @@ public class MenuVO implements Serializable {
      * 系统id
      */
     @ApiModelProperty(value = "系统id", name = "sysId", hidden = false, required = true, position = 0)
-    @NotEmpty(message = "menu.sysId.isEmpty")
+    @NotEmpty(message = "menu.sysId.NotEmpty")
     private String sysId;
 
     /**
