@@ -53,4 +53,7 @@ spring:
     encoding: UTF-8
     basename: i18n.message
 server:
-  port: 7002
+  port: 7001
+#屏蔽文档接口(默认false,生产环境改为true)
+knife4j:
+  production: true
